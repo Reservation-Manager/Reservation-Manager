@@ -1,0 +1,37 @@
+﻿@model ReservationModel
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>YourPlace</title>
+</head>
+<style>
+    .check-mark{
+        width: 100px;
+        height: 100px;
+    }
+    .container3{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<body>
+    <div class="row">
+        <div class="container3">
+            <img src="~/Images/check-mark (1).png" class="check-mark"/>
+            <br />
+            <h2><b>Резервацията е направена успешно!</b></h2>
+            <label>Име</label>
+            <p>@Model.FirstName @Model.Surname</p>
+            <label>Дата на пристигане</label>
+            <p>@Model.ArrivalDate</p>
+            <label>Дата на напускане</label>
+            <p>@Model.LeavingDate</p>
+            <label>Брой хора</label>
+            <p>@Model.PeopleCount</p>
+            <label>Цена</label>
+            <p>@Model.TotalPrice</p>
+        </div>
+    </div>
+</body>

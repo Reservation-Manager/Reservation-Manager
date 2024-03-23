@@ -1,0 +1,282 @@
+﻿@using YourPlace.Infrastructure.Data.Enums;
+@model AllHotelsModel
+@{
+
+    ViewData["Title"] = "Welcome!";
+}
+
+<link rel="stylesheet" type="text/css" href="~/css/test.css" />
+<style>
+    #submit,
+    #no-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #no-btn {
+        background-color: #ccc;
+    }
+
+    #submit {
+        background-color: #6b43ff;
+        color: #fff;
+    }
+
+    #no-btn,
+    #submit {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+        #no-btn:hover,
+        #submit:hover {
+            background-color: #653bff;
+        }
+
+    .buttons-class {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+</style>
+
+<div class="container1">
+    <div class="questions">
+        <div class="test">
+            <div id="quizForm">
+                <div class="question" id="question1" value=getSelectedAnswers('question1')>
+                    <p>Въпрос 1: Какво предпочитате?</p>
+                    <label>
+                        <input type="radio" name="question1" value="@Location.Sea">
+                        Море
+                    </label>
+                    <label>
+                        <input type="radio" name="question1" value="@Location.Mountain">
+                        Планина
+                    </label>
+                    <label>
+                        <input type="radio" name="question1" value="@Location.LargeCity">
+                        Голям град
+                    </label>
+                    <label>
+                        <input type="radio" name="question1" value="@Location.Village">
+                        Малко село
+                    </label>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="question" id="question2" style="display: none;">
+                    <p>Въпрос 2: Какъв тип почивка предпочитате?</p>
+                    <label>
+                        <input type="radio" name="question2" value="@Tourism.Culture">
+                        Култура
+                    </label>
+                    <label>
+                        <input type="radio" name="question2" value="@Tourism.Shopping">
+                        Пазаруване
+                    </label>
+                    <label>
+                        <input type="radio" name="question2" value="@Tourism.Adventure">
+                        Приключение
+                    </label>
+                    <label>
+                        <input type="radio" name="question2" value="@Tourism.Relax">
+                        Релакс
+                    </label>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="question" id="question3" style="display: none;">
+                    <p>Въпрос 3: Кое предпочитате?</p>
+                    <label>
+                        <input type="radio" name="question3" value="@Atmosphere.Calm">
+                        Спокойствие
+                    </label>
+                    <label>
+                        <input type="radio" name="question3" value="@Atmosphere.Party">
+                        Парти
+                    </label>
+                    <label>
+                        <input type="radio" name="question3" value="@Atmosphere.Both">
+                        И двете
+                    </label>
+                    <label>
+                        <input type="radio" name="question3" value="@Atmosphere.Neither">
+                        Нито едното
+                    </label>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="question" id="question4" style="display: none;">
+                    <p>Въпрос 4: Какъв тип пътуване търсите?</p>
+                    <label>
+                        <input type="radio" name="question4" value="@Company.Family">
+                        Семейно
+                    </label>
+                    <label>
+                        <input type="radio" name="question4" value="@Company.OnePerson">
+                        С един човек
+                    </label>
+                    <label>
+                        <input type="radio" name="question4" value="@Company.Individual">
+                        Самостоятелно
+                    </label>
+                    <label>
+                        <input type="radio" name="question4" value="@Company.Group">
+                        Групово
+                    </label>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="question" id="question5" style="display: none;">
+                    <p>Въпрос 5: Кое предпочитате?</p>
+                    <label>
+                        <input type="radio" name="question5" value="@Pricing.Lux">
+                        Луксозно
+                    </label>
+                    <label>
+                        <input type="radio" name="question5" value="@Pricing.Cheap">
+                        Евтино
+                    </label>
+                    <label>
+                        <input type="radio" name="question5" value="@Pricing.InTheMiddle">
+                        Нещо по средата
+                    </label>
+                    <label>
+                        <input type="radio" name="question5" value="@Pricing.Modern">
+                        Модерно
+                    </label>
+                </div>
+
+                <div class="question" id="question6" style="display: none;">
+                    <p>Желаете ли да предадете теста?</p>
+                    <form asp-controller="Sorting" asp-action="CreatePreferences">
+                        <input type="hidden" id="hidden-question1" name="Location" asp-for="Location">
+                        <input type="hidden" id="hidden-question2" name="Tourism" asp-for="Tourism">
+                        <input type="hidden" id="hidden-question3" name="Atmosphere" asp-for="Atmosphere">
+                        <input type="hidden" id="hidden-question4" name="Company" asp-for="Company">
+                        <input type="hidden" id="hidden-question5" name="Pricing" asp-for="Pricing">
+                        <div class="buttons-class">
+                            <button type="submit" id="submit">Да</button>
+                            <button type="button" id="no-btn">Не</button>
+                        </div>
+                    </form>
+                </div>
+                <button class="prev-btn" style="display: none;">Предишен</button>
+                <button class="next-btn" id="next">Следващ</button>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('quizForm');
+            const prevButton = document.querySelector('.prev-btn');
+            const nextButton = document.querySelector('.next-btn');
+            const submitButton = document.getElementById('submit');
+            const questions = Array.from(form.querySelectorAll('.question'));
+            const noButton = document.getElementById('no-btn');
+
+            let currentQuestion = 0;
+            const resultDiv = document.getElementById('result');
+
+            const question1 = document.getElementById('question1');
+            const hidden1 = document.getElementById('hidden-question1');
+
+            const question2 = document.getElementById('question2');
+            const hidden2 = document.getElementById('hidden-question2');
+
+            const question3 = document.getElementById('question3');
+            const hidden3 = document.getElementById('hidden-question3');
+
+            const question4 = document.getElementById('question4');
+            const hidden4 = document.getElementById('hidden-question4');
+
+            const question5 = document.getElementById('question5');
+            const hidden5 = document.getElementById('hidden-question5');
+
+            function showQuestion(index) {
+                questions.forEach((question, i) => {
+                    question.style.display = i === index ? 'block' : 'none';
+                });
+
+                prevButton.style.display = index === 0 ? 'none' : 'inline-block';
+                prevButton.style.display = index === questions.length - 1 ? 'none' : 'inline-block';
+                nextButton.style.display = index === questions.length - 1 ? 'none' : 'inline-block';
+                submitButton.style.display = index === questions.length - 1 ? 'inline-block' : 'none';
+
+            }
+
+            showQuestion(currentQuestion);
+
+            prevButton.addEventListener('click', () => {
+                if (currentQuestion > 0) {
+                    currentQuestion--;
+                    showQuestion(currentQuestion);
+                }
+            });
+
+            noButton.addEventListener('click', () => {
+                if (currentQuestion > 0) {
+                    currentQuestion--;
+                    showQuestion(currentQuestion);
+                }
+            });
+
+            nextButton.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                const selectedAnswer = form.querySelector(`input[name="question${currentQuestion + 1}"]:checked`).value;
+                //console.log(selectedAnswer);
+                if (selectedAnswer || currentQuestion === questions.length - 1) {
+                    if (currentQuestion < questions.length - 1) {
+                        currentQuestion++;
+                        showQuestion(currentQuestion);
+                        if (currentQuestion === 1) {
+                            question1.value = selectedAnswer;
+                            hidden1.value = selectedAnswer;
+                            console.log(hidden1.value);
+                        }
+                        if (currentQuestion === 2) {
+                            question2.value = selectedAnswer;
+                            hidden2.value = selectedAnswer;
+                            console.log(hidden2.value);
+                        }
+                        if (currentQuestion === 3) {
+                            question3.value = selectedAnswer;
+                            hidden3.value = selectedAnswer;
+                            console.log(hidden3.value);
+                        }
+                        if (currentQuestion === 4) {
+                            question4.value = selectedAnswer;
+                            hidden4.value = selectedAnswer;
+                            console.log(hidden4.value);
+                        }
+                        if (currentQuestion === 5) {
+                            question5.value = selectedAnswer;
+                            hidden5.value = selectedAnswer;
+                            console.log(hidden5.value);
+                        }
+                        if (currentQuestion === 6) {
+                            prevButton.style.display = 'none';
+                            nextButton.style.display = 'none';
+                        }
+
+                    }
+                }
+                else {
+                    alert('Моля изберете отговор.');
+                }
+            });
+        });
+    </script>
+
+

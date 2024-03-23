@@ -1,0 +1,60 @@
+﻿@model ReservationModel
+
+@{
+    Layout = "_LayoutNoFilter";
+    DateTime tomorrow = DateTime.Today.AddDays(1);
+    string tomorrowDateString = tomorrow.ToString("yyyy-MM-dd");
+}
+<link rel="stylesheet" type="text/css" href="~/css/reservation.css" />
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="styles/style-offer.css">
+    <title>YourPlace</title>
+</head>
+
+<body>
+    <div class="row">
+        <div class="container3">
+            <div>
+                @using (Html.BeginForm("CreateReservation", "Reservations", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <label asp-for="HotelID">ID на хотел</label>
+                        <input asp-for="HotelID" class="form-control" type="text" value="@Model.HotelID" />
+                        <span asp-validation-for="HotelID" class="text-danger"></span>
+                    </div>
+                    <input type="hidden" value="@Model.ArrivalDate" asp-for="ArrivalDate"/>
+                    <input type="hidden" value="@Model.LeavingDate" asp-for="LeavingDate" />
+                    <input type="hidden" value="@Model.TotalPrice" asp-for="TotalPrice" />
+                    @for (int i = 0; i < Model.ChosenRooms.Count; i++)
+                    {
+                        <input type="hidden" name="ChosenRooms[@i].RoomID" value="@Model.ChosenRooms[i].RoomID" asp-for="ChosenRoomID" />
+                        <input type="hidden" name="ChosenRooms[@i].ChosenCount" value="@Model.ChosenRooms[i].ChosenCount" asp-for="ChosenRoomCount" />
+                    } 
+                    <div class="form-group">
+                        <label asp-for="FirstName">Име</label>
+                        <input asp-for="FirstName" class="form-control" type="text" required />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Surname">Фамилия</label>
+                        <input asp-for="Surname" class="form-control" type="text" required />
+                        <span asp-validation-for="Surname" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PeopleCount">Брой хора:</label>
+                        <input asp-for="PeopleCount" class="form-control" type="text" />
+                        <span asp-validation-for="PeopleCount" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn">Резервирай</button>
+                }
+            </div>
+
+        </div>
+    </div>
+    </body>
+</html>

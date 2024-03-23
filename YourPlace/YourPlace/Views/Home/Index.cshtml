@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "_LayoutNoNav";
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="logo">
+    <img src="~/Images/Logo.png" class="logo">
+</div>
+
+<div class="container1">
+    <h1>Choose a language:</h1>
+    <h4>Изберете език:</h4>
+    <form>
+        <button id="english" class="login" asp-action="English" asp-controller="Home">English</button>
+        <button id="bulgarian" class="login" asp-action="Bulgarian" asp-controller="Home">Български</button>
+    </form>
+</div>

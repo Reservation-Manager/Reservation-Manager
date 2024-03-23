@@ -1,0 +1,91 @@
+﻿@model AllHotelsModel
+
+@{
+    int i = 0;
+    ViewData["Title"] = Model.HotelModel.HotelName;
+}
+
+<input type="hidden" id="hotelImages" value="@Model.HotelImages.Count" />
+
+
+<link rel="stylesheet" type="text/css" href="~/css/offers.css" />
+
+    <div class="row">
+        <div class="container3">
+                <div class="slideshow-container">
+                    @foreach (var image in Model.HotelImages)
+                    {
+                        <div id="@("mySlides" + i.ToString())">
+                    <a class="prev" onclick="plusSlides(@(i - 1))">❮</a>
+                            <div class="numbertext">@(Model.HotelImages.IndexOf(image) + 1)/ @Model.HotelImages.Count()</div>
+                            <img src="~/Images/AdditionalImages/@image.ImageURL" style="width:100%"/>
+                        
+                        <a class="next" onclick="plusSlides(@(i + 1))">❯</a>
+                        </div>
+                    <!-- @(i++); -->
+                    }
+                    
+                </div>
+            <br>
+
+            <div class="container-text">
+                @if(Model.HotelModel != null)
+                {
+                    <h2>@Model.HotelModel.HotelName</h2>
+                    <p>@Model.HotelModel.Town, @Model.HotelModel.Country</p>
+                    <p>@Model.HotelModel.Rating/10</p>
+                    <p>@Model.HotelModel.Details</p>
+                    <br />
+                    
+                <form asp-controller="Reservations" asp-action="Index" method="post">
+                    <input type="hidden" name="hotelID" value="@Model.HotelModel.HotelID" />
+                    <button type="submit" class="button">Резервирай</button>
+                </form>
+                }
+                else
+                {
+                    <p>Hotel is null.</p>
+                }
+            </div>
+        </div>
+    </div>
+    <script>
+        let slidesCount = document.getElementById("hotelImages").value;
+        let slides = [];
+
+        document.addEventListener("DOMContentLoaded", function () 
+        {
+            loadSlides();
+            showSlides(0);
+        });
+
+        function loadSlides() 
+        {
+            for (let i = 0; i < slidesCount; i++) 
+            {
+                slides.push(document.getElementById("mySlides" + i));
+            }
+        }
+
+        function plusSlides(n) 
+        {
+            showSlides(n);
+        }
+
+        function showSlides(n) 
+        {
+            if (n >= slides.length) { n = 0; }
+            if (n < 0) { n = slides.length - 1; }
+
+            for (let i = 0; i < slides.length; i++) 
+            {
+                if (i != n) {
+                    slides[i].style.display = "none";
+                }
+                else 
+                {
+                    slides[n].style.display = "block";
+                }
+            }
+        }
+    </script>
