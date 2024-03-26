@@ -14,23 +14,17 @@
         border: 1px solid #6667b0;
         background: #6b43ff;
         color: #fff;
-        line-height: 50px;
-        font-size: 18px;
-        letter-spacing: 0.025em;
+        line-height: 30px;
+        font-size: 16px;
         cursor: pointer;
         font-weight: 800;
         border-radius: 8px;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
         transition: all 0.3s ease;
     }
-    
     .btn:hover{
             text-decoration: underline;
             color: #fff;
-    }
-
-    .reservation-container {
-        width: 90vw;
     }
 </style>
 
@@ -71,8 +65,7 @@
                 <p>Hotel is null.</p>
             }
         </div>
-    </div>
-    <div class="dates">
+
         @using (Html.BeginForm("FreeRoomsCheck", "Reservations", FormMethod.Post))
         {
             <div class="reservation-container">
@@ -94,9 +87,11 @@
                 </div>
                 <br />
                 <button type="submit" id="submit-button" class="btn">Виж наличностите</button>
+
             </div>
 
         }
+
     </div>
 </div>
 
