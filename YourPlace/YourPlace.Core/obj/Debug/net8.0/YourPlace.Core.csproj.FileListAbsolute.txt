@@ -131,3 +131,22 @@ D:\Aneliya\My Projects\Reservation-Manager\Reservation-Manager\YourPlace\YourPla
 D:\Aneliya\My Projects\Reservation-Manager\Reservation-Manager\YourPlace\YourPlace.Core\obj\Debug\net8.0\YourPlace.Core.pdb
 D:\Aneliya\My Projects\Reservation-Manager\Reservation-Manager\YourPlace\YourPlace.Core\obj\Debug\net8.0\YourPlace.Core.genruntimeconfig.cache
 D:\Aneliya\My Projects\Reservation-Manager\Reservation-Manager\YourPlace\YourPlace.Core\obj\Debug\net8.0\ref\YourPlace.Core.dll
+C:\Users\Сотко\Documents\GitHub\Reservation-Manager\YourPlace\YourPlace.Core\bin\Debug\net8.0\YourPlace.Core.deps.json
+C:\Users\Сотко\Documents\GitHub\Reservation-Manager\YourPlace\YourPlace.Core\bin\Debug\net8.0\YourPlace.Core.runtimeconfig.json
+C:\Users\Сотко\Documents\GitHub\Reservation-Manager\YourPlace\YourPlace.Core\bin\Debug\net8.0\YourPlace.Core.dll
+C:\Users\Сотко\Documents\GitHub\Reservation-Manager\YourPlace\YourPlace.Core\bin\Debug\net8.0\YourPlace.Core.pdb
+C:\Users\Сотко\Documents\GitHub\Reservation-Manager\YourPlace\YourPlace.Core\bin\Debug\net8.0\YourPlace.Infrastructure.dll
+C:\Users\Сотко\Documents\GitHub\Reservation-Manager\YourPlace\YourPlace.Core\bin\Debug\net8.0\YourPlace.Infrastructure.pdb
+C:\Users\Сотко\Documents\GitHub\Reservation-Manager\YourPlace\YourPlace.Core\bin\Debug\net8.0\YourPlace.Infrastructure.dll.config
+C:\Users\Сотко\Documents\GitHub\Reservation-Manager\YourPlace\YourPlace.Core\obj\Debug\net8.0\YourPlace.Core.csproj.AssemblyReference.cache
+C:\Users\Сотко\Documents\GitHub\Reservation-Manager\YourPlace\YourPlace.Core\obj\Debug\net8.0\YourPlace.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Сотко\Documents\GitHub\Reservation-Manager\YourPlace\YourPlace.Core\obj\Debug\net8.0\YourPlace.Core.AssemblyInfoInputs.cache
+C:\Users\Сотко\Documents\GitHub\Reservation-Manager\YourPlace\YourPlace.Core\obj\Debug\net8.0\YourPlace.Core.AssemblyInfo.cs
+C:\Users\Сотко\Documents\GitHub\Reservation-Manager\YourPlace\YourPlace.Core\obj\Debug\net8.0\YourPlace.Core.csproj.CoreCompileInputs.cache
+C:\Users\Сотко\Documents\GitHub\Reservation-Manager\YourPlace\YourPlace.Core\obj\Debug\net8.0\YourPlace.Core.sourcelink.json
+C:\Users\Сотко\Documents\GitHub\Reservation-Manager\YourPlace\YourPlace.Core\obj\Debug\net8.0\YourPlace.Core.csproj.CopyComplete
+C:\Users\Сотко\Documents\GitHub\Reservation-Manager\YourPlace\YourPlace.Core\obj\Debug\net8.0\YourPlace.Core.dll
+C:\Users\Сотко\Documents\GitHub\Reservation-Manager\YourPlace\YourPlace.Core\obj\Debug\net8.0\refint\YourPlace.Core.dll
+C:\Users\Сотко\Documents\GitHub\Reservation-Manager\YourPlace\YourPlace.Core\obj\Debug\net8.0\YourPlace.Core.pdb
+C:\Users\Сотко\Documents\GitHub\Reservation-Manager\YourPlace\YourPlace.Core\obj\Debug\net8.0\YourPlace.Core.genruntimeconfig.cache
+C:\Users\Сотко\Documents\GitHub\Reservation-Manager\YourPlace\YourPlace.Core\obj\Debug\net8.0\ref\YourPlace.Core.dll
