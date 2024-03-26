@@ -640,6 +640,22 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Authentication.Google/8.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.AspNetCore.Authorization/8.0.1": {
         "type": "package",
         "dependencies": {
@@ -3811,6 +3827,21 @@
         "lib/netstandard1.0/zh-Hant/Humanizer.resources.dll",
         "lib/netstandard2.0/zh-Hant/Humanizer.resources.dll",
         "logo.png"
+      ]
+    },
+    "Microsoft.AspNetCore.Authentication.Google/8.0.3": {
+      "sha512": "1JpMMwSXg2E806ujk6xaAJfAmexDGsMSsryT2vFXQdKHpIOXYtikg9EFWR2LKPH9p8MOwicGWdKWpdOTsft07g==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authentication.google/8.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net8.0/Microsoft.AspNetCore.Authentication.Google.dll",
+        "lib/net8.0/Microsoft.AspNetCore.Authentication.Google.xml",
+        "microsoft.aspnetcore.authentication.google.8.0.3.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.google.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Authorization/8.0.1": {
@@ -8396,6 +8427,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Microsoft.AspNetCore.Authentication.Google >= 8.0.3",
       "Microsoft.AspNetCore.Components.QuickGrid >= 8.0.1",
       "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter >= 8.0.1",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.1",
@@ -8408,24 +8440,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Eli\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Eli\\Desktop\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj",
+      "projectUniqueName": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj",
       "projectName": "YourPlace.Infrastructure",
-      "projectPath": "C:\\Users\\Eli\\Desktop\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\Eli\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Eli\\Desktop\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\obj\\",
+      "projectPath": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Eli\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8445,12 +8472,21 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Google": {
+            "target": "Package",
+            "version": "[8.0.3, )"
+          },
           "Microsoft.AspNetCore.Components.QuickGrid": {
             "target": "Package",
             "version": "[8.0.1, )"
@@ -8508,7 +8544,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

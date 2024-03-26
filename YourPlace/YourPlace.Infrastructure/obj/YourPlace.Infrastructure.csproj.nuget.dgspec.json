@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Eli\\Desktop\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj": {}
+    "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Eli\\Desktop\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj": {
+    "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eli\\Desktop\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj",
+        "projectUniqueName": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj",
         "projectName": "YourPlace.Infrastructure",
-        "projectPath": "C:\\Users\\Eli\\Desktop\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Eli\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eli\\Desktop\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\obj\\",
+        "projectPath": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Eli\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,12 +34,21 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.Google": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
             "Microsoft.AspNetCore.Components.QuickGrid": {
               "target": "Package",
               "version": "[8.0.1, )"
@@ -101,7 +106,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
