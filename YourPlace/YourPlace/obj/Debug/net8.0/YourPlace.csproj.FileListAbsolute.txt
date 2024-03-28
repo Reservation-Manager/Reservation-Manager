@@ -2398,3 +2398,6 @@ D:\Github\Reservation-Manager\YourPlace\YourPlace\obj\Debug\net8.0\ref\YourPlace
 D:\Github\Reservation-Manager\YourPlace\YourPlace\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
 D:\Github\Reservation-Manager\YourPlace\YourPlace\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Facebook.dll
 D:\Github\Reservation-Manager\YourPlace\YourPlace\bin\Debug\net8.0\Facebook.dll
+C:\Users\Eli\Desktop\Reservation-Manager\YourPlace\YourPlace\bin\Debug\net8.0\Facebook.dll
+C:\Users\Eli\Desktop\Reservation-Manager\YourPlace\YourPlace\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Facebook.dll
+C:\Users\Eli\Desktop\Reservation-Manager\YourPlace\YourPlace\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
