@@ -27,6 +27,11 @@
                 <label asp-for="Input.Surname" class="form-label"></label>
                 <span asp-validation-for="Input.Surname" class="text-danger"></span>
             </div>
+             <div class="form-floating mb-3">
+                <input asp-for="Input.Username" class="form-control" placeholder="Username" />
+                <label asp-for="Input.Username" class="form-label"></label>
+                <span asp-validation-for="Input.Username" class="text-danger"></span>
+            </div>
             <div class="form-floating mb-3">
                 <input asp-for="Input.Email" class="form-control" autocomplete="email" placeholder="Email Address" />
                 <label asp-for="Input.Email" class="form-label"></label>

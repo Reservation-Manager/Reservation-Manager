@@ -91,6 +91,9 @@ namespace YourPlace.Areas.Identity.Pages.Account
             [Required]
             [Display(Name = "Last Name")]
             public string Surname { get; set; }
+            [Required]
+            [Display(Name = "Username")]
+            public string Username { get; set; }
         }
         
         public IActionResult OnGet() => RedirectToPage("./Login");
@@ -162,7 +165,8 @@ namespace YourPlace.Areas.Identity.Pages.Account
 
                 user.FirstName = Input.FirstName;
                 user.Surname = Input.Surname;
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                user.UserName = Input.Username;
+                //await _userStore.SetUserNameAsync(user, Input.Username, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 //await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 //await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
