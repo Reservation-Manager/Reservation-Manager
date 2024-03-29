@@ -2,6 +2,7 @@
 @using YourPlace.Infrastructure.Data.Entities;
 @{
     Layout = "_LayoutNoFilter";
+
     DateTime tomorrow = DateTime.Today.AddDays(1);
     string tomorrowDateString = tomorrow.ToString("yyyy-MM-dd");
 }
@@ -128,6 +129,14 @@
         letter-spacing: 0.025em;
         font-weight: 800;
         transition: all 0.3s ease;
+    }
+
+    .main-body{
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
 </style>
