@@ -8518,24 +8518,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Eli\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Сотко\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Eli\\Desktop\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\Сотко\\Documents\\GitHub\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj",
       "projectName": "YourPlace.Infrastructure",
-      "projectPath": "C:\\Users\\Eli\\Desktop\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\Eli\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Eli\\Desktop\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\obj\\",
+      "projectPath": "C:\\Users\\Сотко\\Documents\\GitHub\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\Сотко\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Сотко\\Documents\\GitHub\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Eli\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Сотко\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
