@@ -5,6 +5,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
+
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
@@ -18,6 +19,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using YourPlace.Infrastructure.Data.Entities;
+using YourPlace.Infrastructure.Data.Enums;
 
 namespace YourPlace.Areas.Identity.Pages.Account
 {
@@ -94,6 +96,7 @@ namespace YourPlace.Areas.Identity.Pages.Account
             [Required]
             [Display(Name = "Username")]
             public string Username { get; set; }
+            public Roles Role { get; set; }
         }
         
         public IActionResult OnGet() => RedirectToPage("./Login");
@@ -125,6 +128,7 @@ namespace YourPlace.Areas.Identity.Pages.Account
             var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
             if (result.Succeeded)
             {
+                
                 _logger.LogInformation("{Name} logged in with {LoginProvider} provider.", info.Principal.Identity.Name, info.LoginProvider);
                 return LocalRedirect(returnUrl);
             }
@@ -166,6 +170,8 @@ namespace YourPlace.Areas.Identity.Pages.Account
                 user.FirstName = Input.FirstName;
                 user.Surname = Input.Surname;
                 user.UserName = Input.Username;
+                //.Role = Input.Role;
+
                 //await _userStore.SetUserNameAsync(user, Input.Username, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 //await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
@@ -178,6 +184,8 @@ namespace YourPlace.Areas.Identity.Pages.Account
                     if (result.Succeeded)
                     {
                         _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        
 
                         var userId = await _userManager.GetUserIdAsync(user);
                         var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
