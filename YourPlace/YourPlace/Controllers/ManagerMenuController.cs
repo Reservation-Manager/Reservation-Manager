@@ -32,9 +32,9 @@ namespace YourPlace.Controllers
             return View(toManagerStartPage, new HotelCreateModel { ManagerID = managerID, FirstName = firstName, LastName = lastName });
         }
 
-        public IActionResult AddHotel([Bind("ManagerID")] string managerID)
+        public IActionResult AddHotel([Bind("ManagerID", "FirstName", "LastName")] string managerID, string firstName, string lastName)
         {
-            return View(toUploadImage,  new HotelCreateModel { ManagerID = managerID});
+            return View(toUploadImage, new HotelCreateModel { ManagerID = managerID, FirstName = firstName, LastName = lastName });
         }
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]

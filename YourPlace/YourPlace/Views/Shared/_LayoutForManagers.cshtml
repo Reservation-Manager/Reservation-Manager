@@ -52,6 +52,8 @@
                         </li>
                         <li class="nav-item">
                             <form id="addHotelForm" asp-area="" asp-controller="ManagerMenu" asp-action="AddHotel" method="post">
+                                <input type="hidden" name="FirstName" value="@Model.FirstName" />
+                                <input type="hidden" name="LastName" value="@Model.LastName" />
                                 <input type="hidden" name="ManagerID" value="@Model.ManagerID" />
                                 <a class="nav-link text-dark" href="#" onclick="document.getElementById('addHotelForm').submit();">Добави хотел</a>
                             </form>
