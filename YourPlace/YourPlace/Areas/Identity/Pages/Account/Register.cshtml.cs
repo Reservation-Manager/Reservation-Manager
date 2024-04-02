@@ -138,7 +138,7 @@ namespace YourPlace.Areas.Identity.Pages.Account
 
                 if (result.Item1.Succeeded)
                 {
-                    
+                    User user = result.Item2;   
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(result.Item2);
@@ -158,7 +158,7 @@ namespace YourPlace.Areas.Identity.Pages.Account
                     }
                     if(Input.Role == Roles.Manager)
                     {
-                        return RedirectToAction("Index", "ManagerMenu", new { firstName = Input.FirstName, lastName = Input.Surname });
+                        return RedirectToAction("Index", "ManagerMenu", new { firstName = Input.FirstName, lastName = Input.Surname, managerID = user.Id });
                     }
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {

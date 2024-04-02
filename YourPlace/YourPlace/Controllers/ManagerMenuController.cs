@@ -23,14 +23,18 @@ namespace YourPlace.Controllers
         private const string toManagerHotels = "~/Views/Bulgarian/ManagerViews/ManagerHotels.cshtml";
         private const string toUploadImage = "~/Views/Bulgarian/ManagerViews/UploadImage.cshtml";
 
-        public IActionResult Index(string firstName, string lastName)
+        public IActionResult Index(string managerID, string firstName, string lastName)
         {
-            return View(toManagerStartPage, new ManagerRegistrationModel { FirstName = firstName, LastName = lastName});
+            return View(toManagerStartPage, new HotelCreateModel { ManagerID = managerID, FirstName = firstName, LastName = lastName});
+        }
+        public IActionResult ReturnToStart([Bind("ManagerID, FirstName, LastName")] string managerID, string firstName, string lastName)
+        {
+            return View(toManagerStartPage, new HotelCreateModel { ManagerID = managerID, FirstName = firstName, LastName = lastName });
         }
 
-        public IActionResult AddHotel()
+        public IActionResult AddHotel([Bind("ManagerID")] string managerID)
         {
-            return View(toUploadImage);
+            return View(toUploadImage,  new HotelCreateModel { ManagerID = managerID});
         }
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]

@@ -13,7 +13,7 @@ namespace YourPlace.Models.ManagerModels
         public string Country { get; set; }
         public double Rating { get; set; }
         public string Details { get; set; }
-
+        public string ManagerID { get; set; }
         public List<Image> HotelImages { get; set; }
 
         public List<Room> RoomsInHotel { get; set; }
@@ -27,6 +27,9 @@ namespace YourPlace.Models.ManagerModels
         
 
         public List<Hotel> ManagerHotels { get; set; }
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
     }
 }

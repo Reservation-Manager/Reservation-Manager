@@ -35,7 +35,7 @@ namespace YourPlace.Infrastructure.Data.Entities
         public string Details { get; set; }
 
         [AllowNull]
-        public int ManagerID { get; set; }
+        public string? ManagerID { get; set; }
         public List<Image> Images { get; set; }
         public Hotel()
         {

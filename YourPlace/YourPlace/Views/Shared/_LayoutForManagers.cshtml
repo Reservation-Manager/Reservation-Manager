@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using YourPlace.Models.ManagerModels;
+@model HotelCreateModel;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -42,10 +44,17 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Поверителност</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ManagerMenu" asp-action="Index">Начало</a>
+                            <form id="addNamesForm" asp-area="" asp-controller="ManagerMenu" asp-action="ReturnToStart" method="post">
+                                <input type="hidden" name="FirstName" value="@Model.FirstName" />
+                                <input type="hidden" name="LastName" value="@Model.LastName" />
+                                <a class="nav-link text-dark" href="#" onclick="document.getElementById('addNamesForm').submit();">Начало</a>
+                            </form>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ManagerMenu" asp-action="AddHotel">Добави хотел</a>
+                            <form id="addHotelForm" asp-area="" asp-controller="ManagerMenu" asp-action="AddHotel" method="post">
+                                <input type="hidden" name="ManagerID" value="@Model.ManagerID" />
+                                <a class="nav-link text-dark" href="#" onclick="document.getElementById('addHotelForm').submit();">Добави хотел</a>
+                            </form>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="ManagerMenu" asp-action="">Провери хотел</a>

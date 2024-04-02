@@ -135,7 +135,7 @@ namespace YourPlace.Areas.Identity.Pages.Account
                         }
                         if (roles.Contains(Roles.Manager.ToString()))
                         {
-                            return RedirectToAction("Index", "ManagerMenu", new { firstName = user.FirstName, lastName = user.Surname });
+                            return RedirectToAction("Index", "ManagerMenu", new { firstName = user.FirstName, lastName = user.Surname, managerID = user.Id });
                         }
                         else
                         if (roles.Contains(Roles.Traveller.ToString()))
