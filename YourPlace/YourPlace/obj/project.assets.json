@@ -8641,19 +8641,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Сотко\\.nuget\\packages\\": {}
+    "C:\\Users\\aneli\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Сотко\\Documents\\GitHub\\Reservation-Manager\\YourPlace\\YourPlace\\YourPlace.csproj",
+      "projectUniqueName": "D:\\Aneliya\\My Projects\\Reservation-Manager\\Reservation-Manager\\YourPlace\\YourPlace\\YourPlace.csproj",
       "projectName": "YourPlace",
-      "projectPath": "C:\\Users\\Сотко\\Documents\\GitHub\\Reservation-Manager\\YourPlace\\YourPlace\\YourPlace.csproj",
-      "packagesPath": "C:\\Users\\Сотко\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Сотко\\Documents\\GitHub\\Reservation-Manager\\YourPlace\\YourPlace\\obj\\",
+      "projectPath": "D:\\Aneliya\\My Projects\\Reservation-Manager\\Reservation-Manager\\YourPlace\\YourPlace\\YourPlace.csproj",
+      "packagesPath": "C:\\Users\\aneli\\.nuget\\packages\\",
+      "outputPath": "D:\\Aneliya\\My Projects\\Reservation-Manager\\Reservation-Manager\\YourPlace\\YourPlace\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Сотко\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\aneli\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8667,11 +8667,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Сотко\\Documents\\GitHub\\Reservation-Manager\\YourPlace\\YourPlace.Core\\YourPlace.Core.csproj": {
-              "projectPath": "C:\\Users\\Сотко\\Documents\\GitHub\\Reservation-Manager\\YourPlace\\YourPlace.Core\\YourPlace.Core.csproj"
+            "D:\\Aneliya\\My Projects\\Reservation-Manager\\Reservation-Manager\\YourPlace\\YourPlace.Core\\YourPlace.Core.csproj": {
+              "projectPath": "D:\\Aneliya\\My Projects\\Reservation-Manager\\Reservation-Manager\\YourPlace\\YourPlace.Core\\YourPlace.Core.csproj"
             },
-            "C:\\Users\\Сотко\\Documents\\GitHub\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\Сотко\\Documents\\GitHub\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj"
+            "D:\\Aneliya\\My Projects\\Reservation-Manager\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj": {
+              "projectPath": "D:\\Aneliya\\My Projects\\Reservation-Manager\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj"
             }
           }
         }
@@ -8758,7 +8758,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   },

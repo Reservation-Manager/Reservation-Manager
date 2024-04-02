@@ -2,7 +2,6 @@
 @using YourPlace.Infrastructure.Data.Entities;
 @{
     Layout = "_LayoutNoFilter";
-
     DateTime tomorrow = DateTime.Today.AddDays(1);
     string tomorrowDateString = tomorrow.ToString("yyyy-MM-dd");
 }
@@ -60,31 +59,29 @@
 
     .grid-container {
         display: flex;
-        flex-direction: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        /* background-color: rgba(13, 110, 253, .25); */
         padding: 20px;
         width: 50%;
         min-width: min-content;
         height: fit-content;
-        flex-wrap: wrap;
+        /* margin: 0; */
+        /* float: left; */
     }
 
     .grid-item {
-        display: flex;
-        flex-direction: column;
         border: 1px solid rgba(0, 0, 0, 0.8);
         margin: 2% 0;
         width: 100%;
         font-size: 30px;
         text-align: center;
         margin-top: 2%;
-        background-color: rgba(255, 255, 255, 35%);
+        background: red;
         border: none;
         position: relative;
         min-width: 580px;
-        border-radius: 8px;
-        margin-right: 2%;
-        align-items: center;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        box-shadow: 0, 0, 0, 0.8;
     }
 
     .room-type {
@@ -110,33 +107,13 @@
     }
 
     .button-options {
+        /* display: flex; */
         justify-content: space-evenly;
         padding: 20px;
         width: 50%;
         top: 20%;
-    }
-
-    .grid-item .clearbtn{
-        padding: 2px;
-        border-radius: 8px;
-        margin-top: 2%;
-        width: fit-content;
-        font-size: 18px;
-        margin-bottom: 2%;
-        border: 1px solid #6667b0;
-        background: #6b43ff;
-        color: #fff;
-        letter-spacing: 0.025em;
-        font-weight: 800;
-        transition: all 0.3s ease;
-    }
-
-    .main-body{
-        height: 100vh;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        /* margin-top: 20%; */
+        /* float: right; */
     }
 
 </style>
@@ -172,24 +149,28 @@
                             <input class="number-input" type="number" id="rooms-count-@item.Item1.RoomID" value="0" min="0" max="@item.Item2" disabled>
                             <button class="btn" onclick="changeNumberOfRooms('@item.Item1.RoomID', 1)">+</button>
                         </div>
-                        <button class="clearbtn" id="clear-btn" onclick="clearInputField('@item.Item1.RoomID')">Премахни зададения брой</button>
+                        <div class="button-options">
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button class="clear-btn btn btn-outline-success" id="clear-btn" onclick="clearInputField('@item.Item1.RoomID')">Премахни зададения брой</button>
+                            </div>
+                        </div>
                     </div>
 
                 }
+                <form asp-action="GoToReservation" asp-controller="Reservations">
+                    <input type="hidden" value="@Model.HotelID" asp-for="HotelID" />
+                    <input type="hidden" value="@Model.ArrivalDate" asp-for="ArrivalDate" />
+                    <input type="hidden" value="@Model.LeavingDate" asp-for="LeavingDate" />
+                    @for (int i = 0; i < Model.AvailableRooms.Count; i++)
+                    {
+                        <input type="hidden" id="rooms-id-@Model.AvailableRooms[i].Item1.RoomID" name="ChosenRooms[@i].RoomID" value="@Model.AvailableRooms[i].Item1.RoomID" asp-for="ChosenRoomID" />
+                        <input type="hidden" id="hidden-chosen-roomCount-@Model.AvailableRooms[i].Item1.RoomID" name="ChosenRooms[@i].ChosenCount" asp-for="ChosenRoomCount" />
+                    }
+
+                    <button type="submit" class="btn btn-outline-success" id="reserve-btn">Резервирай</button>
+                </form>
 
             </div>
-            <form asp-action="GoToReservation" asp-controller="Reservations">
-                <input type="hidden" value="@Model.HotelID" asp-for="HotelID" />
-                <input type="hidden" value="@Model.ArrivalDate" asp-for="ArrivalDate" />
-                <input type="hidden" value="@Model.LeavingDate" asp-for="LeavingDate" />
-                @for (int i = 0; i < Model.AvailableRooms.Count; i++)
-                {
-                    <input type="hidden" id="rooms-id-@Model.AvailableRooms[i].Item1.RoomID" name="ChosenRooms[@i].RoomID" value="@Model.AvailableRooms[i].Item1.RoomID" asp-for="ChosenRoomID" />
-                    <input type="hidden" id="hidden-chosen-roomCount-@Model.AvailableRooms[i].Item1.RoomID" name="ChosenRooms[@i].ChosenCount" asp-for="ChosenRoomCount" />
-                }
-
-                <button type="submit" class="btn btn-outline-success" id="reserve-btn">Резервирай</button>
-            </form>
 
 
         }

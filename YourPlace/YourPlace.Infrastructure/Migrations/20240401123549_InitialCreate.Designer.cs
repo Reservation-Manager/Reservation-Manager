@@ -12,8 +12,8 @@ using YourPlace.Infrastructure.Data;
 namespace YourPlace.Infrastructure.Migrations
 {
     [DbContext(typeof(YourPlaceDbContext))]
-    [Migration("20240319215854_initialCreate")]
-    partial class initialCreate
+    [Migration("20240401123549_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,8 +61,8 @@ namespace YourPlace.Infrastructure.Migrations
                         new
                         {
                             Id = "2",
-                            Name = "Hotel Manager",
-                            NormalizedName = "HotelManager"
+                            Name = "Manager",
+                            NormalizedName = "Manager"
                         },
                         new
                         {
@@ -296,6 +296,9 @@ namespace YourPlace.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ManagerID")
+                        .HasColumnType("int");
+
                     b.Property<double>("Rating")
                         .HasColumnType("float");
 
@@ -316,6 +319,7 @@ namespace YourPlace.Infrastructure.Migrations
                             Details = "Хотелът е с чудесен изглед към гората. Има неограничен безплатен Wi-Fi и удобен паркинг. Хотелът разполага с три вътрешни басейна и един външен.",
                             HotelName = "Arte Spa Hotel",
                             MainImageURL = "Arte.jpg",
+                            ManagerID = 0,
                             Rating = 9.6999999999999993,
                             Town = "Велинград"
                         },
@@ -327,6 +331,7 @@ namespace YourPlace.Infrastructure.Migrations
                             Details = "Апартаменти Роуз Гардънс се намират на 50 метра от плажа. Включват сезонен външен басейн и сезонен ресторант, безплатен Wi-Fi и сезонен спа център.",
                             HotelName = "Rose Garden",
                             MainImageURL = "RoseGarden.jpg",
+                            ManagerID = 0,
                             Rating = 8.5,
                             Town = "Поморие"
                         },
@@ -338,6 +343,7 @@ namespace YourPlace.Infrastructure.Migrations
                             Details = "Хотелът предлага безплатен високоскоростен WI-FI. Има спа център и 3 вътрешни басейна, както и 2 външни - един за деца, един за възрастни.",
                             HotelName = "Therme",
                             MainImageURL = "Therme.jpg",
+                            ManagerID = 0,
                             Rating = 9.0999999999999996,
                             Town = "Баня"
                         },
@@ -349,6 +355,7 @@ namespace YourPlace.Infrastructure.Migrations
                             Details = "Прекрасна гледка към Айфеловата кула. Храната е високо качество, а стаите са прекрасни.",
                             HotelName = "La Fleur",
                             MainImageURL = "LaFleur.jpg",
+                            ManagerID = 0,
                             Rating = 9.5,
                             Town = "Paris"
                         },
@@ -360,6 +367,7 @@ namespace YourPlace.Infrastructure.Migrations
                             Details = "Хотел Las Vegas Royal предлага всякакви по вид занимания - от масажи до турнири по тенис и футбол. All-Inclisuve с включена храна и напитки",
                             HotelName = "Las Vegas Royal",
                             MainImageURL = "RoyalLasVegas.jpg",
+                            ManagerID = 0,
                             Rating = 7.9000000000000004,
                             Town = "Las Vegas"
                         });
@@ -920,14 +928,14 @@ namespace YourPlace.Infrastructure.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3c6e4261-1052-4061-b9d3-e0450f02f94c",
+                            ConcurrencyStamp = "0ad73d0d-f43c-47de-8793-10c0e9b0a7c0",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "Admin",
-                            PasswordHash = "AQAAAAIAAYagAAAAELjpMLk75xz7tlKYy+E6ScVt2JzutJxwQTO4PeJ9O+GFrChyLvHbAlEd52WWveISjA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIpa4rMYeEJ74P6vmxNA1NA9gtmoF553jn1EgpgmgGrNmgbHcYRQea4QLjC7SOqPSg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             Surname = "User",

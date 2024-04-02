@@ -1,0 +1,153 @@
+﻿@using YourPlace.Models.ManagerModels;
+@using YourPlace.Infrastructure.Data.Enums;
+@model HotelCreateModel
+@{
+    Layout = "_LayoutForManagers";
+    ViewData["Title"] = "Manager's Page";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="~/css/style-hotel-manager.css">
+    <title>YourPlace</title>
+</head>
+
+<body>
+
+    <h1>Създаване на хотел</h1>
+    <div class="form-container">
+        <form asp-action="CreateHotel" asp-controller="ManagerMenu">
+            <img src="~/Images/MainImages/@Model.MainImageURL" style="width:100%" />
+            <label for="email">Име на хотела:</label>
+            <div class="custome-input">
+                <input type="text" name="HotelName" placeholder="Име на хотела" autocomplete="off" asp-for="HotelName">
+            </div>
+            <label for="address">Местоположение:</label>
+            <div class="custome-input">
+                <input type="text" name="Address" placeholder="Местоположение" autocomplete="off" asp-for="Address">
+            </div>
+            <label for="town">Град:</label>
+            <div class="custome-input">
+                <input type="text" name="Town" placeholder="Град" autocomplete="off" asp-for="Town">
+            </div>
+            <label for="password">Държава:</label>
+            <div class="custome-input">
+                <input type="text" name="Country" placeholder="Държава" asp-for="Country">
+            </div>
+            <label for="password">Рейтинг:</label>
+            <div class="custome-input">
+                <input type="text" name="Rating" placeholder="Рейтинг" asp-for="Rating">
+            </div>
+            <label for="password">Описание:</label>
+            <div class="custome-input">
+                <textarea name="Details" placeholder="Описание" id="description" asp-for="Details"></textarea>
+            </div>
+
+            <label for="photo">Качване на снимка:</label>
+            <input type="file" id="photo" name="Image" accept="image/*" asp-for="MainImageURL">
+
+            <br>
+            <div class="preferences">
+                <div class="checks">
+                    <input type="checkbox" name="perfs" id="perfs-checkbox">
+                    <span>Разрешени животни</span>
+                </div>
+                <br>
+                <div class="custome-input dropdown">
+                    <select id="dropdown" name="dropdown">
+                        <option hidden> Хотелът се намира в близост до: </option>
+                        <option value="@Location.Sea">Море</option>
+                        <option value="@Location.Mountain">Планина</option>
+                        <option value="@Location.LargeCity">Голям град</option>
+                        <option value="@Location.Village">Село</option>
+                    </select>
+                </div>
+                <br>
+                <div class="custome-input dropdown">
+                    <select id="dropdown" name="dropdown">
+                        <option hidden> Тип почивка, която хората могат да намерят в хотела или околностите: </option>
+                        <option value="@Tourism.Culture">Култура</option>
+                        <option value="@Tourism.Shopping">Пазаруване</option>
+                        <option value="@Tourism.Adventure">Приключение</option>
+                        <option value="@Tourism.Relax">Релакс</option>
+                    </select>
+                </div>
+                <br>
+                <div class="custome-input dropdown">
+                    <select id="dropdown" name="dropdown">
+                        <option hidden> Хотелът е подходящ за почивка тип: </option>
+                        <option value="@Atmosphere.Calm">Спокойствие</option>
+                        <option value="@Atmosphere.Party">Парти</option>
+                        <option value="@Atmosphere.Both">И двете</option>
+                        <option value="@Atmosphere.Neither">Нито едното</option>
+                    </select>
+                </div>
+                <br>
+                <div class="custome-input dropdown">
+                    <select id="dropdown" name="dropdown">
+                        <option hidden> Хотелът е: </option>
+                        <option value="@Pricing.Lux">Луксозен</option>
+                        <option value="@Pricing.Cheap">Бюджетен</option>
+                        <option value="@Pricing.Modern">Модерен</option>
+                        <option value="@Pricing.InTheMiddle">Средна класа</option>
+                    </select>
+                </div>
+            </div>
+            <div class="rooms">
+                <div class="room">
+                    <br>
+                    <h4>Добавете стаи в хотела:</h4>
+                    <input type="text" class="room-name" placeholder="Room Name">
+                    <select class="room-type">
+                        <option value="@RoomTypes.studio">Студио</option>
+                        <option value="@RoomTypes.doubleRoom">Двойна стая</option>
+                        <option value="@RoomTypes.tripleRoom">Тройна стая</option>
+                        <option value="@RoomTypes.deluxeRoom">Стая делукс</option>
+                        <option value="@RoomTypes.maisonette">Мезонет</option>
+                    </select>
+                </div>
+            </div>
+            <div class="buttons-form">
+                <button id="add-room-btn" class="login">Добавяне на стая</button>
+                <button type="submit" id="signup" class="login">Създаване на хотел</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const addRoomBtn = document.getElementById('add-room-btn');
+            const roomsContainer = document.querySelector('.rooms'); // Changed to select the room container
+
+            addRoomBtn.addEventListener('click', function() {
+                const newRoom = document.createElement('div');
+                newRoom.classList.add('room');
+
+                const roomNameInput = document.createElement('input');
+                roomNameInput.type = 'text';
+                roomNameInput.classList.add('room-name');
+                roomNameInput.placeholder = 'Room Name';
+
+                const roomTypeSelect = document.createElement('select');
+                roomTypeSelect.classList.add('room-type');
+                const roomTypes = ['room1', 'room2', 'room3', 'room4'];
+                roomTypes.forEach(function(type) {
+                    const option = document.createElement('option');
+                    option.value = type.toLowerCase().replace(' ', '-');
+                    option.textContent = type;
+                    roomTypeSelect.appendChild(option);
+                });
+
+                newRoom.appendChild(roomNameInput);
+                newRoom.appendChild(roomTypeSelect);
+                roomsContainer.appendChild(newRoom);
+            });
+        });
+    </script>
+</body>
+
+</html>

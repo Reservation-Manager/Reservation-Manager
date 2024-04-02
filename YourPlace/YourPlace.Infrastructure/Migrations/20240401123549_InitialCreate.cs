@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace YourPlace.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class initialCreate : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -66,7 +66,8 @@ namespace YourPlace.Infrastructure.Migrations
                     Town = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Rating = table.Column<double>(type: "float", nullable: false),
-                    Details = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Details = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ManagerID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -338,25 +339,25 @@ namespace YourPlace.Infrastructure.Migrations
                 values: new object[,]
                 {
                     { "1", null, "Traveller", "Traveller" },
-                    { "2", null, "Hotel Manager", "HotelManager" },
+                    { "2", null, "Manager", "Manager" },
                     { "3", null, "Admin", "Admin" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Surname", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "1", 0, "3c6e4261-1052-4061-b9d3-e0450f02f94c", "admin@gmail.com", true, "Admin", false, null, "ADMIN@GMAIL.COM", "Admin", "AQAAAAIAAYagAAAAELjpMLk75xz7tlKYy+E6ScVt2JzutJxwQTO4PeJ9O+GFrChyLvHbAlEd52WWveISjA==", null, false, "", "User", false, "Admin" });
+                values: new object[] { "1", 0, "0ad73d0d-f43c-47de-8793-10c0e9b0a7c0", "admin@gmail.com", true, "Admin", false, null, "ADMIN@GMAIL.COM", "Admin", "AQAAAAIAAYagAAAAEIpa4rMYeEJ74P6vmxNA1NA9gtmoF553jn1EgpgmgGrNmgbHcYRQea4QLjC7SOqPSg==", null, false, "", "User", false, "Admin" });
 
             migrationBuilder.InsertData(
                 table: "Hotels",
-                columns: new[] { "HotelID", "Address", "Country", "Details", "HotelName", "MainImageURL", "Rating", "Town" },
+                columns: new[] { "HotelID", "Address", "Country", "Details", "HotelName", "MainImageURL", "ManagerID", "Rating", "Town" },
                 values: new object[,]
                 {
-                    { 1, "ул. Юндола 20", "България", "Хотелът е с чудесен изглед към гората. Има неограничен безплатен Wi-Fi и удобен паркинг. Хотелът разполага с три вътрешни басейна и един външен.", "Arte Spa Hotel", "Arte.jpg", 9.6999999999999993, "Велинград" },
-                    { 2, "ул. Ропотамо 12", "България", "Апартаменти Роуз Гардънс се намират на 50 метра от плажа. Включват сезонен външен басейн и сезонен ресторант, безплатен Wi-Fi и сезонен спа център.", "Rose Garden", "RoseGarden.jpg", 8.5, "Поморие" },
-                    { 3, "ул. Горна Баня", "България", "Хотелът предлага безплатен високоскоростен WI-FI. Има спа център и 3 вътрешни басейна, както и 2 външни - един за деца, един за възрастни.", "Therme", "Therme.jpg", 9.0999999999999996, "Баня" },
-                    { 4, "Flower str.", "Франция", "Прекрасна гледка към Айфеловата кула. Храната е високо качество, а стаите са прекрасни.", "La Fleur", "LaFleur.jpg", 9.5, "Paris" },
-                    { 5, "Monte Carlo str.", "САЩ", "Хотел Las Vegas Royal предлага всякакви по вид занимания - от масажи до турнири по тенис и футбол. All-Inclisuve с включена храна и напитки", "Las Vegas Royal", "RoyalLasVegas.jpg", 7.9000000000000004, "Las Vegas" }
+                    { 1, "ул. Юндола 20", "България", "Хотелът е с чудесен изглед към гората. Има неограничен безплатен Wi-Fi и удобен паркинг. Хотелът разполага с три вътрешни басейна и един външен.", "Arte Spa Hotel", "Arte.jpg", 0, 9.6999999999999993, "Велинград" },
+                    { 2, "ул. Ропотамо 12", "България", "Апартаменти Роуз Гардънс се намират на 50 метра от плажа. Включват сезонен външен басейн и сезонен ресторант, безплатен Wi-Fi и сезонен спа център.", "Rose Garden", "RoseGarden.jpg", 0, 8.5, "Поморие" },
+                    { 3, "ул. Горна Баня", "България", "Хотелът предлага безплатен високоскоростен WI-FI. Има спа център и 3 вътрешни басейна, както и 2 външни - един за деца, един за възрастни.", "Therme", "Therme.jpg", 0, 9.0999999999999996, "Баня" },
+                    { 4, "Flower str.", "Франция", "Прекрасна гледка към Айфеловата кула. Храната е високо качество, а стаите са прекрасни.", "La Fleur", "LaFleur.jpg", 0, 9.5, "Paris" },
+                    { 5, "Monte Carlo str.", "САЩ", "Хотел Las Vegas Royal предлага всякакви по вид занимания - от масажи до турнири по тенис и футбол. All-Inclisuve с включена храна и напитки", "Las Vegas Royal", "RoyalLasVegas.jpg", 0, 7.9000000000000004, "Las Vegas" }
                 });
 
             migrationBuilder.InsertData(

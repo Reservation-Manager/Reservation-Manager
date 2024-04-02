@@ -1,0 +1,13 @@
+﻿@*
+
+*@
+<style>
+    .formichka{
+        padding-top:10%;
+    }
+</style>
+<form method="post" enctype="multipart/form-data" class="formichka" asp-controller="ManagerMenu" asp-action="UploadImage">
+    <input type="file" name="imgFile" />
+    <input type="submit" value="Upload Image Files"/>
+    <h4>@ViewData["Message"]</h4>
+</form>

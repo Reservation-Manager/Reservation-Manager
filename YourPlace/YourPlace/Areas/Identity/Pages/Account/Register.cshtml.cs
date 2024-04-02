@@ -21,6 +21,7 @@ using Microsoft.Extensions.Logging;
 using YourPlace.Core.Services;
 using YourPlace.Infrastructure.Data.Entities;
 using YourPlace.Infrastructure.Data.Enums;
+using YourPlace.Models.Managers_Models;
 
 namespace YourPlace.Areas.Identity.Pages.Account
 {
@@ -115,7 +116,6 @@ namespace YourPlace.Areas.Identity.Pages.Account
             public Roles Role { get; set; }
         }
 
-
         public async Task OnGetAsync(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
@@ -152,7 +152,14 @@ namespace YourPlace.Areas.Identity.Pages.Account
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
+                    if (Input.Role == Roles.Traveller)
+                    {
+                        return RedirectToAction("ToMainBg", "Home");
+                    }
+                    if(Input.Role == Roles.Manager)
+                    {
+                        return RedirectToAction("Index", "ManagerMenu", new { firstName = Input.FirstName, lastName = Input.Surname });
+                    }
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
