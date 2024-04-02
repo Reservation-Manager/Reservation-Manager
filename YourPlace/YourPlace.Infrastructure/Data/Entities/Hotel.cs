@@ -50,7 +50,17 @@ namespace YourPlace.Infrastructure.Data.Entities
             Country = country;
             Rating = rating;
             Details = details;
-            //Images = Images;
+        }
+        public Hotel(string mainImageURL, string hotelName, string address, string town, string country, double rating, string details, string managerID)
+        {
+            MainImageURL = mainImageURL;
+            HotelName = hotelName;
+            Address = address;
+            Town = town;
+            Country = country;
+            Rating = rating;
+            Details = details;
+            ManagerID = managerID;
         }
         public override string ToString()
         {

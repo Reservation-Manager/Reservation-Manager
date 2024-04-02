@@ -6,16 +6,21 @@ using YourPlace.Models.Managers_Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using YourPlace.Infrastructure.Data.Enums;
 namespace YourPlace.Controllers
 {
     public class ManagerMenuController : Controller
     {
         private readonly IWebHostEnvironment _webHost;
         private readonly HotelsServices _hotelsServices;
-        public ManagerMenuController(IWebHostEnvironment webHost, HotelsServices hotelsServices)
+        private readonly RoomServices _roomServices;
+        private readonly HotelCategoriesServices _hotelCategoriesServices;
+        public ManagerMenuController(IWebHostEnvironment webHost, HotelsServices hotelsServices, RoomServices roomServices, HotelCategoriesServices hotelCategoriesServices)
         {
             _webHost = webHost;
             _hotelsServices = hotelsServices;
+            _roomServices = roomServices;
+            _hotelCategoriesServices = hotelCategoriesServices;
         }
 
         private const string toManagerStartPage = "~/Views/Bulgarian/ManagerViews/StartPage.cshtml";
@@ -34,39 +39,55 @@ namespace YourPlace.Controllers
 
         public IActionResult AddHotel([Bind("ManagerID", "FirstName", "LastName")] string managerID, string firstName, string lastName)
         {
-            return View(toUploadImage, new HotelCreateModel { ManagerID = managerID, FirstName = firstName, LastName = lastName });
+            return View(toAddHotelPage, new HotelCreateModel { ManagerID = managerID, FirstName = firstName, LastName = lastName });
         }
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateHotel([Bind("HotelName, Address, Town, Country, Rating, Details")] string hotelName, string address, string town, string country, double rating, string details, IFormFile image)
+        public async Task<IActionResult> CreateHotel([Bind("ManagerID, HotelName, Address, Town, Country, Rating, Details, RoomsInHotel, Location, Tourism, Atmosphere, Company, Pricing")] string managerID, string hotelName, string address, string town, string country, double rating, string details, List<Room> roomsInHotel, IFormFile imgfile, Location location, Tourism tourism, Atmosphere atmosphere, Company company, Pricing pricing)
         {
-            string mainImageURL = "";
-
-            if (image != null && image.Length > 0)
+            
+            var saveimg = Path.Combine(_webHost.WebRootPath, "Images/MainImages", imgfile.FileName);
+            string imgext = Path.GetExtension(imgfile.FileName);
+            string imageUrl = "";
+            if (imgext == ".jpg" || imgext == ".png")
             {
-                // Save the uploaded image to the Images folder in wwwroot
-                var uploadsDir = Path.Combine(_webHost.WebRootPath, "Images", "MainImages");
-                if (!Directory.Exists(uploadsDir))
+                using (var uploadimg = new FileStream(saveimg, FileMode.Create))
                 {
-                    Directory.CreateDirectory(uploadsDir);
+                    await imgfile.CopyToAsync(uploadimg);
                 }
 
-                var uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(image.FileName);
-                var filePath = Path.Combine(uploadsDir, uniqueFileName);
-
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    await image.CopyToAsync(fileStream);
-                }
-
-                mainImageURL = "/Images/MainImages/" + uniqueFileName;
+                imageUrl = imgfile.FileName; 
+                Console.WriteLine(imageUrl);
+            }
+            else
+            {
+                ViewData["Message"] = "Само файлове с разширение .jpg & .png са позволени ...";
+                
             }
 
-            Hotel hotel = new Hotel(mainImageURL, hotelName, address, town, country, rating, details);
+            Hotel hotel = new Hotel(imageUrl, hotelName, address, town, country, rating, details, managerID);
             List<Hotel> hotels = new List<Hotel>();
             hotels.Add(hotel);
             await _hotelsServices.CreateAsync(hotel);
+            
+            foreach(var room in roomsInHotel)
+            {
+                if(room.CountInHotel != 0)
+                {
+                    await _roomServices.CreateAsync(room);
+                    Console.WriteLine(room.Type + " " + room.CountInHotel + " " + room.Price);
+                }
+            }
+            Categories categories = new Categories(location, tourism, atmosphere, company, pricing, hotel.HotelID);
+            await _hotelCategoriesServices.CreateAsync(categories);
+
+            Console.WriteLine(location.ToString());
+            Console.WriteLine(tourism.ToString());
+            Console.WriteLine(atmosphere.ToString());
+            Console.WriteLine(company.ToString());
+            Console.WriteLine(pricing.ToString());
+       
             return View(toManagerHotels, new HotelCreateModel { ManagerHotels = hotels });
         }
         [HttpPost]

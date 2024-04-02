@@ -154,7 +154,6 @@
         {
             <div class="grid-container">
                 @{
-                    // Initialize the list if it's null
                     if (Model.ChosenRooms == null)
                     {
                         Model.ChosenRooms = new List<RoomSelection>();
@@ -191,13 +190,11 @@
                 <button type="submit" class="btn btn-outline-success" id="reserve-btn">Резервирай</button>
             </form>
 
-
         }
-
 
         else
         {
-            <p>No free rooms</p>
+            <p>Няма свободни стаи.</p>
         }
 
     </section>
