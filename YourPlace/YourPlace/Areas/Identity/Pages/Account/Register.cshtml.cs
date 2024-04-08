@@ -152,6 +152,35 @@ namespace YourPlace.Areas.Identity.Pages.Account
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+                    //log user in after registration
+                    await _signInManager.SignInAsync(user, new AuthenticationProperties());
+
+                    // Else if you want to validate credentials here, with signInManager:
+                   
+                    if (user != null)
+                    {
+                        var roles = await _signInManager.UserManager.GetRolesAsync(user);
+                        foreach (var role in roles)
+                        {
+                            Console.WriteLine("ROLE: " + role);
+                        }
+                        if (roles.Contains(Roles.Manager.ToString()))
+                        {
+                            return RedirectToAction("Index", "ManagerMenu", new { firstName = user.FirstName, lastName = user.Surname, managerID = user.Id });
+                        }
+                        else
+                        if (roles.Contains(Roles.Traveller.ToString()))
+                        {
+                            return RedirectToAction("ToMainBg", "Home");
+                        }
+                        else if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                        {
+                            return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                        }
+                    }
+                    _logger.LogInformation("User logged successfully!");
+                    return LocalRedirect(returnUrl);
                     if (Input.Role == Roles.Traveller)
                     {
                         return RedirectToAction("ToMainBg", "Home");

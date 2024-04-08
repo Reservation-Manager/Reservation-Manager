@@ -3,8 +3,17 @@
   "WorkspaceRootPath": "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\",
   "Documents": [
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|c:\\users\\vesel\\reservation-manager\\yourplace\\yourplace\\views\\bulgarian\\mainpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\views\\bulgarian\\mainpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+=======
+      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|d:\\github\\reservation-manager\\yourplace\\yourplace\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|d:\\github\\reservation-manager\\yourplace\\yourplace\\areas\\identity\\pages\\account\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\areas\\identity\\pages\\account\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> 431c8df710a0784e22bf7e6a402301d893273e45
     },
     {
       "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|c:\\users\\vesel\\reservation-manager\\yourplace\\yourplace\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,8 +24,37 @@
       "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\views\\shared\\_layoutwithfilters.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|c:\\users\\vesel\\reservation-manager\\yourplace\\yourplace\\views\\shared\\_filterspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\views\\shared\\_filterspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+=======
+      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|d:\\github\\reservation-manager\\yourplace\\yourplace\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|d:\\github\\reservation-manager\\yourplace\\yourplace\\areas\\identity\\pages\\account\\externallogin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\areas\\identity\\pages\\account\\externallogin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|d:\\github\\reservation-manager\\yourplace\\yourplace\\views\\bulgarian\\hotels\\availability.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\views\\bulgarian\\hotels\\availability.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|d:\\github\\reservation-manager\\yourplace\\yourplace\\views\\bulgarian\\hotels\\offer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\views\\bulgarian\\hotels\\offer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|d:\\github\\reservation-manager\\yourplace\\yourplace\\views\\bulgarian\\hotels\\reservation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\views\\bulgarian\\hotels\\reservation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|d:\\github\\reservation-manager\\yourplace\\yourplace\\views\\bulgarian\\hotels\\reservationresult.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\views\\bulgarian\\hotels\\reservationresult.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|d:\\github\\reservation-manager\\yourplace\\yourplace\\wwwroot\\css\\offers.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\wwwroot\\css\\offers.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+>>>>>>> 431c8df710a0784e22bf7e6a402301d893273e45
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +64,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< HEAD
           "SelectedChildIndex": 3,
+=======
+          "SelectedChildIndex": 0,
+>>>>>>> 431c8df710a0784e22bf7e6a402301d893273e45
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,6 +76,7 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 3,
               "Title": "_FiltersPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Shared\\_FiltersPartial.cshtml",
@@ -41,12 +84,48 @@
               "ToolTip": "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Shared\\_FiltersPartial.cshtml",
               "RelativeToolTip": "YourPlace\\Views\\Shared\\_FiltersPartial.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAALAAAA",
+=======
+              "DocumentIndex": 0,
+              "Title": "Register.cshtml.cs",
+              "DocumentMoniker": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "RelativeDocumentMoniker": "YourPlace\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "ToolTip": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "RelativeToolTip": "YourPlace\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "ViewState": "AQIAAJEAAAAAAAAAAAAYwJ4AAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T07:13:16.261Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Login.cshtml.cs",
+              "DocumentMoniker": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "RelativeDocumentMoniker": "YourPlace\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "ToolTip": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "RelativeToolTip": "YourPlace\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "ViewState": "AQIAAHoAAAAAAAAAAAAYwJIAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T06:54:09.67Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "YourPlace\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ToolTip": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeToolTip": "YourPlace\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ViewState": "AQIAACoAAAAAAAAAAAAAAAoAAAAAAAAA",
+>>>>>>> 431c8df710a0784e22bf7e6a402301d893273e45
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-04-08T19:21:30.624Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 1,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\YourPlace\\Controllers\\HomeController.cs",
@@ -56,10 +135,22 @@
               "ViewState": "AQIAADMAAAAAAAAAAAAowDsAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-08T18:37:56.932Z",
+=======
+              "DocumentIndex": 3,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "YourPlace\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ToolTip": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "RelativeToolTip": "YourPlace\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-27T07:59:01.048Z",
+>>>>>>> 431c8df710a0784e22bf7e6a402301d893273e45
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 0,
               "Title": "MainPage.cshtml",
               "DocumentMoniker": "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Bulgarian\\MainPage.cshtml",
@@ -83,6 +174,90 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-04-08T18:33:28.116Z",
               "EditorCaption": ""
+=======
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Program.cs",
+              "RelativeDocumentMoniker": "YourPlace\\Program.cs",
+              "ToolTip": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Program.cs",
+              "RelativeToolTip": "YourPlace\\Program.cs",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAgwBUAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-26T20:57:33.35Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ExternalLogin.cshtml",
+              "DocumentMoniker": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Areas\\Identity\\Pages\\Account\\ExternalLogin.cshtml",
+              "RelativeDocumentMoniker": "YourPlace\\Areas\\Identity\\Pages\\Account\\ExternalLogin.cshtml",
+              "ToolTip": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Areas\\Identity\\Pages\\Account\\ExternalLogin.cshtml",
+              "RelativeToolTip": "YourPlace\\Areas\\Identity\\Pages\\Account\\ExternalLogin.cshtml",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAQwCEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-26T20:52:01.43Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Availability.cshtml",
+              "DocumentMoniker": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Bulgarian\\Hotels\\Availability.cshtml",
+              "RelativeDocumentMoniker": "YourPlace\\Views\\Bulgarian\\Hotels\\Availability.cshtml",
+              "ToolTip": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Bulgarian\\Hotels\\Availability.cshtml",
+              "RelativeToolTip": "YourPlace\\Views\\Bulgarian\\Hotels\\Availability.cshtml",
+              "ViewState": "AQIAACoAAAAAAAAAAIBJwDkAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-26T18:09:34.765Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ReservationResult.cshtml",
+              "DocumentMoniker": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Bulgarian\\Hotels\\ReservationResult.cshtml",
+              "RelativeDocumentMoniker": "YourPlace\\Views\\Bulgarian\\Hotels\\ReservationResult.cshtml",
+              "ToolTip": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Bulgarian\\Hotels\\ReservationResult.cshtml",
+              "RelativeToolTip": "YourPlace\\Views\\Bulgarian\\Hotels\\ReservationResult.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-26T18:09:34.931Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "offers.css",
+              "DocumentMoniker": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\wwwroot\\css\\offers.css",
+              "RelativeDocumentMoniker": "YourPlace\\wwwroot\\css\\offers.css",
+              "ToolTip": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\wwwroot\\css\\offers.css",
+              "RelativeToolTip": "YourPlace\\wwwroot\\css\\offers.css",
+              "ViewState": "AQIAADYAAAAAAAAAAIBZwEsAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-03-26T18:09:34.934Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Reservation.cshtml",
+              "DocumentMoniker": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Bulgarian\\Hotels\\Reservation.cshtml",
+              "RelativeDocumentMoniker": "YourPlace\\Views\\Bulgarian\\Hotels\\Reservation.cshtml",
+              "ToolTip": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Bulgarian\\Hotels\\Reservation.cshtml",
+              "RelativeToolTip": "YourPlace\\Views\\Bulgarian\\Hotels\\Reservation.cshtml",
+              "ViewState": "AQIAAAMAAAAAAAAAAIBZwAAAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-26T18:09:34.936Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Offer.cshtml",
+              "DocumentMoniker": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Bulgarian\\Hotels\\Offer.cshtml",
+              "RelativeDocumentMoniker": "YourPlace\\Views\\Bulgarian\\Hotels\\Offer.cshtml",
+              "ToolTip": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Bulgarian\\Hotels\\Offer.cshtml",
+              "RelativeToolTip": "YourPlace\\Views\\Bulgarian\\Hotels\\Offer.cshtml",
+              "ViewState": "AQIAADMAAAAAAAAAAIBZwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-26T18:09:34.939Z"
+>>>>>>> 431c8df710a0784e22bf7e6a402301d893273e45
             }
           ]
         }

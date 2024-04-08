@@ -9316,24 +9316,40 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\vesel\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+=======
+    "C:\\Users\\User\\.nuget\\packages\\": {}
+>>>>>>> 431c8df710a0784e22bf7e6a402301d893273e45
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\ConsoleApp1\\SeedingLayer.csproj",
       "projectName": "SeedingLayer",
       "projectPath": "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\ConsoleApp1\\SeedingLayer.csproj",
       "packagesPath": "C:\\Users\\vesel\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\ConsoleApp1\\obj\\",
+=======
+      "projectUniqueName": "D:\\Github\\Reservation-Manager\\YourPlace\\ConsoleApp1\\SeedingLayer.csproj",
+      "projectName": "SeedingLayer",
+      "projectPath": "D:\\Github\\Reservation-Manager\\YourPlace\\ConsoleApp1\\SeedingLayer.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "D:\\Github\\Reservation-Manager\\YourPlace\\ConsoleApp1\\obj\\",
+>>>>>>> 431c8df710a0784e22bf7e6a402301d893273e45
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\vesel\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+=======
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 431c8df710a0784e22bf7e6a402301d893273e45
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9347,11 +9363,19 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
+<<<<<<< HEAD
             "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\YourPlace.Core\\YourPlace.Core.csproj": {
               "projectPath": "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\YourPlace.Core\\YourPlace.Core.csproj"
             },
             "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj": {
               "projectPath": "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj"
+=======
+            "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace.Core\\YourPlace.Core.csproj": {
+              "projectPath": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace.Core\\YourPlace.Core.csproj"
+            },
+            "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj": {
+              "projectPath": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace.Infrastructure\\YourPlace.Infrastructure.csproj"
+>>>>>>> 431c8df710a0784e22bf7e6a402301d893273e45
             }
           }
         }
