@@ -15,7 +15,7 @@ namespace YourPlace.Controllers
         private const string english = "~/Views/English/Index.cshtml";
         private const string bulgarian = "~/Views/Bulgarian/Index.cshtml";
         private const string toMainBg = "~/Views/Bulgarian/MainPage.cshtml";
-        private const string bgTest = "~/Views/Bulgarian/BgTest.cshtml"; 
+        private const string bgTest = "~/Views/Bulgarian/BgTest.cshtml";
         private const string ImagesPath = "/Images/ProductImages";
 
         public HomeController(ILogger<HomeController> logger, HotelsServices hotelsServices)
@@ -49,12 +49,16 @@ namespace YourPlace.Controllers
         }
 
         //returns bulgarian index page - all offers
-        public async Task<IActionResult> ToMainBg()
+        public async Task<IActionResult> ToMainBg(int page = 1)
         {
             try
             {
+                var hotelsPerPage = 4.0;
                 var hotels = await _hotelsServices.ReadAllAsync();
-                return View(toMainBg, new AllHotelsModel { Hotels = hotels });
+                var paginatedHotels = hotels.Skip((page - 1) * (int)hotelsPerPage).Take((int)hotelsPerPage).ToList();
+                ViewBag.Pages = Math.Ceiling((double)(hotels.Count / hotelsPerPage));
+                ViewBag.CurrentPage = page;
+                return View(toMainBg, new AllHotelsModel { Hotels = paginatedHotels });
             }
             catch (Exception ex)
             {
@@ -62,7 +66,7 @@ namespace YourPlace.Controllers
                 return View("Error");
             }
         }
-        
+
         //bg test view
         public IActionResult Test()
         {

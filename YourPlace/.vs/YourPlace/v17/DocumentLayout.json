@@ -1,42 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Github\\Reservation-Manager\\YourPlace\\",
+  "WorkspaceRootPath": "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|d:\\github\\reservation-manager\\yourplace\\yourplace\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|c:\\users\\vesel\\reservation-manager\\yourplace\\yourplace\\views\\bulgarian\\mainpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\views\\bulgarian\\mainpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|d:\\github\\reservation-manager\\yourplace\\yourplace\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|c:\\users\\vesel\\reservation-manager\\yourplace\\yourplace\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|d:\\github\\reservation-manager\\yourplace\\yourplace\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|c:\\users\\vesel\\reservation-manager\\yourplace\\yourplace\\views\\shared\\_layoutwithfilters.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\views\\shared\\_layoutwithfilters.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|d:\\github\\reservation-manager\\yourplace\\yourplace\\areas\\identity\\pages\\account\\externallogin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\areas\\identity\\pages\\account\\externallogin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|d:\\github\\reservation-manager\\yourplace\\yourplace\\views\\bulgarian\\hotels\\availability.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\views\\bulgarian\\hotels\\availability.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|d:\\github\\reservation-manager\\yourplace\\yourplace\\views\\bulgarian\\hotels\\offer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\views\\bulgarian\\hotels\\offer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|d:\\github\\reservation-manager\\yourplace\\yourplace\\views\\bulgarian\\hotels\\reservation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\views\\bulgarian\\hotels\\reservation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|d:\\github\\reservation-manager\\yourplace\\yourplace\\views\\bulgarian\\hotels\\reservationresult.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\views\\bulgarian\\hotels\\reservationresult.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|d:\\github\\reservation-manager\\yourplace\\yourplace\\wwwroot\\css\\offers.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\wwwroot\\css\\offers.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|c:\\users\\vesel\\reservation-manager\\yourplace\\yourplace\\views\\shared\\_filterspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1EF05C5A-DDAA-4CC0-9F91-307461AF79CF}|YourPlace\\YourPlace.csproj|solutionrelative:yourplace\\views\\shared\\_filterspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,123 +26,62 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Register.cshtml",
-              "DocumentMoniker": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "RelativeDocumentMoniker": "YourPlace\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "ToolTip": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "RelativeToolTip": "YourPlace\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "DocumentIndex": 3,
+              "Title": "_FiltersPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Shared\\_FiltersPartial.cshtml",
+              "RelativeDocumentMoniker": "YourPlace\\Views\\Shared\\_FiltersPartial.cshtml",
+              "ToolTip": "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Shared\\_FiltersPartial.cshtml",
+              "RelativeToolTip": "YourPlace\\Views\\Shared\\_FiltersPartial.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-27T07:59:11.971Z",
+              "WhenOpened": "2024-04-08T19:21:30.624Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
-              "RelativeDocumentMoniker": "YourPlace\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
-              "ToolTip": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
-              "RelativeToolTip": "YourPlace\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-27T07:59:01.048Z",
+              "DocumentIndex": 1,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\YourPlace\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "YourPlace\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\YourPlace\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "YourPlace\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAADMAAAAAAAAAAAAowDsAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T18:37:56.932Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Program.cs",
-              "RelativeDocumentMoniker": "YourPlace\\Program.cs",
-              "ToolTip": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Program.cs",
-              "RelativeToolTip": "YourPlace\\Program.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAgwCQAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-26T20:57:33.35Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ExternalLogin.cshtml",
-              "DocumentMoniker": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Areas\\Identity\\Pages\\Account\\ExternalLogin.cshtml",
-              "RelativeDocumentMoniker": "YourPlace\\Areas\\Identity\\Pages\\Account\\ExternalLogin.cshtml",
-              "ToolTip": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Areas\\Identity\\Pages\\Account\\ExternalLogin.cshtml",
-              "RelativeToolTip": "YourPlace\\Areas\\Identity\\Pages\\Account\\ExternalLogin.cshtml",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAQwCEAAAAAAAAA",
+              "Title": "MainPage.cshtml",
+              "DocumentMoniker": "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Bulgarian\\MainPage.cshtml",
+              "RelativeDocumentMoniker": "YourPlace\\Views\\Bulgarian\\MainPage.cshtml",
+              "ToolTip": "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Bulgarian\\MainPage.cshtml",
+              "RelativeToolTip": "YourPlace\\Views\\Bulgarian\\MainPage.cshtml",
+              "ViewState": "AQIAAGkAAAAAAAAAAADwv3cAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-26T20:52:01.43Z",
+              "WhenOpened": "2024-04-08T18:33:56.448Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Availability.cshtml",
-              "DocumentMoniker": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Bulgarian\\Hotels\\Availability.cshtml",
-              "RelativeDocumentMoniker": "YourPlace\\Views\\Bulgarian\\Hotels\\Availability.cshtml",
-              "ToolTip": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Bulgarian\\Hotels\\Availability.cshtml",
-              "RelativeToolTip": "YourPlace\\Views\\Bulgarian\\Hotels\\Availability.cshtml",
-              "ViewState": "AQIAACoAAAAAAAAAAIBJwDkAAAAFAAAA",
+              "DocumentIndex": 2,
+              "Title": "_LayoutWithFilters.cshtml",
+              "DocumentMoniker": "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Shared\\_LayoutWithFilters.cshtml",
+              "RelativeDocumentMoniker": "YourPlace\\Views\\Shared\\_LayoutWithFilters.cshtml",
+              "ToolTip": "C:\\Users\\vesel\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Shared\\_LayoutWithFilters.cshtml",
+              "RelativeToolTip": "YourPlace\\Views\\Shared\\_LayoutWithFilters.cshtml",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAAC4AAABEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-26T18:09:34.765Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ReservationResult.cshtml",
-              "DocumentMoniker": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Bulgarian\\Hotels\\ReservationResult.cshtml",
-              "RelativeDocumentMoniker": "YourPlace\\Views\\Bulgarian\\Hotels\\ReservationResult.cshtml",
-              "ToolTip": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Bulgarian\\Hotels\\ReservationResult.cshtml",
-              "RelativeToolTip": "YourPlace\\Views\\Bulgarian\\Hotels\\ReservationResult.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-26T18:09:34.931Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "offers.css",
-              "DocumentMoniker": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\wwwroot\\css\\offers.css",
-              "RelativeDocumentMoniker": "YourPlace\\wwwroot\\css\\offers.css",
-              "ToolTip": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\wwwroot\\css\\offers.css",
-              "RelativeToolTip": "YourPlace\\wwwroot\\css\\offers.css",
-              "ViewState": "AQIAADYAAAAAAAAAAIBZwEsAAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-03-26T18:09:34.934Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Reservation.cshtml",
-              "DocumentMoniker": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Bulgarian\\Hotels\\Reservation.cshtml",
-              "RelativeDocumentMoniker": "YourPlace\\Views\\Bulgarian\\Hotels\\Reservation.cshtml",
-              "ToolTip": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Bulgarian\\Hotels\\Reservation.cshtml",
-              "RelativeToolTip": "YourPlace\\Views\\Bulgarian\\Hotels\\Reservation.cshtml",
-              "ViewState": "AQIAAAMAAAAAAAAAAIBZwAAAAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-26T18:09:34.936Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Offer.cshtml",
-              "DocumentMoniker": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Bulgarian\\Hotels\\Offer.cshtml",
-              "RelativeDocumentMoniker": "YourPlace\\Views\\Bulgarian\\Hotels\\Offer.cshtml",
-              "ToolTip": "D:\\Github\\Reservation-Manager\\YourPlace\\YourPlace\\Views\\Bulgarian\\Hotels\\Offer.cshtml",
-              "RelativeToolTip": "YourPlace\\Views\\Bulgarian\\Hotels\\Offer.cshtml",
-              "ViewState": "AQIAADMAAAAAAAAAAIBZwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-26T18:09:34.939Z",
+              "WhenOpened": "2024-04-08T18:33:28.116Z",
               "EditorCaption": ""
             }
           ]

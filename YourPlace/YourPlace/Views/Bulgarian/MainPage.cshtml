@@ -5,154 +5,147 @@
     Layout = "_LayoutWithFilters";
 }
 
-@* <link rel="stylesheet" type="text/css" href="~/css/mainPage.css" /> *@
-
 <style>
-    /* import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap');
- */
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Mulish', sans-serif;
-}
-
-.logo {
-    position: fixed;
-    top: 22px;
-    left: 22px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo-svg {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.logo a {
-    font-size: 35px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #222;
-    padding-left: 50px;
-}
-
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-.column {
-    float: left;
-    width: 60%;
-    margin-bottom: 16px;
-    padding: 0 8px;
-}
-
-/* media screen and (max-width: 650px) {
-    .column {
-        width: 100%;
-        display: block;
-    }
-} */
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-top: 80px;
-    flex-direction: row;
-}
-
-.card {
-    margin-bottom: 20px;
-}
-
-
-.fade-out {
-    opacity: 1;
-    transition: opacity 0.4s ease;
-}
-
-    .fade-out.hide {
-        opacity: 0;
+    * {
+        box-sizing: border-box;
+        font-family: 'Mulish', sans-serif;
     }
 
-    button{
-    width: fit-content;
-    height: fit-content;
-    border: 1px solid #6667b0;
-    background: #6b43ff;
-    color: #fff;
-    line-height: 50px;
-    font-size: 18px;
-    letter-spacing: 0.025em;
-    cursor: pointer;
-    font-weight: 800;
-    border-radius: 8px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-}
+    #hotels-container {
+        display: grid;
+        gap: 30px;
+        margin-top: 30px;
+    }
 
-.button:hover {
-    text-decoration: underline;
-}
+        #hotels-container[data-view='grid'] {
+            grid-template-columns: 1fr 1fr;
+        }
 
-.underline {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 6px;
-    top: 65%;
-    left: 0;
-    background: #73c3f8;
-}
+        #hotels-container .hotel {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            background-color: rgba(255,255,255,.5);
+            box-shadow: 0 0 30px rgba(0,0,0,.2);
+            border-radius: 5px;
+            padding: 20px;
+            gap: 30px;
+            align-items: center;
+        }
 
-.container3 {
-    display: flex;
-    padding: 40px 32px;
-    border-radius: 8px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    background-color: transparent;
-    overflow: auto;
-    margin-bottom: 20px;
-    margin-left: 10px;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    width: 50%;
+        #hotels-container[data-view='grid'] .hotel {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            height: auto;
+        }
 
-}
+        #hotels-container .hotel .hotel-image {
+            height: 100%;
+            width: 170px;
+            object-fit: cover;
+        }
+
+        #hotels-container[data-view='grid'] .hotel .hotel-image {
+            height: 300px;
+            width: 100%;
+        }
+
+        #hotels-container .hotel .details {
+            height: 100%;
+        }
+
+            #hotels-container .hotel .details p {
+                margin: 0;
+                padding: 0;
+            }
+
+        #hotels-container .hotel .offers-btn {
+            margin-left: auto;
+        }
+
+        #hotels-container[data-view='grid'] .hotel .offers-btn {
+            margin-left: unset;
+        }
 </style>
 
 
-<div class="row">
-    @if (Model != null)
-    {
-        @foreach (var item in Model.Hotels)
-        {
-            <div class="container3">
-                <!-- <a asp-controller="Hotels" asp-action="ViewAll">All Hotels:</a>-->
+@if (Model != null)
+{
+    <div class="row justify-content-end">
+        <div class="col-2 d-flex justify-content-center align-items-center gap-1">
+            <label>View:</label>
+            <button id="list-view-btn" class="btn btn-primary" disabled onclick="setHotelsView('list')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
+                    <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2m0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2m0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14" />
+                </svg>
+            </button>
+            <button id="grid-view-btn" class="btn btn-primary" onclick="setHotelsView('grid')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid" viewBox="0 0 16 16">
+                    <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z" />
+                </svg>
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div id="hotels-container" data-view="list">
+                @foreach (var item in Model.Hotels)
+                {
+                    <div class="hotel">
+                        <img src="~/Images/MainImages/@item.MainImageURL" alt="image" class="hotel-image">
+                        <div class="details">
+                            <h5 class="fw-bold">@item.HotelName</h5>
+                            <p>@item.Town, @item.Country</p>
+                            <p>@item.Rating/10</p>
+                        </div>
+                        <div class="offers-btn">
+                            <form asp-controller="Hotels" asp-action="Offer" method="post">
+                                <input type="hidden" name="hotelID" value="@item.HotelID" />
+                                <button type="submit" class="btn btn-primary">Оферти</button>
+                            </form>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+        <div class="col-8 d-flex justify-content-center gap-1">
+            @for (int i = 1; i <= ViewBag.Pages; i++)
+            {
+                <form asp-controller="Home" asp-action="ToMainBg" method="post">
+                    <input type="hidden" name="page" value="@i" />
+                    <button type="submit" class="btn @(ViewBag.CurrentPage == i ? "btn-warning" : "btn-primary")">@i</button>
+                </form>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <p class="text-center">No hotels found.</p>
+}
 
-                <img src="~/Images/MainImages/@item.MainImageURL" alt="image" style="width:90%">
-                <div class="container-text">
-                    <h2>@item.HotelName</h2>
-                    <p>@item.Town, @item.Country</p>
-                    <p>@item.Rating/10</p><br>
-                    <form asp-controller="Hotels" asp-action="Offer" method="post">
-                        <input type="hidden" name="hotelID" value="@item.HotelID" />
-                        <button type="submit" class="button">Оферти</button>
-                    </form>
-                </div>
-            </div>  
+<script>
+    const listViewBtn = document.getElementById('list-view-btn');
+    const gridViewBtn = document.getElementById('grid-view-btn');
+    const hotelsContainer = document.getElementById('hotels-container');
+    const currentView = sessionStorage.getItem('hotels-view') || 'list';
+
+    function setHotelsView(view) {
+        if (view === 'list') {
+            listViewBtn.setAttribute('disabled', '');
+            gridViewBtn.removeAttribute('disabled');
+            hotelsContainer.setAttribute('data-view', 'list');
+            sessionStorage.setItem('hotels-view', 'list');
+        } else {
+            gridViewBtn.setAttribute('disabled', '');
+            listViewBtn.removeAttribute('disabled');
+            hotelsContainer.setAttribute('data-view', 'grid');
+            sessionStorage.setItem('hotels-view', 'grid');
         }
     }
-    else
-    {
-        <p>No hotels found.</p>
-    }
-</div>
+
+    setHotelsView(currentView);
+</script>

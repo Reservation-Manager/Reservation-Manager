@@ -38,13 +38,13 @@
                     </ul>
                     @* <partial name="_FiltersPartial" /> *@
                     <partial name="_LoginPartial" />
-                    <partial name="_FiltersPartial"/>
+                    <partial name="_FiltersPartial" />
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="container-fluid">
+        <main role="main" class="pb-3" style="min-height: calc(100vh - 100px)">
             @RenderBody()
         </main>
     </div>
