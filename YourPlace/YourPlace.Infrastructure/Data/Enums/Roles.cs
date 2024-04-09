@@ -11,6 +11,7 @@ namespace YourPlace.Infrastructure.Data.Enums
     {
         Manager,
         Traveller,
-        Admin
+        Admin,
+        Receptionist
     }
 }

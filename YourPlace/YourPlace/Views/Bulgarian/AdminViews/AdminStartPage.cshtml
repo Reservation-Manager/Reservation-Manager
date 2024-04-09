@@ -1,14 +1,26 @@
-﻿@model AllHotelsModel
+﻿@using YourPlace.Models.AdminModels;
+@model AdminModel;
 @{
-
-    ViewData["Title"] = "Welcome!";
-    Layout = "_LayoutWithFilters";
+    Layout = "_LayoutForAdmin";
+    ViewData["Title"] = "Admin's Page";
 }
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/YourPlace.styles.css" asp-append-version="true" />
 
 <style>
     * {
         box-sizing: border-box;
         font-family: 'Mulish', sans-serif;
+    }
+
+    .container3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        padding-top: 10%;
     }
 
     #hotels-container {
@@ -67,9 +79,18 @@
         #hotels-container[data-view='grid'] .hotel .offers-btn {
             margin-left: unset;
         }
+        .tick{
+            width: 25px;
+            height: 10pmax-content;
+        }
 </style>
 
-
+<div class="container3">
+    <h1 class="heading">Здравей, Админ!</h1>
+</div>
+<p>Верифицираните хотели се отбелязват с: 
+    <img src="~/Images/checklist.png" class="tick" />
+</p>
 @if (Model != null)
 {
     <div class="row justify-content-end">
@@ -93,6 +114,10 @@
                 @foreach (var item in Model.Hotels)
                 {
                     <div class="hotel">
+                        @if (item.Verified == true)
+                        {
+                            <img src="~/Images/checklist.png" alt="Tick Mark" class="tick">
+                        }
                         <img src="~/Images/MainImages/@item.MainImageURL" alt="image" class="hotel-image">
                         <div class="details">
                             <h5 class="fw-bold">@item.HotelName</h5>
@@ -114,7 +139,7 @@
         <div class="col-8 d-flex justify-content-center gap-1">
             @for (int i = 1; i <= ViewBag.Pages; i++)
             {
-                <form asp-controller="Home" asp-action="ToMainBg" method="post">
+                <form asp-controller="Admin" asp-action="Index" method="post">
                     <input type="hidden" name="page" value="@i" />
                     <button type="submit" class="btn @(ViewBag.CurrentPage == i ? "btn-warning" : "btn-primary")">@i</button>
                 </form>
@@ -124,7 +149,7 @@
 }
 else
 {
-    <p class="text-center">No hotels found.</p>
+    <p class="text-center">Няма хотели.</p>
 }
 
 <script>

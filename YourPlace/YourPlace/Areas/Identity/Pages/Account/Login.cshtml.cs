@@ -137,11 +137,16 @@ namespace YourPlace.Areas.Identity.Pages.Account
                         {
                             return RedirectToAction("Index", "ManagerMenu", new { firstName = user.FirstName, lastName = user.Surname, managerID = user.Id });
                         }
-                        else
                         if (roles.Contains(Roles.Traveller.ToString()))
                         {
                             return RedirectToAction("ToMainBg", "Home");
                         }
+                        else 
+                        if(roles.Contains(Roles.Admin.ToString()))
+                        {
+                            return RedirectToAction("Index", "Admin");
+                        }
+
                     }
                     _logger.LogInformation("User logged successfully!");
                     return LocalRedirect(returnUrl);

@@ -4,6 +4,8 @@
 @inject SignInManager<User> SignInManager
 @inject UserManager<User> UserManager
 
+
+
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
@@ -20,7 +22,30 @@
                 <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Излез</button>
             </form>
         </li>
-        
+
+        var user = await UserManager.GetUserAsync(User);
+        var userRoles = await UserManager.GetRolesAsync(user);
+        var firstName = user.FirstName;
+        var lastName = user.Surname;
+
+        @if (userRoles.Contains("Admin"))
+        {
+            <li class="nav-item">
+                <form id="adminForm" class="form-inline" asp-action="Index" asp-controller="Admin">
+                    <button id="admin" type="submit" class="nav-link btn btn-link text-dark">Админ меню</button>
+                </form>
+            </li>
+        }
+        @if (userRoles.Contains("Manager"))
+        {
+            <li class="nav-item">
+                <form id="managerForm" class="form-inline" asp-action="Index" asp-controller="ManagerMenu">
+                    <input type="hidden" name="firstName" value="@firstName" />
+                    <input type="hidden" name="lastName" value="@lastName" />
+                    <button id="manager" type="submit" class="nav-link btn btn-link text-dark">Меню за хотелиери</button>
+                </form>
+            </li>
+        }
     }
     else
     {

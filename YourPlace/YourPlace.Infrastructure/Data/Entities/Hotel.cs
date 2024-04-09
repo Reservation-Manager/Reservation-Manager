@@ -34,8 +34,12 @@ namespace YourPlace.Infrastructure.Data.Entities
         [Required]
         public string Details { get; set; }
 
+        [Required]
+        public bool Verified { get; set; } = false;
+
         [AllowNull]
         public string? ManagerID { get; set; }
+
         public List<Image> Images { get; set; }
         public Hotel()
         {

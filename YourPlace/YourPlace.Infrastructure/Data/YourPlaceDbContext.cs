@@ -34,6 +34,8 @@ namespace YourPlace.Infrastructure.Data
         public DbSet<RoomAvailability> RoomsAvailability { get; set;}
         
         public DbSet<ReservedRoom> ReservedRooms { get; set; }
+
+        public DbSet<Receptionist> Receptionist { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -68,13 +70,15 @@ namespace YourPlace.Infrastructure.Data
             modelBuilder.Entity<RoomAvailability>().HasOne(r => r.Hotel).WithMany().HasForeignKey(r => r.HotelID).IsRequired().OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<ReservedRoom>().HasOne(r => r.Reservation).WithMany().HasForeignKey(r => r.ReservationID).IsRequired().OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<ReservedRoom>().HasOne(r => r.Room).WithMany().HasForeignKey(r => r.RoomID).IsRequired().OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Receptionist>().HasOne(h => h.Hotel).WithMany().HasForeignKey(h => h.HotelID).IsRequired().OnDelete(DeleteBehavior.Cascade);
             #endregion
 
             #region Seeding
             modelBuilder.Entity<IdentityRole>().HasData(
              new IdentityRole { Id = "1", Name = "Traveller", NormalizedName = "Traveller" },
              new IdentityRole { Id = "2", Name = "Manager", NormalizedName = "Manager" },
-             new IdentityRole { Id = "3", Name = "Admin", NormalizedName = "Admin" }
+             new IdentityRole { Id = "3", Name = "Admin", NormalizedName = "Admin" },
+             new IdentityRole { Id = "4", Name = "Receptionist", NormalizedName = "Receptionist"}
             );
 
             modelBuilder.Entity<User>().HasData(
@@ -91,6 +95,9 @@ namespace YourPlace.Infrastructure.Data
                     PasswordHash = new PasswordHasher<User>().HashPassword(null, "Password123"),
                     SecurityStamp = string.Empty
                 }
+            );
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(
+                new IdentityUserRole<string> { UserId = "1", RoleId = "3"}
             );
 
 

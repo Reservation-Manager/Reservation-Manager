@@ -12,7 +12,7 @@ using YourPlace.Infrastructure.Data;
 namespace YourPlace.Infrastructure.Migrations
 {
     [DbContext(typeof(YourPlaceDbContext))]
-    [Migration("20240402134823_InitialCreate")]
+    [Migration("20240409204313_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -69,6 +69,12 @@ namespace YourPlace.Infrastructure.Migrations
                             Id = "3",
                             Name = "Admin",
                             NormalizedName = "Admin"
+                        },
+                        new
+                        {
+                            Id = "4",
+                            Name = "Receptionist",
+                            NormalizedName = "Receptionist"
                         });
                 });
 
@@ -157,6 +163,13 @@ namespace YourPlace.Infrastructure.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "1",
+                            RoleId = "3"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -306,6 +319,9 @@ namespace YourPlace.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Verified")
+                        .HasColumnType("bit");
+
                     b.HasKey("HotelID");
 
                     b.ToTable("Hotels");
@@ -320,7 +336,8 @@ namespace YourPlace.Infrastructure.Migrations
                             HotelName = "Arte Spa Hotel",
                             MainImageURL = "Arte.jpg",
                             Rating = 9.6999999999999993,
-                            Town = "Велинград"
+                            Town = "Велинград",
+                            Verified = false
                         },
                         new
                         {
@@ -331,7 +348,8 @@ namespace YourPlace.Infrastructure.Migrations
                             HotelName = "Rose Garden",
                             MainImageURL = "RoseGarden.jpg",
                             Rating = 8.5,
-                            Town = "Поморие"
+                            Town = "Поморие",
+                            Verified = false
                         },
                         new
                         {
@@ -342,7 +360,8 @@ namespace YourPlace.Infrastructure.Migrations
                             HotelName = "Therme",
                             MainImageURL = "Therme.jpg",
                             Rating = 9.0999999999999996,
-                            Town = "Баня"
+                            Town = "Баня",
+                            Verified = false
                         },
                         new
                         {
@@ -353,7 +372,8 @@ namespace YourPlace.Infrastructure.Migrations
                             HotelName = "La Fleur",
                             MainImageURL = "LaFleur.jpg",
                             Rating = 9.5,
-                            Town = "Paris"
+                            Town = "Paris",
+                            Verified = false
                         },
                         new
                         {
@@ -364,7 +384,8 @@ namespace YourPlace.Infrastructure.Migrations
                             HotelName = "Las Vegas Royal",
                             MainImageURL = "RoyalLasVegas.jpg",
                             Rating = 7.9000000000000004,
-                            Town = "Las Vegas"
+                            Town = "Las Vegas",
+                            Verified = false
                         });
                 });
 
@@ -858,6 +879,11 @@ namespace YourPlace.Infrastructure.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -918,25 +944,41 @@ namespace YourPlace.Infrastructure.Migrations
 
                     b.ToTable("AspNetUsers", (string)null);
 
+                    b.HasDiscriminator<string>("Discriminator").HasValue("User");
+
+                    b.UseTphMappingStrategy();
+
                     b.HasData(
                         new
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a3116379-b5bd-4ad2-8e44-6267f60afaa5",
+                            ConcurrencyStamp = "c13c1120-02e9-40a7-87e6-0a8472a0d0bf",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "Admin",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGnMOaGLestUMHlYEhw0zr35pVBl+NOHYqUPEtyzL4XEFKQXedAWAd/YfDCAtJt7Uw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELOjByJ9RdIIKhxVOD9BRbvxB6kGQN5Dv4X5L6LT34McT9TI8WQk+KUA235z0H/Esg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             Surname = "User",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
+                });
+
+            modelBuilder.Entity("YourPlace.Infrastructure.Data.Entities.Receptionist", b =>
+                {
+                    b.HasBaseType("YourPlace.Infrastructure.Data.Entities.User");
+
+                    b.Property<int>("HotelID")
+                        .HasColumnType("int");
+
+                    b.HasIndex("HotelID");
+
+                    b.HasDiscriminator().HasValue("Receptionist");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1041,6 +1083,17 @@ namespace YourPlace.Infrastructure.Migrations
                 });
 
             modelBuilder.Entity("YourPlace.Infrastructure.Data.Entities.RoomAvailability", b =>
+                {
+                    b.HasOne("YourPlace.Infrastructure.Data.Entities.Hotel", "Hotel")
+                        .WithMany()
+                        .HasForeignKey("HotelID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Hotel");
+                });
+
+            modelBuilder.Entity("YourPlace.Infrastructure.Data.Entities.Receptionist", b =>
                 {
                     b.HasOne("YourPlace.Infrastructure.Data.Entities.Hotel", "Hotel")
                         .WithMany()
