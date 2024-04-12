@@ -79,16 +79,18 @@
         #hotels-container[data-view='grid'] .hotel .offers-btn {
             margin-left: unset;
         }
-        .tick{
-            width: 25px;
-            height: 10pmax-content;
-        }
+
+    .tick {
+        width: 25px;
+        height: 10pmax-content;
+    }
 </style>
 
 <div class="container3">
     <h1 class="heading">Здравей, Админ!</h1>
 </div>
-<p>Верифицираните хотели се отбелязват с: 
+<p>
+    Верифицираните хотели се отбелязват с:
     <img src="~/Images/checklist.png" class="tick" />
 </p>
 @if (Model != null)
@@ -111,34 +113,41 @@
     <div class="row">
         <div class="col-12">
             <div id="hotels-container" data-view="list">
-                @foreach (var item in Model.Hotels)
+                @if (Model.Hotels.Count != 0)
                 {
-                    <div class="hotel">
-                        @if (item.Verified == true)
-                        {
-                            <img src="~/Images/checklist.png" alt="Tick Mark" class="tick">
-                        }
-                        <img src="~/Images/MainImages/@item.MainImageURL" alt="image" class="hotel-image">
-                        <div class="details">
-                            <h5 class="fw-bold">@item.HotelName</h5>
-                            <p>@item.Town, @item.Country</p>
-                            <p>@item.Rating/10</p>
-                        </div>
-                        <div class="offers-btn">
-                            <form asp-controller="Hotels" asp-action="Offer" method="post">
-                                <input type="hidden" name="hotelID" value="@item.HotelID" />
-                                <button type="submit" class="btn btn-primary">Оферти</button>
-                            </form>
-                            <br />
+                    @foreach (var item in Model.Hotels)
+                    {
+                        <div class="hotel">
+                            @if (item.Verified == true)
+                            {
+                                <img src="~/Images/checklist.png" alt="Tick Mark" class="tick">
+                            }
+                            <img src="~/Images/MainImages/@item.MainImageURL" alt="image" class="hotel-image">
+                            <div class="details">
+                                <h5 class="fw-bold">@item.HotelName</h5>
+                                <p>@item.Town, @item.Country</p>
+                                <p>@item.Rating/10</p>
+                            </div>
                             <div class="offers-btn">
-                                <form asp-controller="Admin" asp-action="DeleteHotel" method="post">
+                                <form asp-controller="Admin" asp-action="Verify" method="post">
+                                    <input type="hidden" name="hotelID" value="@item.HotelID" />
+                                    <button type="submit" class="btn btn-primary">Верифицирай</button>
+                                </form>
+                            </div>
+                            <div class="offers-btn">
+                                <form asp-controller="Admin" asp-action="Decline" method="post">
                                     <input type="hidden" name="hotelID" value="@item.HotelID" />
                                     <button type="submit" class="btn btn-primary">Премахни</button>
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    }
                 }
+                else
+                {
+                    <p>Няма хотели за удостоверяване.</p>
+                }
+
             </div>
         </div>
     </div>

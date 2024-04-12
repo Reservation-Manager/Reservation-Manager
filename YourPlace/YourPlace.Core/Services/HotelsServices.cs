@@ -56,7 +56,23 @@ namespace YourPlace.Core.Services
             }
         }
  
-        public async Task<List<Hotel>> ReadAllAsync(bool useNavigationalProperties = false, bool isReadOnly = true)
+        public async Task<List<Hotel>> ReadAllAsync(bool useNavigationalProperties = false, bool isReadOnly = true) //displays only the verified hotels for users
+        {
+            try
+            {
+                IQueryable<Hotel> hotels = _dbContext.Hotels.Where(x=>x.Verified == true);
+                if (isReadOnly)
+                {
+                    hotels = hotels.AsNoTrackingWithIdentityResolution();
+                }
+                return await hotels.ToListAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public async Task<List<Hotel>> AdminReadAllAsync(bool useNavigationalProperties = false, bool isReadOnly = true) //displays even the not verified hotels
         {
             try
             {
@@ -72,7 +88,6 @@ namespace YourPlace.Core.Services
                 throw;
             }
         }
-
         public async Task UpdateAsync(Hotel item)
         {
             try

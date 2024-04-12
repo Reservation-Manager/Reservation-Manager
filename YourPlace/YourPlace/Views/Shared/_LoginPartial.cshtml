@@ -10,11 +10,6 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item">
-            <form id="testForm" class="form-inline" asp-action="Test" asp-controller="Home">
-                <button id="test" type="submit" class="nav-link btn btn-link text-dark">Направете теста</button>
-            </form>
-        </li>
-        <li class="nav-item">
             <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Здравей, @UserManager.GetUserName(User)!</a>
         </li>
         <li class="nav-item">
@@ -27,7 +22,14 @@
         var userRoles = await UserManager.GetRolesAsync(user);
         var firstName = user.FirstName;
         var lastName = user.Surname;
-
+        @if (userRoles.Contains("Traveller"))
+        {
+            <li class="nav-item">
+                <form id="testForm" class="form-inline" asp-action="Test" asp-controller="Home">
+                    <button id="test" type="submit" class="nav-link btn btn-link text-dark">Направете теста</button>
+                </form>
+            </li>
+        }
         @if (userRoles.Contains("Admin"))
         {
             <li class="nav-item">
