@@ -181,23 +181,6 @@ namespace YourPlace.Areas.Identity.Pages.Account
                     }
                     _logger.LogInformation("User logged successfully!");
                     return LocalRedirect(returnUrl);
-                    if (Input.Role == Roles.Traveller)
-                    {
-                        return RedirectToAction("ToMainBg", "Home");
-                    }
-                    if(Input.Role == Roles.Manager)
-                    {
-                        return RedirectToAction("Index", "ManagerMenu", new { firstName = Input.FirstName, lastName = Input.Surname, managerID = user.Id });
-                    }
-                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
-                    {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
-                    }
-                    else
-                    {
-                        await _signInManager.SignInAsync(result.Item2, isPersistent: false);
-                        return LocalRedirect(returnUrl);
-                    }
                 }
                 foreach (var error in result.Item1.Errors)
                 {

@@ -23,12 +23,14 @@ namespace YourPlace.Areas.Identity.Pages.Account
     public class LoginModel : PageModel
     {
         private readonly SignInManager<User> _signInManager;
+        private readonly UserManager<User> _userManager;
         private readonly ILogger<LoginModel> _logger;
         private readonly UserServices _userServices;
 
-        public LoginModel(SignInManager<User> signInManager, ILogger<LoginModel> logger, UserServices userServices)
+        public LoginModel(SignInManager<User> signInManager, UserManager<User> userManager, ILogger<LoginModel> logger, UserServices userServices)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
             _logger = logger;
             _userServices = userServices;
         }
@@ -117,10 +119,16 @@ namespace YourPlace.Areas.Identity.Pages.Account
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 Tuple<IdentityResult, User> resultTupple = await _userServices.LogInUserAsync(Input.Email, Input.Password);
+                User user = resultTupple.Item2;
+                if (user == null || !(await _userManager.CheckPasswordAsync(user, Input.Password)))
+                {
+                    ModelState.AddModelError(string.Empty, "Невалиден имейл или парола.");
+                    return Page();
+                }
+
 
                 if (resultTupple.Item1.Succeeded)
                 {
-                    User user = resultTupple.Item2;
                     // Use the following code if you are calling userManager.PasswordValidators[0].ValidateAsync(..)
                     await _signInManager.SignInAsync(user, new AuthenticationProperties());
 
@@ -129,10 +137,7 @@ namespace YourPlace.Areas.Identity.Pages.Account
                     if(user != null)
                     {
                         var roles = await _signInManager.UserManager.GetRolesAsync(user);
-                        foreach (var role in roles)
-                        {
-                            Console.WriteLine("ROLE: " + role);
-                        }
+                        
                         if (roles.Contains(Roles.Manager.ToString()))
                         {
                             return RedirectToAction("Index", "ManagerMenu", new { firstName = user.FirstName, lastName = user.Surname, managerID = user.Id });
@@ -141,10 +146,13 @@ namespace YourPlace.Areas.Identity.Pages.Account
                         {
                             return RedirectToAction("ToMainBg", "Home");
                         }
-                        else 
                         if(roles.Contains(Roles.Admin.ToString()))
                         {
                             return RedirectToAction("Index", "Admin");
+                        }
+                        if(roles.Contains(Roles.Receptionist.ToString()))
+                        {
+                            return RedirectToAction("Index", "Receptionist");
                         }
 
                     }
