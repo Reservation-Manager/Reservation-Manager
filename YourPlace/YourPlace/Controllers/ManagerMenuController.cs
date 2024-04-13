@@ -81,14 +81,8 @@ namespace YourPlace.Controllers
             }
             Categories categories = new Categories(location, tourism, atmosphere, company, pricing, hotel.HotelID);
             await _hotelCategoriesServices.CreateAsync(categories);
-
-            Console.WriteLine(location.ToString());
-            Console.WriteLine(tourism.ToString());
-            Console.WriteLine(atmosphere.ToString());
-            Console.WriteLine(company.ToString());
-            Console.WriteLine(pricing.ToString());
        
-            return View(toManagerHotels, new HotelCreateModel { ManagerHotels = hotels });
+            return View(toManagerHotels, new HotelCreateModel { ManagerHotels = hotels, ManagerID = managerID });
         }
         [HttpPost]
         public async Task<IActionResult> UploadImage(IFormFile imgfile)
@@ -114,6 +108,18 @@ namespace YourPlace.Controllers
             }
            
         }
-
+        public async Task<IActionResult> ViewManagerHotels([Bind("ManagerID")]string managerID)
+        {
+            Console.WriteLine(managerID);
+            List<Hotel> hotels = await _hotelsServices.AdminReadAllAsync();
+            hotels = hotels.Where(x=>x.ManagerID == managerID).ToList();
+            return View(toManagerHotels, new HotelCreateModel { ManagerHotels = hotels, ManagerID = managerID });
+        }
+        public async Task<IActionResult> ShowNotVerifiedHotels([Bind("ManagerID")]string managerID)
+        {
+            List<Hotel> hotels = await _hotelsServices.AdminReadAllAsync();
+            hotels = hotels.Where(x=>x.ManagerID==managerID).Where(x=>x.Verified == false).ToList();
+            return View(toManagerHotels, new HotelCreateModel { ManagerHotels = hotels, ManagerID = managerID });
+        }
     }
 }

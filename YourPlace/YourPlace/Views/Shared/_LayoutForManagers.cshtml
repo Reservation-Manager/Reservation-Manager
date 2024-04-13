@@ -44,30 +44,44 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Поверителност</a>
                         </li>
                         <li class="nav-item">
-                            <form id="addNamesForm" asp-area="" asp-controller="ManagerMenu" asp-action="ReturnToStart" method="post">
-                                <input type="hidden" name="FirstName" value="@Model.FirstName" />
-                                <input type="hidden" name="LastName" value="@Model.LastName" />
-                                <a class="nav-link text-dark" href="#" onclick="document.getElementById('addNamesForm').submit();">Начало</a>
+                            <form>
+                                <input type="hidden" name="FirstName" value="@Model.FirstName" asp-for="FirstName"/>
+                                <input type="hidden" name="LastName" value="@Model.LastName" asp-for="LastName" />
+                                <a class="nav-link text-dark" asp-area="" asp-controller="ManagerMenu" asp-action="ReturnToStart" method="post">Начало </a>
                             </form>
                         </li>
+                       
+                    </ul>
+                    <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <form id="addHotelForm" asp-area="" asp-controller="ManagerMenu" asp-action="AddHotel" method="post">
-                                <input type="hidden" name="FirstName" value="@Model.FirstName" />
-                                <input type="hidden" name="LastName" value="@Model.LastName" />
-                                <input type="hidden" name="ManagerID" value="@Model.ManagerID" />
+                                <input type="hidden" name="FirstName" value="@Model.FirstName" asp-for="FirstName" />
+                                <input type="hidden" name="LastName" value="@Model.LastName" asp-for="LastName"/>
+                                <input type="hidden" name="ManagerID" value="@Model.ManagerID" asp-for="ManagerID" />
                                 <a class="nav-link text-dark" href="#" onclick="document.getElementById('addHotelForm').submit();">Добави хотел</a>
                             </form>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ManagerMenu" asp-action="">Провери хотел</a>
+                            <form id="viewHotels" asp-area="" asp-controller="ManagerMenu" asp-action="ViewManagerHotels" method="post">
+                                <input type="hidden" name="FirstName" value="@Model.FirstName" asp-for="FirstName"/>
+                                <input type="hidden" name="LastName" value="@Model.LastName" asp-for="LastName"/>
+                                <input type="hidden" name="ManagerID" value="@Model.ManagerID" asp-for="ManagerID"/>
+                                <a class="nav-link text-dark" href="#" onclick="document.getElementById('viewHotels').submit();">Виж своите хотели</a>
+                            </form>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ManagerMenu" asp-action="">Виж своите хотели</a>
+                            <form id="notVerified" asp-area="" asp-controller="ManagerMenu" asp-action="ShowNotVerifiedHotels" method="post">
+                                <input type="hidden" name="FirstName" value="@Model.FirstName" asp-for="FirstName" />
+                                <input type="hidden" name="LastName" value="@Model.LastName" asp-for="LastName"/>
+                                <input type="hidden" name="ManagerID" value="@Model.ManagerID" asp-for="ManagerID" />
+                                <a class="nav-link text-dark" href="#" onclick="document.getElementById('notVerified').submit();">Неверифицирани хотели</a>
+                            </form>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="ManagerMenu" asp-action="">Рецепционисти</a>
                         </li>
                     </ul>
+
                     @* <partial name="_FiltersPartial" /> *@
                     <partial name="_LoginPartial" />
                 </div>
