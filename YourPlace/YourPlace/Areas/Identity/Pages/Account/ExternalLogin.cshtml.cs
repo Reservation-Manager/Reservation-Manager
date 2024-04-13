@@ -170,42 +170,43 @@ namespace YourPlace.Areas.Identity.Pages.Account
                 user.FirstName = Input.FirstName;
                 user.Surname = Input.Surname;
                 user.UserName = Input.Username;
-                //.Role = Input.Role;
-
-                //await _userStore.SetUserNameAsync(user, Input.Username, CancellationToken.None);
-                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
-                //await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
-                //await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                user.Email = Input.Email; // Set email directly to user entity
 
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
+                    // Assign role to user
+                    await _userManager.AddToRoleAsync(user, Convert.ToString(Input.Role));
+
                     result = await _userManager.AddLoginAsync(user, info);
                     if (result.Succeeded)
                     {
                         _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
                         await _signInManager.SignInAsync(user, isPersistent: false);
-                        
 
-                        var userId = await _userManager.GetUserIdAsync(user);
-                        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                        code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                        var callbackUrl = Url.Page(
-                            "/Account/ConfirmEmail",
-                            pageHandler: null,
-                            values: new { area = "Identity", userId = userId, code = code },
-                            protocol: Request.Scheme);
-
-                        await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                            $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
-                        // If account confirmation is required, we need to show the link if we don't have a real email sender
-                        if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                        if (user != null)
                         {
-                            return RedirectToPage("./RegisterConfirmation", new { Email = Input.Email });
+                            var roles = await _signInManager.UserManager.GetRolesAsync(user);
+                            foreach (var role in roles)
+                            {
+                                Console.WriteLine("ROLE: " + role);
+                            }
+                            if (roles.Contains(Roles.Manager.ToString()))
+                            {
+                                return RedirectToAction("Index", "ManagerMenu", new { firstName = user.FirstName, lastName = user.Surname, managerID = user.Id });
+                            }
+                            else
+                            if (roles.Contains(Roles.Traveller.ToString()))
+                            {
+                                return RedirectToAction("ToMainBg", "Home");
+                            }
+                            else if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                            {
+                                return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                            }
                         }
 
-                        await _signInManager.SignInAsync(user, isPersistent: false, info.LoginProvider);
+                        // Redirect user appropriately
                         return LocalRedirect(returnUrl);
                     }
                 }
@@ -215,6 +216,7 @@ namespace YourPlace.Areas.Identity.Pages.Account
                 }
             }
 
+            // If the code reaches here, there's an error, so return to the page
             ProviderDisplayName = info.ProviderDisplayName;
             ReturnUrl = returnUrl;
             return Page();

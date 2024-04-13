@@ -54,7 +54,7 @@ public class Program
 
         builder.Services.AddIdentity<User, IdentityRole>(options =>
         {
-            options.SignIn.RequireConfirmedAccount = true;
+            options.SignIn.RequireConfirmedAccount = false;
             options.Lockout = new LockoutOptions { AllowedForNewUsers = true, DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10), MaxFailedAccessAttempts = 5 };
         })
                 .AddEntityFrameworkStores<YourPlaceDbContext>()

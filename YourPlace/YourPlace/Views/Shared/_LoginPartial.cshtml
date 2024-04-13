@@ -19,6 +19,7 @@
         </li>
 
         var user = await UserManager.GetUserAsync(User);
+
         var userRoles = await UserManager.GetRolesAsync(user);
         var firstName = user.FirstName;
         var lastName = user.Surname;

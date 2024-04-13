@@ -38,13 +38,13 @@
                 <label asp-for="Input.Email" class="form-label"></label>
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
-             @* <div class="form-floating mb-3">
+              <div class="form-floating mb-3">
                 <select asp-for="Input.Role" asp-items="Html.GetEnumSelectList<Roles>()" class="form-control" autocomplete="role" aria-required="true">
                     <option value="">Select Role</option>
                 </select>
                 <label asp-for="Input.Role">Role</label>
                 <span asp-validation-for="Input.Role" class="text-danger"></span>
-            </div> *@
+            </div> 
             <button type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
         </form>
     </div>
