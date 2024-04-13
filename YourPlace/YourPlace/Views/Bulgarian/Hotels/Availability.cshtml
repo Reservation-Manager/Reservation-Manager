@@ -139,6 +139,10 @@
         align-items: center;
     }
 
+    .btn-primary{
+        margin-top: 2%;
+    }
+
 </style>
 <head>
     <meta charset="UTF-8">
@@ -171,7 +175,7 @@
                             <input class="number-input" type="number" id="rooms-count-@item.Item1.RoomID" value="0" min="0" max="@item.Item2" disabled>
                             <button class="btn" onclick="changeNumberOfRooms('@item.Item1.RoomID', 1)">+</button>
                         </div>
-                        <button class="clearbtn" id="clear-btn" onclick="clearInputField('@item.Item1.RoomID')">Премахни зададения брой</button>
+                        <button class="btn btn-primary" id="clear-btn" onclick="clearInputField('@item.Item1.RoomID')">Премахни зададения брой</button>
                     </div>
 
                 }
@@ -187,7 +191,7 @@
                     <input type="hidden" id="hidden-chosen-roomCount-@Model.AvailableRooms[i].Item1.RoomID" name="ChosenRooms[@i].ChosenCount" asp-for="ChosenRoomCount" />
                 }
 
-                <button type="submit" class="btn btn-outline-success" id="reserve-btn">Резервирай</button>
+                <button type="submit" class="btn btn-primary" id="reserve-btn">Резервирай</button>
             </form>
 
         }
