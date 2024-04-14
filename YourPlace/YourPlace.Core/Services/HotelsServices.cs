@@ -55,7 +55,25 @@ namespace YourPlace.Core.Services
                 throw;
             }
         }
- 
+
+        public async Task<List<Hotel>> SearchHotels(string searchString)
+        {
+            // Ensure searchString is not null before calling ToLower to avoid null reference exceptions   
+            List<Hotel> hotels = new List<Hotel>();
+            searchString = searchString?.ToLower();
+
+            hotels = await _dbContext.Hotels.Where(x => searchString == null || x.HotelName.ToLower().StartsWith(searchString)).ToListAsync();
+
+            return hotels;
+        }
+
+        public async Task<List<string>> GetHotelNamesAsync()
+        {
+            // Using LINQ to query and select hotel names
+            var hotelNames = await _dbContext.Hotels.Select(hotel => hotel.HotelName).ToListAsync();
+            return hotelNames;
+        }
+
         public async Task<List<Hotel>> ReadAllAsync(bool useNavigationalProperties = false, bool isReadOnly = true) //displays only the verified hotels for users
         {
             try
@@ -119,6 +137,8 @@ namespace YourPlace.Core.Services
                 throw;
             }
         }
+
+
         #endregion
 
         #region CRUD  Images

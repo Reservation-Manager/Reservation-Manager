@@ -17,6 +17,7 @@ namespace YourPlace.Controllers
         private const string toMainBg = "~/Views/Bulgarian/MainPage.cshtml";
         private const string bgTest = "~/Views/Bulgarian/BgTest.cshtml";
         private const string ImagesPath = "/Images/ProductImages";
+        private const string SearchPath = "~/Views/Bulgarian/Search.cshtml";
 
         public HomeController(ILogger<HomeController> logger, HotelsServices hotelsServices)
         {
@@ -77,6 +78,16 @@ namespace YourPlace.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public async Task<IActionResult> Search(AllHotelsModel model, string searchString)
+        {
+
+
+            var hotels = await _hotelsServices.SearchHotels(searchString);
+
+            return View(SearchPath, new AllHotelsModel { Hotels = hotels });
+
         }
     }
 }

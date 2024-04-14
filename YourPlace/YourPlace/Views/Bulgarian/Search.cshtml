@@ -1,28 +1,14 @@
-﻿@using YourPlace.Models.AdminModels;
-@model AdminModel;
+﻿@model AllHotelsModel
 @{
-    Layout = "_LayoutForAdmin";
-    ViewData["Title"] = "Admin's Page";
+
+    ViewData["Title"] = "Welcome!";
+    Layout = "_LayoutWithFilters";
 }
-<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-<link rel="stylesheet" href="~/YourPlace.styles.css" asp-append-version="true" />
 
 <style>
     * {
         box-sizing: border-box;
         font-family: 'Mulish', sans-serif;
-    }
-
-    
-
-    .container3 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        flex-direction: column;
-        padding-top: 10%;
     }
 
     #hotels-container {
@@ -81,36 +67,61 @@
         #hotels-container[data-view='grid'] .hotel .offers-btn {
             margin-left: unset;
         }
-        .tick{
-            width: 25px;
-            height: 10pmax-content;
+
+    .tick {
+        width: 25px;
+        height: 10pmax-content;
+    }
+
+    .col-12 {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .btn-warning1 {
+        color: #fff;
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+    }
+
+        .btn-warning1:hover {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+    .btn-primary1 {
+        color: #000;
+        background-color: #d3d3d3;
+        border-color: #d3d3d3;
+    }
+
+        .btn-primary1:hover {
+            color: #fff;
+            background-color: #0d6efd;
+            border-color: #0d6efd;
         }
 </style>
 
-<div class="container3">
-    <h1 class="heading">Здравей, Админ!</h1>
-</div>
-<p>Верифицираните хотели се отбелязват с: 
-    <img src="~/Images/checklist.png" class="tick" />
-</p>
+
 @if (Model != null)
 {
-    <div class="row justify-content-end">
-        <div class="col-2 d-flex justify-content-center align-items-center gap-1">
-            <label>Изглед:</label>
-            <button id="list-view-btn" class="btn btn-primary" disabled onclick="setHotelsView('list')">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
-                    <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2m0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2m0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14" />
-                </svg>
-            </button>
-            <button id="grid-view-btn" class="btn btn-primary" onclick="setHotelsView('grid')">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid" viewBox="0 0 16 16">
-                    <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z" />
-                </svg>
-            </button>
-        </div>
-    </div>
     <div class="row">
+        <div class="row justify-content-end">
+            <div class="col-2 d-flex justify-content-center align-items-center gap-1">
+                <label>Изглед:</label>
+                <button id="list-view-btn" class="btn btn-primary" disabled onclick="setHotelsView('list')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
+                        <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2m0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2m0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14" />
+                    </svg>
+                </button>
+                <button id="grid-view-btn" class="btn btn-primary" onclick="setHotelsView('grid')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid" viewBox="0 0 16 16">
+                        <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
         <div class="col-12">
             <div id="hotels-container" data-view="list">
                 @foreach (var item in Model.Hotels)
@@ -132,12 +143,6 @@
                                 <button type="submit" class="btn btn-primary">Оферти</button>
                             </form>
                             <br />
-                            <div class="offers-btn">
-                                <form asp-controller="Admin" asp-action="DeleteHotel" method="post">
-                                    <input type="hidden" name="hotelID" value="@item.HotelID" />
-                                    <button type="submit" class="btn btn-primary">Премахни</button>
-                                </form>
-                            </div>
                         </div>
                     </div>
                 }
@@ -148,9 +153,9 @@
         <div class="col-8 d-flex justify-content-center gap-1">
             @for (int i = 1; i <= ViewBag.Pages; i++)
             {
-                <form asp-controller="Admin" asp-action="Index" method="post">
+                <form asp-controller="Home" asp-action="ToMainBg" method="post">
                     <input type="hidden" name="page" value="@i" />
-                    <button type="submit" class="btn @(ViewBag.CurrentPage == i ? "btn-warning" : "btn-primary")">@i</button>
+                    <button type="submit" class="btn @(ViewBag.CurrentPage == i ? "btn-warning1" : "btn-primary1")">@i</button>
                 </form>
             }
         </div>
@@ -158,7 +163,7 @@
 }
 else
 {
-    <p class="text-center">Няма хотели.</p>
+    <p class="text-center">No hotels found.</p>
 }
 
 <script>
@@ -183,3 +188,4 @@ else
 
     setHotelsView(currentView);
 </script>
+
