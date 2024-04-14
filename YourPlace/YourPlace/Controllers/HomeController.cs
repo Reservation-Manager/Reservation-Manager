@@ -59,7 +59,12 @@ namespace YourPlace.Controllers
                 var paginatedHotels = hotels.Skip((page - 1) * (int)hotelsPerPage).Take((int)hotelsPerPage).ToList();
                 ViewBag.Pages = Math.Ceiling((double)(hotels.Count / hotelsPerPage));
                 ViewBag.CurrentPage = page;
+                foreach (var hotel in hotels)
+                {
+                    Console.WriteLine(hotel.ToString());
+                }
                 return View(toMainBg, new AllHotelsModel { Hotels = paginatedHotels });
+                
             }
             catch (Exception ex)
             {

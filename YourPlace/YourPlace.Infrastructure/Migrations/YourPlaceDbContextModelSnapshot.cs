@@ -334,7 +334,7 @@ namespace YourPlace.Infrastructure.Migrations
                             MainImageURL = "Arte.jpg",
                             Rating = 9.6999999999999993,
                             Town = "Велинград",
-                            Verified = false
+                            Verified = true
                         },
                         new
                         {
@@ -346,7 +346,7 @@ namespace YourPlace.Infrastructure.Migrations
                             MainImageURL = "RoseGarden.jpg",
                             Rating = 8.5,
                             Town = "Поморие",
-                            Verified = false
+                            Verified = true
                         },
                         new
                         {
@@ -358,7 +358,7 @@ namespace YourPlace.Infrastructure.Migrations
                             MainImageURL = "Therme.jpg",
                             Rating = 9.0999999999999996,
                             Town = "Баня",
-                            Verified = false
+                            Verified = true
                         },
                         new
                         {
@@ -370,7 +370,7 @@ namespace YourPlace.Infrastructure.Migrations
                             MainImageURL = "LaFleur.jpg",
                             Rating = 9.5,
                             Town = "Paris",
-                            Verified = false
+                            Verified = true
                         },
                         new
                         {
@@ -382,7 +382,7 @@ namespace YourPlace.Infrastructure.Migrations
                             MainImageURL = "RoyalLasVegas.jpg",
                             Rating = 7.9000000000000004,
                             Town = "Las Vegas",
-                            Verified = false
+                            Verified = true
                         });
                 });
 
@@ -989,14 +989,14 @@ namespace YourPlace.Infrastructure.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "203bfcad-64e0-4831-8ab3-984781203dac",
+                            ConcurrencyStamp = "6a52639a-3d1f-473b-8d6a-afc3e47e4113",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "Admin",
-                            PasswordHash = "AQAAAAIAAYagAAAAENTB3cKXNyyQVuVQvy1ZljfdOAsx0u/F7/6pxWu43uAGg4fVPwL0fS9Pj/OEU1qMmw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBs2gZFDw3BGBEvbV9VYrL7v6ol5R+zOOOy7AI3rZvKMpeIfiGyIsMduGdhAzCo8uw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             Surname = "User",

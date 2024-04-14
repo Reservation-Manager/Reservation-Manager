@@ -371,18 +371,18 @@ namespace YourPlace.Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Surname", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "1", 0, "203bfcad-64e0-4831-8ab3-984781203dac", "admin@gmail.com", true, "Admin", false, null, "ADMIN@GMAIL.COM", "Admin", "AQAAAAIAAYagAAAAENTB3cKXNyyQVuVQvy1ZljfdOAsx0u/F7/6pxWu43uAGg4fVPwL0fS9Pj/OEU1qMmw==", null, false, "", "User", false, "Admin" });
+                values: new object[] { "1", 0, "6a52639a-3d1f-473b-8d6a-afc3e47e4113", "admin@gmail.com", true, "Admin", false, null, "ADMIN@GMAIL.COM", "Admin", "AQAAAAIAAYagAAAAEBs2gZFDw3BGBEvbV9VYrL7v6ol5R+zOOOy7AI3rZvKMpeIfiGyIsMduGdhAzCo8uw==", null, false, "", "User", false, "Admin" });
 
             migrationBuilder.InsertData(
                 table: "Hotels",
                 columns: new[] { "HotelID", "Address", "Country", "Details", "HotelName", "MainImageURL", "ManagerID", "Rating", "Town", "Verified" },
                 values: new object[,]
                 {
-                    { 1, "ул. Юндола 20", "България", "Хотелът е с чудесен изглед към гората. Има неограничен безплатен Wi-Fi и удобен паркинг. Хотелът разполага с три вътрешни басейна и един външен.", "Arte Spa Hotel", "Arte.jpg", null, 9.6999999999999993, "Велинград", false },
-                    { 2, "ул. Ропотамо 12", "България", "Апартаменти Роуз Гардънс се намират на 50 метра от плажа. Включват сезонен външен басейн и сезонен ресторант, безплатен Wi-Fi и сезонен спа център.", "Rose Garden", "RoseGarden.jpg", null, 8.5, "Поморие", false },
-                    { 3, "ул. Горна Баня", "България", "Хотелът предлага безплатен високоскоростен WI-FI. Има спа център и 3 вътрешни басейна, както и 2 външни - един за деца, един за възрастни.", "Therme", "Therme.jpg", null, 9.0999999999999996, "Баня", false },
-                    { 4, "Flower str.", "Франция", "Прекрасна гледка към Айфеловата кула. Храната е високо качество, а стаите са прекрасни.", "La Fleur", "LaFleur.jpg", null, 9.5, "Paris", false },
-                    { 5, "Monte Carlo str.", "САЩ", "Хотел Las Vegas Royal предлага всякакви по вид занимания - от масажи до турнири по тенис и футбол. All-Inclisuve с включена храна и напитки", "Las Vegas Royal", "RoyalLasVegas.jpg", null, 7.9000000000000004, "Las Vegas", false }
+                    { 1, "ул. Юндола 20", "България", "Хотелът е с чудесен изглед към гората. Има неограничен безплатен Wi-Fi и удобен паркинг. Хотелът разполага с три вътрешни басейна и един външен.", "Arte Spa Hotel", "Arte.jpg", null, 9.6999999999999993, "Велинград", true },
+                    { 2, "ул. Ропотамо 12", "България", "Апартаменти Роуз Гардънс се намират на 50 метра от плажа. Включват сезонен външен басейн и сезонен ресторант, безплатен Wi-Fi и сезонен спа център.", "Rose Garden", "RoseGarden.jpg", null, 8.5, "Поморие", true },
+                    { 3, "ул. Горна Баня", "България", "Хотелът предлага безплатен високоскоростен WI-FI. Има спа център и 3 вътрешни басейна, както и 2 външни - един за деца, един за възрастни.", "Therme", "Therme.jpg", null, 9.0999999999999996, "Баня", true },
+                    { 4, "Flower str.", "Франция", "Прекрасна гледка към Айфеловата кула. Храната е високо качество, а стаите са прекрасни.", "La Fleur", "LaFleur.jpg", null, 9.5, "Paris", true },
+                    { 5, "Monte Carlo str.", "САЩ", "Хотел Las Vegas Royal предлага всякакви по вид занимания - от масажи до турнири по тенис и футбол. All-Inclisuve с включена храна и напитки", "Las Vegas Royal", "RoyalLasVegas.jpg", null, 7.9000000000000004, "Las Vegas", true }
                 });
 
             migrationBuilder.InsertData(
