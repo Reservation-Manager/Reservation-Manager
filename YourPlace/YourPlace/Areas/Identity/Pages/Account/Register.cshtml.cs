@@ -36,6 +36,7 @@ namespace YourPlace.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly UserServices _userServices;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
         public RegisterModel(
             UserManager<User> userManager,
@@ -43,7 +44,8 @@ namespace YourPlace.Areas.Identity.Pages.Account
             SignInManager<User> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            UserServices userServices)
+            UserServices userServices,
+            IHttpContextAccessor httpContextAccessor)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -52,6 +54,7 @@ namespace YourPlace.Areas.Identity.Pages.Account
             _logger = logger;
             _emailSender = emailSender;
             _userServices = userServices;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         /// <summary>
@@ -121,26 +124,24 @@ namespace YourPlace.Areas.Identity.Pages.Account
             public int HotelId { get; set; }
         }
 
-        public async Task OnGetAsync(string returnUrl = null, string source = null, int hotelID = 0)
+        public async Task OnGetAsync(string returnUrl = null, string source = null)
         {
             ReturnUrl = returnUrl;
             ViewData["Source"] = source;
 
-            //if (source == "receptionist")
-            //{
-            //    if (!string.IsNullOrEmpty(Request.Query["hotelID"]))
-            //    {
-            //        if (int.TryParse(Request.Query["hotelID"], out int parsedHotelId))
-            //        {
-            //            hotelID = parsedHotelId;
-            //        }
-            //    }
-            //}
-
-            //Input = new InputModel
-            //{
-            //    HotelId = hotelID
-            //};
+            // Retrieve hotel ID from the cookie
+            if (source == "receptionist")
+            {
+                var request = _httpContextAccessor.HttpContext.Request;
+                var hotelID = request.Cookies["HotelID"];
+                if (!string.IsNullOrEmpty(hotelID) && int.TryParse(hotelID, out int parsedHotelId))
+                {
+                    Input = new InputModel
+                    {
+                        HotelId = parsedHotelId
+                    };
+                }
+            }
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
@@ -151,21 +152,21 @@ namespace YourPlace.Areas.Identity.Pages.Account
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             var source = Request.Form["source"];
-
+            int hotelID = Input.HotelId; // Accessing hotelID from InputModel
+            if (hotelID != 0)
+            {
+                Console.WriteLine("HOTEL ID" + hotelID);
+            }
+            else
+            {
+                Console.WriteLine("NULL");
+            }
 
             ViewData["Source"] = source;
             Console.WriteLine(source);
             if (ModelState.IsValid)
             {
-                int hotelID = Input.HotelId; // Accessing hotelID from InputModel
-                if (hotelID != 0)
-                {
-                    Console.WriteLine("HOTEL ID" + hotelID);
-                }
-                else
-                {
-                    Console.WriteLine("NULL");
-                }
+                
                 
                 Tuple<IdentityResult, User> result;
                 if (source == "receptionist")
@@ -194,9 +195,7 @@ namespace YourPlace.Areas.Identity.Pages.Account
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-                    //log user in after registration
-                    await _signInManager.SignInAsync(user, new AuthenticationProperties());
-
+                    
                     // Else if you want to validate credentials here, with signInManager:
                    
                     if (user != null)
@@ -208,16 +207,34 @@ namespace YourPlace.Areas.Identity.Pages.Account
                         }
                         if (roles.Contains(Roles.Manager.ToString()))
                         {
+                            await _signInManager.SignInAsync(user, new AuthenticationProperties());
                             return RedirectToAction("Index", "ManagerMenu", new { firstName = user.FirstName, lastName = user.Surname, managerID = user.Id });
+                            //log user in after registration
+
                         }
                         if (roles.Contains(Roles.Traveller.ToString()))
                         {
+                            //log user in after registration
+                            await _signInManager.SignInAsync(user, new AuthenticationProperties());
+
                             return RedirectToAction("ToMainBg", "Home");
                         }
                         else
                         if (roles.Contains(Roles.Receptionist.ToString()))
                         {
-                            return RedirectToAction("SetHotelID", "ManagerMenu", new {username = user.UserName, receptionistID = user.Id});
+                            var loggedInUser = await _userManager.GetUserAsync(User);
+                            string loggedInUserId = null;
+                            // Check if the user is logged in
+                            if (loggedInUser != null)
+                            {
+                                // Now you can access the ID of the logged-in user
+                                loggedInUserId = loggedInUser.Id;
+                                Console.WriteLine("Logged in User ID: " + loggedInUserId);
+
+                                // Proceed with your logic here...
+                            }
+                            Console.WriteLine("I AM IN THE REGISTER" + user.Id);
+                            return RedirectToAction("SetHotelID", "ManagerMenu", new {username = user.UserName, receptionistID = user.Id, managerID = loggedInUserId});
                         }
                         else if (_userManager.Options.SignIn.RequireConfirmedAccount)
                         {

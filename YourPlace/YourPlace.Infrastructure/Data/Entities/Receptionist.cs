@@ -8,10 +8,14 @@ using System.Threading.Tasks;
 
 namespace YourPlace.Infrastructure.Data.Entities
 {
-    public class Receptionist : User
+    public class Receptionist
     {
+        [Key]
+        public int Id { get; set; }
         [Required]
-        public int HotelID;
+        public string UserID { get; set; }
+        [Required]
+        public int HotelID { get; set; }
 
         [NotMapped]
         public Hotel Hotel;
@@ -19,14 +23,9 @@ namespace YourPlace.Infrastructure.Data.Entities
         {
             
         }
-        public Receptionist(string username, string email, string firstName, string surname, int hotelID)
+        public Receptionist(string userID, int hotelID)
         {
-            this.UserName = username;
-            this.NormalizedUserName = username.ToUpper();
-            this.Email = email;
-            this.NormalizedEmail = email.ToUpper();
-            this.FirstName = firstName;
-            this.Surname = surname;
+            this.UserID = userID;
             this.HotelID = hotelID;
         }
     }

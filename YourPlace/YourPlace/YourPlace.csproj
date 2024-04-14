@@ -33,7 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Bulgarian\ReceptionistViews\" />
     <Folder Include="wwwroot\Images\AdditionalImages\" />
   </ItemGroup>
 

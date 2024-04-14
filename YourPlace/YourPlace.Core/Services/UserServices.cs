@@ -193,28 +193,7 @@ namespace YourPlace.Core.Services
             //userToBeEdited.Role = editedUser.Role;
             
         }
-        public async Task UpdateReceptionistAccountAsync(string username, int hotelID)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(username))
-                {
-                    User user = await _userManager.FindByNameAsync(username);
-                    Receptionist receptionist = new Receptionist(user.UserName, user.Email, user.FirstName, user.Surname, 0);
-                    receptionist.HotelID = hotelID;
-                    _dbContext.Receptionist.Add(receptionist);
-                }
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-
-            //userToBeEdited.Password = editedUser.Password;
-            //userToBeEdited.Role = editedUser.Role;
-
-        }
+       
         //public async Task ResetPasswordAsync(string id, string newPassword)
         //{
         //    User user = await _userManager.FindByIdAsync(id);
@@ -255,5 +234,45 @@ namespace YourPlace.Core.Services
         }
         #endregion
 
+        #region CRUD for Receptionists
+        public async Task UpdateReceptionistAccountAsync(string id, int hotelID)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(id))
+                {
+                    Receptionist receptionist = new Receptionist(id, hotelID);
+                    _dbContext.Receptionist.Add(receptionist);
+                    await _dbContext.SaveChangesAsync();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            //userToBeEdited.Password = editedUser.Password;
+            //userToBeEdited.Role = editedUser.Role;
+
+        }
+        public async Task<List<User>> ReadAllReceptionistsForHotelAsync(int hotelID)
+        {
+            try
+            {
+                List<User> users = new List<User>();
+                var receptionistsInHotel = await _dbContext.Receptionist.Where(x => x.HotelID == hotelID).ToListAsync();
+                foreach(var receptionist in receptionistsInHotel)
+                {
+                    User user = await ReadUserAsync(receptionist.UserID);
+                    users.Add(user);
+                }
+                return users;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        #endregion
     }
 }

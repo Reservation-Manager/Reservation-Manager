@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,14 @@ namespace YourPlace.Infrastructure.Data.Entities
         public string Surname { get; set; }
 
         [Required]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
+
+        [Required]
+        [DataType(DataType.PhoneNumber)]
+        public string PhoneNumber { get; set; }
+
+        [Required]
         public DateOnly ArrivalDate { get; set; }
 
         [Required]
@@ -30,6 +39,9 @@ namespace YourPlace.Infrastructure.Data.Entities
 
         [Required]
         public decimal Price { get; set; }
+
+        [AllowNull]
+        public bool Verified { get; set; } = false;
 
         [ForeignKey("Hotel")]
         public int HotelID { get; set; }

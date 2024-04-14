@@ -51,6 +51,16 @@
                 </form>
             </li>
         }
+        @if (userRoles.Contains("Receptionist"))
+        {
+            <li class="nav-item">
+                <form id="managerForm" class="form-inline" asp-action="Index" asp-controller="Receptionist">
+                    <input type="hidden" name="firstName" value="@firstName" />
+                    <input type="hidden" name="lastName" value="@lastName" />
+                    <button id="receptionist" type="submit" class="nav-link btn btn-link text-dark">Меню за рецепционисти</button>
+                </form>
+            </li>
+        }
     }
     else
     {

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YourPlace.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using YourPlace.Infrastructure.Data;
 namespace YourPlace.Infrastructure.Migrations
 {
     [DbContext(typeof(YourPlaceDbContext))]
-    partial class YourPlaceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240414042839_update")]
+    partial class update
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -544,9 +547,8 @@ namespace YourPlace.Infrastructure.Migrations
                     b.Property<int>("HotelID")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -566,10 +568,6 @@ namespace YourPlace.Infrastructure.Migrations
                     b.Property<DateOnly>("ArrivalDate")
                         .HasColumnType("date");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -583,19 +581,12 @@ namespace YourPlace.Infrastructure.Migrations
                     b.Property<int>("PeopleCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Surname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Verified")
-                        .HasColumnType("bit");
 
                     b.HasKey("ReservationID");
 
@@ -608,71 +599,56 @@ namespace YourPlace.Infrastructure.Migrations
                         {
                             ReservationID = 1,
                             ArrivalDate = new DateOnly(2024, 3, 20),
-                            Email = "ipetrov@gmail.com",
                             FirstName = "Иван",
                             HotelID = 1,
                             LeavingDate = new DateOnly(2024, 3, 25),
                             PeopleCount = 2,
-                            PhoneNumber = "0876155488",
                             Price = 500.00m,
-                            Surname = "Петров",
-                            Verified = true
+                            Surname = "Петров"
                         },
                         new
                         {
                             ReservationID = 2,
                             ArrivalDate = new DateOnly(2024, 4, 10),
-                            Email = "mariaivanova@gmail.com",
                             FirstName = "Мария",
                             HotelID = 2,
                             LeavingDate = new DateOnly(2024, 4, 15),
                             PeopleCount = 1,
-                            PhoneNumber = "0876155489",
                             Price = 300.00m,
-                            Surname = "Иванова",
-                            Verified = true
+                            Surname = "Иванова"
                         },
                         new
                         {
                             ReservationID = 3,
                             ArrivalDate = new DateOnly(2024, 5, 10),
-                            Email = "peturivanov@gmail.com",
                             FirstName = "Петър",
                             HotelID = 1,
                             LeavingDate = new DateOnly(2024, 5, 15),
                             PeopleCount = 3,
-                            PhoneNumber = "0876155648",
                             Price = 750.00m,
-                            Surname = "Иванов",
-                            Verified = true
+                            Surname = "Иванов"
                         },
                         new
                         {
                             ReservationID = 4,
                             ArrivalDate = new DateOnly(2024, 6, 20),
-                            Email = "gerip@gmail.com",
                             FirstName = "Гергана",
                             HotelID = 2,
                             LeavingDate = new DateOnly(2024, 6, 25),
                             PeopleCount = 2,
-                            PhoneNumber = "0876155428",
                             Price = 600.00m,
-                            Surname = "Петрова",
-                            Verified = true
+                            Surname = "Петрова"
                         },
                         new
                         {
                             ReservationID = 5,
                             ArrivalDate = new DateOnly(2024, 7, 1),
-                            Email = "stefangeorgiev@gmail.com",
                             FirstName = "Стефан",
                             HotelID = 3,
                             LeavingDate = new DateOnly(2024, 7, 5),
                             PeopleCount = 1,
-                            PhoneNumber = "0876156489",
                             Price = 200.00m,
-                            Surname = "Георгиев",
-                            Verified = true
+                            Surname = "Георгиев"
                         });
                 });
 
@@ -989,14 +965,14 @@ namespace YourPlace.Infrastructure.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8b7f2c2b-a4f9-4c02-bf93-cdabd397714c",
+                            ConcurrencyStamp = "a20793fd-41f5-40ac-8ce5-ca5e57a66cbb",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "Admin",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDqfNTTYFe/FPdECvOH0JDM5o7olADhryJY9gAPPJ0y/9/UFC0RwjsmF3/bXcgKlOQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPFV9bQDHJh/vDUIgEVM6dTxYqaXHPNBAPhZw4itAa0n5fOL+Vt1G2d7hFkgvEe8BQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             Surname = "User",

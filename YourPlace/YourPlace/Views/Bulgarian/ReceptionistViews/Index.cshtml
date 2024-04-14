@@ -1,0 +1,174 @@
+﻿@model ReservationModel;
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Receptionist's Page";
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/YourPlace.styles.css" asp-append-version="true" />
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Mulish', sans-serif;
+    }
+
+    .container3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        padding-top: 10%;
+    }
+    .row{
+        margin-top: 5%;
+    }
+    #hotels-container {
+        display: grid;
+        gap: 30px;
+        margin-top: 30px;
+    }
+
+        #hotels-container[data-view='grid'] {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        #hotels-container .hotel {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            background-color: rgba(255,255,255,.5);
+            box-shadow: 0 0 30px rgba(0,0,0,.2);
+            border-radius: 5px;
+            padding: 20px;
+            gap: 30px;
+            align-items: center;
+        }
+
+        #hotels-container[data-view='grid'] .hotel {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            height: auto;
+        }
+
+        #hotels-container .hotel .hotel-image {
+            height: 100%;
+            width: 170px;
+            object-fit: cover;
+        }
+
+        #hotels-container[data-view='grid'] .hotel .hotel-image {
+            height: 300px;
+            width: 100%;
+        }
+
+        #hotels-container .hotel .details {
+            height: 100%;
+        }
+
+            #hotels-container .hotel .details p {
+                margin: 0;
+                padding: 0;
+            }
+
+        #hotels-container .hotel .offers-btn {
+            margin-left: auto;
+        }
+
+        #hotels-container[data-view='grid'] .hotel .offers-btn {
+            margin-left: unset;
+        }
+
+    .tick {
+        width: 25px;
+        height: 10pmax-content;
+    }
+</style>
+
+
+@if (Model != null)
+{
+    <div class="row justify-content-end">
+        <div class="col-2 d-flex justify-content-center align-items-center gap-1">
+            <label>Изглед:</label>
+            <button id="list-view-btn" class="btn btn-primary" disabled onclick="setHotelsView('list')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
+                    <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2m0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2m0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14" />
+                </svg>
+            </button>
+            <button id="grid-view-btn" class="btn btn-primary" onclick="setHotelsView('grid')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid" viewBox="0 0 16 16">
+                    <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z" />
+                </svg>
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div id="hotels-container" data-view="list">
+                @foreach (var item in Model.Hotels)
+                {
+                    <div class="hotel">
+                        @if (item.Verified == true)
+                        {
+                            <img src="~/Images/checklist.png" alt="Tick Mark" class="tick">
+                        }
+                        <img src="~/Images/MainImages/@item.MainImageURL" alt="image" class="hotel-image">
+                        <div class="details">
+                            <h5 class="fw-bold">@item.HotelName</h5>
+                            <p>@item.Town, @item.Country</p>
+                            <p>@item.Rating/10</p>
+                        </div>
+                        <div class="offers-btn">
+                            <form asp-controller="Receptionist" asp-action="ViewReservations" method="post">
+                                <input type="hidden" name="hotelID" value="@item.HotelID" />
+                                <button type="submit" class="btn btn-primary">Виж резервациите</button>
+                            </form>
+                            <br />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+        <div class="col-8 d-flex justify-content-center gap-1">
+            @for (int i = 1; i <= ViewBag.Pages; i++)
+            {
+                <form asp-controller="Admin" asp-action="Index" method="post">
+                    <input type="hidden" name="page" value="@i" />
+                    <button type="submit" class="btn @(ViewBag.CurrentPage == i ? "btn-warning" : "btn-primary")">@i</button>
+                </form>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <p class="text-center">Няма хотели.</p>
+}
+
+<script>
+    const listViewBtn = document.getElementById('list-view-btn');
+    const gridViewBtn = document.getElementById('grid-view-btn');
+    const hotelsContainer = document.getElementById('hotels-container');
+    const currentView = sessionStorage.getItem('hotels-view') || 'list';
+
+    function setHotelsView(view) {
+        if (view === 'list') {
+            listViewBtn.setAttribute('disabled', '');
+            gridViewBtn.removeAttribute('disabled');
+            hotelsContainer.setAttribute('data-view', 'list');
+            sessionStorage.setItem('hotels-view', 'list');
+        } else {
+            gridViewBtn.setAttribute('disabled', '');
+            listViewBtn.removeAttribute('disabled');
+            hotelsContainer.setAttribute('data-view', 'grid');
+            sessionStorage.setItem('hotels-view', 'grid');
+        }
+    }
+
+    setHotelsView(currentView);
+</script>

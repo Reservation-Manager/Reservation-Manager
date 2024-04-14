@@ -24,6 +24,9 @@ namespace YourPlace.Models
         [BindProperty]
         public List<RoomSelection> ChosenRooms { get; set; }
 
+        public List<Hotel> Hotels { get; set; }
+        public List<Reservation> Reservations { get; set; }
+
         //public IActionResult OnPost()
         //{
         //    var list = ChosenRooms;

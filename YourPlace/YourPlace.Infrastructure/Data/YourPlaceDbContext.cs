@@ -159,32 +159,32 @@ namespace YourPlace.Infrastructure.Data
 
 
             modelBuilder.Entity<Reservation>().HasData(
-                 new Reservation { ReservationID = 1, FirstName = "Иван", Surname = "Петров", ArrivalDate = new DateOnly(2024, 3, 20), LeavingDate = new DateOnly(2024, 3, 25), PeopleCount = 2, Price = 500.00m, HotelID = 1,
+                 new Reservation { ReservationID = 1, FirstName = "Иван", Surname = "Петров", Email = "ipetrov@gmail.com", PhoneNumber = "0876155488", ArrivalDate = new DateOnly(2024, 3, 20), LeavingDate = new DateOnly(2024, 3, 25), PeopleCount = 2, Price = 500.00m, HotelID = 1, Verified = true,
                      ReservedRooms = new List<RoomSelection>
                      {
                         new RoomSelection { RoomID = 1, ChosenCount = 1 },
                         new RoomSelection { RoomID = 2, ChosenCount = 1}
                      }
                  },
-                 new Reservation { ReservationID = 2, FirstName = "Мария", Surname = "Иванова", ArrivalDate = new DateOnly(2024, 4, 10), LeavingDate = new DateOnly(2024, 4, 15), PeopleCount = 1, Price = 300.00m, HotelID = 2,
+                 new Reservation { ReservationID = 2, FirstName = "Мария", Surname = "Иванова", Email = "mariaivanova@gmail.com", PhoneNumber = "0876155489",ArrivalDate = new DateOnly(2024, 4, 10), LeavingDate = new DateOnly(2024, 4, 15), PeopleCount = 1, Price = 300.00m, HotelID = 2, Verified = true,
                      ReservedRooms = new List<RoomSelection>
                      {
                         new RoomSelection { RoomID = 3, ChosenCount = 1}
                      }
                  },
-                 new Reservation { ReservationID = 3, FirstName = "Петър", Surname = "Иванов", ArrivalDate = new DateOnly(2024, 5, 10), LeavingDate = new DateOnly(2024, 5, 15), PeopleCount = 3, Price = 750.00m, HotelID = 1,
+                 new Reservation { ReservationID = 3, FirstName = "Петър", Surname = "Иванов", Email = "peturivanov@gmail.com", PhoneNumber = "0876155648", ArrivalDate = new DateOnly(2024, 5, 10), LeavingDate = new DateOnly(2024, 5, 15), PeopleCount = 3, Price = 750.00m, HotelID = 1, Verified = true,
                      ReservedRooms = new List<RoomSelection>
                      {
                         new RoomSelection { RoomID = 1, ChosenCount = 2}
                      }
                  },
-                 new Reservation { ReservationID = 4, FirstName = "Гергана", Surname = "Петрова", ArrivalDate = new DateOnly(2024, 6, 20), LeavingDate = new DateOnly(2024, 6, 25), PeopleCount = 2, Price = 600.00m, HotelID = 2,
+                 new Reservation { ReservationID = 4, FirstName = "Гергана", Surname = "Петрова", Email = "gerip@gmail.com", PhoneNumber = "0876155428",ArrivalDate = new DateOnly(2024, 6, 20), LeavingDate = new DateOnly(2024, 6, 25), PeopleCount = 2, Price = 600.00m, HotelID = 2, Verified = true,
                      ReservedRooms = new List<RoomSelection>
                      {
                         new RoomSelection { RoomID = 4, ChosenCount = 1}
                      }
                  },
-                 new Reservation { ReservationID = 5, FirstName = "Стефан", Surname = "Георгиев", ArrivalDate = new DateOnly(2024, 7, 1), LeavingDate = new DateOnly(2024, 7, 5), PeopleCount = 1, Price = 200.00m, HotelID = 3,
+                 new Reservation { ReservationID = 5, FirstName = "Стефан", Surname = "Георгиев", Email = "stefangeorgiev@gmail.com", PhoneNumber = "0876156489", ArrivalDate = new DateOnly(2024, 7, 1), LeavingDate = new DateOnly(2024, 7, 5), PeopleCount = 1, Price = 200.00m, HotelID = 3, Verified = true,
                      ReservedRooms = new List<RoomSelection>
                      {
                         new RoomSelection { RoomID = 6, ChosenCount = 1},

@@ -89,7 +89,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="receptionistDropdown">
                                 <a class="dropdown-item" href="/Identity/Account/Register?source=receptionist">Добави рецепционист</a>
-                                <form id="viewReceptionists" asp-area="" asp-controller="ManagerMenu" asp-action="ViewAllReceptionists" method="post">
+                                <form id="viewReceptionists" asp-area="" asp-controller="ManagerMenu" asp-action="ViewAllVerifiedHotels" method="post">
                                     <input type="hidden" name="FirstName" value="@Model.FirstName" asp-for="FirstName" />
                                     <input type="hidden" name="LastName" value="@Model.LastName" asp-for="LastName" />
                                     <input type="hidden" name="ManagerID" value="@Model.ManagerID" asp-for="ManagerID" />

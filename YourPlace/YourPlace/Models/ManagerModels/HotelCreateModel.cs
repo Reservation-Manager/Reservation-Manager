@@ -30,6 +30,8 @@ namespace YourPlace.Models.ManagerModels
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
+        public string ReceptionistId { get; set; }
+        public List<User> Receptionists { get; set; }
+        public User User { get; set; }
     }
 }

@@ -13,9 +13,7 @@
         box-sizing: border-box;
         font-family: 'Mulish', sans-serif;
     }
-    .row{
-        margin-top: 5%;
-    }
+
     #hotels-container {
         display: grid;
         gap: 30px;
@@ -127,67 +125,49 @@
                 </button>
             </div>
         </div>
+            <input type="hidden" name="ManagerID" value="@Model.ManagerID" asp-for="ManagerID" />
+        </div>
         <div class="col-12">
             <div id="hotels-container" data-view="list">
-                @if (Model.ManagerHotels.Count != 0)
+                @if (Model.Receptionists.Count != 0)
                 {
-                    @foreach (var item in Model.ManagerHotels)
+                    @foreach (var receptionist in Model.Receptionists)
                     {
                         <div class="hotel">
-                            @if (item.Verified == true)
-                            {
-                                <img src="~/Images/checklist.png" alt="Tick Mark" class="tick">
-                            }
-                            <img src="~/Images/MainImages/@item.MainImageURL" alt="image" class="hotel-image">
                             <div class="details">
-                                <h5 class="fw-bold">@item.HotelName</h5>
-                                <p>@item.Town, @item.Country</p>
-                                <p>@item.Rating/10</p>
-                            </div>
-                            <div class="offers-btn">
-                                @* <button class="btn btn-primary">
-                                    Добави рецепционист
-                                    <a class="dropdown-item" href="/Identity/Account/Register?source=receptionist&hotelID=@item.HotelID"></a>
-                                </button> *@
-                                <form id="updateUser" asp-controller="ManagerMenu" asp-action="Set">
-                                    <input type="text" name="HotelID" value="@item.HotelID" asp-for="HotelID" />
-                                    <input type="text" name="ManagerID" value="@Model.ManagerID" asp-for="ManagerID" />
-                                    <input type="text" name="ReceptionistID" value="@Model.ReceptionistId" asp-for="ReceptionistId" />
-                                    <button type="submit" class="btn btn-primary">ДОБАВИ</button>
-                                </form>
-
-                                <form id="viewReceptionists" asp-area="" asp-controller="ManagerMenu" asp-action="ViewAllReceptionistsForHotel" method="post">
-                                    <input type="hidden" name="FirstName" value="@Model.FirstName" asp-for="FirstName" />
-                                    <input type="hidden" name="LastName" value="@Model.LastName" asp-for="LastName" />
-                                    <input type="hidden" name="ManagerID" value="@Model.ManagerID" asp-for="ManagerID" />
-                                    <input type="hidden" name="HotelID" value="@item.HotelID"  asp-for="HotelID" />
-                                    <button class="btn btn-primary">Виж всички рецепционисти</button>
-                                </form>
-                                <br />
+                                <h5 class="fw-bold">@receptionist.FirstName @receptionist.Surname</h5>
+                                <p>
+                                    Имейл:@receptionist.Email
+                                    Потребителско име:@receptionist.UserName
+                                </p>
+                                <p>Място на работа: Хотел @Model.HotelName</p>
                             </div>
                         </div>
                     }
                 }
                 else
                 {
-                    <p>Няма регистрирани хотели.</p>
+                    <p>Няма регистрирани рецепционисти за този хотел.</p>
                 }
-                <div class="row justify-content-center mt-3">
-                    <div class="col-8 d-flex justify-content-center gap-1">
-                        @for (int i = 1; i <= ViewBag.Pages; i++)
-                        {
-                            <form asp-controller="Home" asp-action="ToMainBg" method="post">
-                                <input type="hidden" name="page" value="@i" />
-                                <button type="submit" class="btn @(ViewBag.CurrentPage == i ? "btn-warning1" : "btn-primary1")">@i</button>
-                            </form>
-                        }
-                    </div>
-                </div>
             </div>
         </div>
-    </div>   
+    
+    <div class="row justify-content-center mt-3">
+        <div class="col-8 d-flex justify-content-center gap-1">
+            @for (int i = 1; i <= ViewBag.Pages; i++)
+            {
+                <form asp-controller="Home" asp-action="ToMainBg" method="post">
+                    <input type="hidden" name="page" value="@i" />
+                    <button type="submit" class="btn @(ViewBag.CurrentPage == i ? "btn-warning1" : "btn-primary1")">@i</button>
+                </form>
+            }
+        </div>
+    </div>
 }
-
+else
+{
+    <p class="text-center">No hotels found.</p>
+}
 
 <script>
     const listViewBtn = document.getElementById('list-view-btn');
