@@ -237,6 +237,7 @@ namespace YourPlace.Core.Services
         #region CRUD for Receptionists
         public async Task UpdateReceptionistAccountAsync(string id, int hotelID)
         {
+            Console.WriteLine(id);
             try
             {
                 if (!string.IsNullOrEmpty(id))
@@ -260,11 +261,16 @@ namespace YourPlace.Core.Services
             try
             {
                 List<User> users = new List<User>();
-                var receptionistsInHotel = await _dbContext.Receptionist.Where(x => x.HotelID == hotelID).ToListAsync();
+                List<Receptionist> receptionistsInHotel = await _dbContext.Receptionist.Where(x => x.HotelID == hotelID).ToListAsync();
                 foreach(var receptionist in receptionistsInHotel)
                 {
-                    User user = await ReadUserAsync(receptionist.UserID);
+                    Console.WriteLine(receptionist.Id);
+                    User user = await _userManager.FindByIdAsync(receptionist.UserID);
                     users.Add(user);
+                }
+                foreach (var item in users)
+                {
+                    Console.WriteLine("ЮХУУУУ ТУК СЪЪЪМ " + item.FirstName);
                 }
                 return users;
             }

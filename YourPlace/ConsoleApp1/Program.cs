@@ -297,3 +297,9 @@ Filters filters = new Filters(dbContext, hotelsServices, roomAvailabilityService
 //{
 //    Console.WriteLine(hotel.ToString());
 //}
+//UserServices _userServices = new UserServices(dbContext, userManager);
+//var receptionists = await _userServices.ReadAllReceptionistsForHotelAsync(11);
+//foreach(var receptionist in receptionists)
+//{
+//    Console.WriteLine(receptionist.FirstName);
+//}

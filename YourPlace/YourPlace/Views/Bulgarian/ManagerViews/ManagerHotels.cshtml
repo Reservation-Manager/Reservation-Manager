@@ -13,7 +13,7 @@
         box-sizing: border-box;
         font-family: 'Mulish', sans-serif;
     }
-
+ 
     #hotels-container {
         display: grid;
         gap: 30px;
@@ -142,13 +142,17 @@
                                 <p>@item.Town, @item.Country</p>
                                 <p>@item.Rating/10</p>
                             </div>
-                            <div class="offers-btn">
+                          @*   <div class="offers-btn">
                                 <form asp-controller="Hotels" asp-action="Offer" method="post">
+                                    @for (int i = 0; i < Model.RoomsInHotel.Count; i++)
+                                    {
+                                        <input type="hidden" name="hotels[@i].HotelID" value="@Model.RoomsInHotel[i].HotelID" />
+                                    }
                                     <input type="hidden" name="hotelID" value="@item.HotelID" />
                                     <button type="submit" class="btn btn-primary">Оферти</button>
                                 </form>
                                 <br />
-                            </div>
+                            </div> *@
                         </div>
                     }
                 }

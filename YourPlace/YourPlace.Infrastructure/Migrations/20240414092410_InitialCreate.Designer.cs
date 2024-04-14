@@ -12,7 +12,7 @@ using YourPlace.Infrastructure.Data;
 namespace YourPlace.Infrastructure.Migrations
 {
     [DbContext(typeof(YourPlaceDbContext))]
-    [Migration("20240409204313_InitialCreate")]
+    [Migration("20240414092410_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -536,6 +536,28 @@ namespace YourPlace.Infrastructure.Migrations
                     b.ToTable("Preferences");
                 });
 
+            modelBuilder.Entity("YourPlace.Infrastructure.Data.Entities.Receptionist", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("HotelID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HotelID");
+
+                    b.ToTable("Receptionist");
+                });
+
             modelBuilder.Entity("YourPlace.Infrastructure.Data.Entities.Reservation", b =>
                 {
                     b.Property<int>("ReservationID")
@@ -546,6 +568,10 @@ namespace YourPlace.Infrastructure.Migrations
 
                     b.Property<DateOnly>("ArrivalDate")
                         .HasColumnType("date");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -560,12 +586,19 @@ namespace YourPlace.Infrastructure.Migrations
                     b.Property<int>("PeopleCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Surname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Verified")
+                        .HasColumnType("bit");
 
                     b.HasKey("ReservationID");
 
@@ -578,56 +611,71 @@ namespace YourPlace.Infrastructure.Migrations
                         {
                             ReservationID = 1,
                             ArrivalDate = new DateOnly(2024, 3, 20),
+                            Email = "ipetrov@gmail.com",
                             FirstName = "Иван",
                             HotelID = 1,
                             LeavingDate = new DateOnly(2024, 3, 25),
                             PeopleCount = 2,
+                            PhoneNumber = "0876155488",
                             Price = 500.00m,
-                            Surname = "Петров"
+                            Surname = "Петров",
+                            Verified = true
                         },
                         new
                         {
                             ReservationID = 2,
                             ArrivalDate = new DateOnly(2024, 4, 10),
+                            Email = "mariaivanova@gmail.com",
                             FirstName = "Мария",
                             HotelID = 2,
                             LeavingDate = new DateOnly(2024, 4, 15),
                             PeopleCount = 1,
+                            PhoneNumber = "0876155489",
                             Price = 300.00m,
-                            Surname = "Иванова"
+                            Surname = "Иванова",
+                            Verified = true
                         },
                         new
                         {
                             ReservationID = 3,
                             ArrivalDate = new DateOnly(2024, 5, 10),
+                            Email = "peturivanov@gmail.com",
                             FirstName = "Петър",
                             HotelID = 1,
                             LeavingDate = new DateOnly(2024, 5, 15),
                             PeopleCount = 3,
+                            PhoneNumber = "0876155648",
                             Price = 750.00m,
-                            Surname = "Иванов"
+                            Surname = "Иванов",
+                            Verified = true
                         },
                         new
                         {
                             ReservationID = 4,
                             ArrivalDate = new DateOnly(2024, 6, 20),
+                            Email = "gerip@gmail.com",
                             FirstName = "Гергана",
                             HotelID = 2,
                             LeavingDate = new DateOnly(2024, 6, 25),
                             PeopleCount = 2,
+                            PhoneNumber = "0876155428",
                             Price = 600.00m,
-                            Surname = "Петрова"
+                            Surname = "Петрова",
+                            Verified = true
                         },
                         new
                         {
                             ReservationID = 5,
                             ArrivalDate = new DateOnly(2024, 7, 1),
+                            Email = "stefangeorgiev@gmail.com",
                             FirstName = "Стефан",
                             HotelID = 3,
                             LeavingDate = new DateOnly(2024, 7, 5),
                             PeopleCount = 1,
+                            PhoneNumber = "0876156489",
                             Price = 200.00m,
-                            Surname = "Георгиев"
+                            Surname = "Георгиев",
+                            Verified = true
                         });
                 });
 
@@ -879,11 +927,6 @@ namespace YourPlace.Infrastructure.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(13)
-                        .HasColumnType("nvarchar(13)");
-
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -944,41 +987,25 @@ namespace YourPlace.Infrastructure.Migrations
 
                     b.ToTable("AspNetUsers", (string)null);
 
-                    b.HasDiscriminator<string>("Discriminator").HasValue("User");
-
-                    b.UseTphMappingStrategy();
-
                     b.HasData(
                         new
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c13c1120-02e9-40a7-87e6-0a8472a0d0bf",
+                            ConcurrencyStamp = "203bfcad-64e0-4831-8ab3-984781203dac",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "Admin",
-                            PasswordHash = "AQAAAAIAAYagAAAAELOjByJ9RdIIKhxVOD9BRbvxB6kGQN5Dv4X5L6LT34McT9TI8WQk+KUA235z0H/Esg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENTB3cKXNyyQVuVQvy1ZljfdOAsx0u/F7/6pxWu43uAGg4fVPwL0fS9Pj/OEU1qMmw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             Surname = "User",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
-                });
-
-            modelBuilder.Entity("YourPlace.Infrastructure.Data.Entities.Receptionist", b =>
-                {
-                    b.HasBaseType("YourPlace.Infrastructure.Data.Entities.User");
-
-                    b.Property<int>("HotelID")
-                        .HasColumnType("int");
-
-                    b.HasIndex("HotelID");
-
-                    b.HasDiscriminator().HasValue("Receptionist");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1052,6 +1079,17 @@ namespace YourPlace.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("YourPlace.Infrastructure.Data.Entities.Receptionist", b =>
+                {
+                    b.HasOne("YourPlace.Infrastructure.Data.Entities.Hotel", "Hotel")
+                        .WithMany()
+                        .HasForeignKey("HotelID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Hotel");
+                });
+
             modelBuilder.Entity("YourPlace.Infrastructure.Data.Entities.Reservation", b =>
                 {
                     b.HasOne("YourPlace.Infrastructure.Data.Entities.Hotel", "Hotel")
@@ -1083,17 +1121,6 @@ namespace YourPlace.Infrastructure.Migrations
                 });
 
             modelBuilder.Entity("YourPlace.Infrastructure.Data.Entities.RoomAvailability", b =>
-                {
-                    b.HasOne("YourPlace.Infrastructure.Data.Entities.Hotel", "Hotel")
-                        .WithMany()
-                        .HasForeignKey("HotelID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Hotel");
-                });
-
-            modelBuilder.Entity("YourPlace.Infrastructure.Data.Entities.Receptionist", b =>
                 {
                     b.HasOne("YourPlace.Infrastructure.Data.Entities.Hotel", "Hotel")
                         .WithMany()

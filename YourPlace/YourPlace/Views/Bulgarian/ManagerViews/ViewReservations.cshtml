@@ -13,9 +13,11 @@
         box-sizing: border-box;
         font-family: 'Mulish', sans-serif;
     }
-    .row{
+
+    .row {
         margin-top: 5%;
     }
+
     #hotels-container {
         display: grid;
         gap: 30px;
@@ -146,21 +148,14 @@
                             </div>
                             <div class="offers-btn">
                                 @* <button class="btn btn-primary">
-                                    Добави рецепционист
-                                    <a class="dropdown-item" href="/Identity/Account/Register?source=receptionist&hotelID=@item.HotelID"></a>
-                                </button> *@
-                                <form id="updateUser" asp-controller="ManagerMenu" asp-action="Set">
-                                    <input type="hidden" name="HotelID" value="@item.HotelID" asp-for="HotelID" />
-                                    <input type="hidden" name="ManagerID" value="@Model.ManagerID" asp-for="ManagerID" />
-                                    <input type="hidden" name="ReceptionistID" value="@Model.ReceptionistId" asp-for="ReceptionistId" />
-                                    <button type="submit" class="btn btn-primary">Добави рецепционист</button>
-                                </form>
-                                <br />
+                    Добави рецепционист
+                    <a class="dropdown-item" href="/Identity/Account/Register?source=receptionist&hotelID=@item.HotelID"></a>
+                    </button> *@
                                 <form id="viewReceptionists" asp-area="" asp-controller="ManagerMenu" asp-action="ViewAllReceptionistsForHotel" method="post">
                                     <input type="hidden" name="FirstName" value="@Model.FirstName" asp-for="FirstName" />
                                     <input type="hidden" name="LastName" value="@Model.LastName" asp-for="LastName" />
                                     <input type="hidden" name="ManagerID" value="@Model.ManagerID" asp-for="ManagerID" />
-                                    <input type="hidden" name="HotelID" value="@item.HotelID"  asp-for="HotelID" />
+                                    <input type="hidden" name="HotelID" value="@item.HotelID" asp-for="HotelID" />
                                     <button class="btn btn-primary">Виж всички рецепционисти</button>
                                 </form>
                                 <br />
@@ -185,7 +180,7 @@
                 </div>
             </div>
         </div>
-    </div>   
+    </div>
 }
 
 

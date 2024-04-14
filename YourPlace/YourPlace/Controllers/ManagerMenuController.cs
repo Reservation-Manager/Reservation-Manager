@@ -57,6 +57,7 @@ namespace YourPlace.Controllers
         private const string toReceptionists = "~/Views/Bulgarian/ManagerViews/ReceptionistsManagement.cshtml";
         private const string toReceptionistsView = "~/Views/Bulgarian/ManagerViews/ReceptionistView.cshtml";
         private const string toReceptionistsViews = "~/Views/Bulgarian/ManagerViews/ReceptionistsView.cshtml";
+        private const string toViewReservations = "~/Views/Bulgarian/ManagerViews/ViewReservations.cshtml";
 
         public IActionResult Index([Bind("ManagerID", "FirstName", "LastName")]string managerID, string firstName, string lastName)
         {
@@ -139,7 +140,7 @@ namespace YourPlace.Controllers
             }
            
         }
-        public async Task<IActionResult> ViewManagerHotels([Bind("ManagerID", "FirstName", "LastName")]string managerID, string firstName, string lastName)
+        public async Task<IActionResult> ViewManagerHotels([Bind("ManagerID", "FirstName", "LastName", "RoomsInHotel")]string managerID, string firstName, string lastName, List<Room> roomsInHotel)
         {
             if(managerID == null)
             {
@@ -174,24 +175,26 @@ namespace YourPlace.Controllers
             Console.WriteLine(firstName);
             User receptionist = await _userManager.FindByIdAsync(receptionistID);
             await _userServices.UpdateReceptionistAccountAsync(receptionistID, hotelID);
-            Hotel hotel = await _hotelsServices.ReadAsync(hotelID);
+            Hotel hotel = await _hotelsServices.ReadAsync(hotelID);                   
             return View(toReceptionistsView, new HotelCreateModel { User = receptionist, ReceptionistId = receptionistID, ManagerID = managerID, HotelName = hotel.HotelName, FirstName = firstName, LastName = lastName });
         }
-
+                
         public async Task<IActionResult> ViewAllVerifiedHotels([Bind("ManagerID", "FirstName", "LastName")]string managerID, string firstName, string lastName)
         {
             List<Hotel> hotels = await _hotelsServices.AdminReadAllAsync();
             hotels = hotels.Where(x => x.ManagerID == managerID).Where(x => x.Verified == true).ToList();
-            return View(toReceptionists, new HotelCreateModel { ManagerHotels = hotels, ManagerID = managerID, FirstName = firstName, LastName = lastName });
+            return View(toViewReservations, new HotelCreateModel { ManagerHotels = hotels, ManagerID = managerID, FirstName = firstName, LastName = lastName });
         }
         public async Task<IActionResult> ViewAllReceptionistsForHotel([Bind("ManagerID", "HotelID", "FirstName", "LastName")] string managerID, int hotelID, string firstName, string lastName)
         {
-           
             Hotel hotel = await _hotelsServices.ReadAsync(hotelID);
             var receptionists = await _userServices.ReadAllReceptionistsForHotelAsync(hotelID);
+            foreach(var item in receptionists)
+            {
+                Console.WriteLine("ЮХУУУУ ТУК СЪЪЪМ " + item.FirstName);
+            }
             return View(toReceptionistsViews, new HotelCreateModel { Receptionists = receptionists, ManagerID = managerID, HotelName = hotel.HotelName, FirstName = firstName, LastName = lastName });
-        }
-        
+        }   
     }
     
 }

@@ -28,6 +28,33 @@ namespace YourPlace.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AspNetUsers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Hotels",
                 columns: table => new
                 {
@@ -100,132 +127,6 @@ namespace YourPlace.Infrastructure.Migrations
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetUsers",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
-                    HotelID = table.Column<int>(type: "int", nullable: true),
-                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AspNetUsers_Hotels_HotelID",
-                        column: x => x.HotelID,
-                        principalTable: "Hotels",
-                        principalColumn: "HotelID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Categories",
-                columns: table => new
-                {
-                    CategoryID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Tourism = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Atmosphere = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Company = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Pricing = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HotelID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Categories", x => x.CategoryID);
-                    table.ForeignKey(
-                        name: "FK_Categories_Hotels_HotelID",
-                        column: x => x.HotelID,
-                        principalTable: "Hotels",
-                        principalColumn: "HotelID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Images",
-                columns: table => new
-                {
-                    ImageID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ImageURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HotelID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Images", x => x.ImageID);
-                    table.ForeignKey(
-                        name: "FK_Images_Hotels_HotelID",
-                        column: x => x.HotelID,
-                        principalTable: "Hotels",
-                        principalColumn: "HotelID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Reservations",
-                columns: table => new
-                {
-                    ReservationID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ArrivalDate = table.Column<DateOnly>(type: "date", nullable: false),
-                    LeavingDate = table.Column<DateOnly>(type: "date", nullable: false),
-                    PeopleCount = table.Column<int>(type: "int", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    HotelID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Reservations", x => x.ReservationID);
-                    table.ForeignKey(
-                        name: "FK_Reservations_Hotels_HotelID",
-                        column: x => x.HotelID,
-                        principalTable: "Hotels",
-                        principalColumn: "HotelID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "RoomsAvailability",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    HotelID = table.Column<int>(type: "int", nullable: false),
-                    Availability = table.Column<int>(type: "int", nullable: false),
-                    RoomID = table.Column<int>(type: "int", nullable: false),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RoomsAvailability", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_RoomsAvailability_Hotels_HotelID",
-                        column: x => x.HotelID,
-                        principalTable: "Hotels",
-                        principalColumn: "HotelID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -315,6 +216,120 @@ namespace YourPlace.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Categories",
+                columns: table => new
+                {
+                    CategoryID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Tourism = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Atmosphere = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Company = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Pricing = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HotelID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categories", x => x.CategoryID);
+                    table.ForeignKey(
+                        name: "FK_Categories_Hotels_HotelID",
+                        column: x => x.HotelID,
+                        principalTable: "Hotels",
+                        principalColumn: "HotelID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Images",
+                columns: table => new
+                {
+                    ImageID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ImageURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HotelID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Images", x => x.ImageID);
+                    table.ForeignKey(
+                        name: "FK_Images_Hotels_HotelID",
+                        column: x => x.HotelID,
+                        principalTable: "Hotels",
+                        principalColumn: "HotelID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Receptionist",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserID = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HotelID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Receptionist", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Receptionist_Hotels_HotelID",
+                        column: x => x.HotelID,
+                        principalTable: "Hotels",
+                        principalColumn: "HotelID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Reservations",
+                columns: table => new
+                {
+                    ReservationID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ArrivalDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    LeavingDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    PeopleCount = table.Column<int>(type: "int", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Verified = table.Column<bool>(type: "bit", nullable: false),
+                    HotelID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reservations", x => x.ReservationID);
+                    table.ForeignKey(
+                        name: "FK_Reservations_Hotels_HotelID",
+                        column: x => x.HotelID,
+                        principalTable: "Hotels",
+                        principalColumn: "HotelID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RoomsAvailability",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    HotelID = table.Column<int>(type: "int", nullable: false),
+                    Availability = table.Column<int>(type: "int", nullable: false),
+                    RoomID = table.Column<int>(type: "int", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RoomsAvailability", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_RoomsAvailability_Hotels_HotelID",
+                        column: x => x.HotelID,
+                        principalTable: "Hotels",
+                        principalColumn: "HotelID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ReservedRooms",
                 columns: table => new
                 {
@@ -355,19 +370,19 @@ namespace YourPlace.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "FirstName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Surname", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "1", 0, "c13c1120-02e9-40a7-87e6-0a8472a0d0bf", "User", "admin@gmail.com", true, "Admin", false, null, "ADMIN@GMAIL.COM", "Admin", "AQAAAAIAAYagAAAAELOjByJ9RdIIKhxVOD9BRbvxB6kGQN5Dv4X5L6LT34McT9TI8WQk+KUA235z0H/Esg==", null, false, "", "User", false, "Admin" });
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Surname", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "1", 0, "203bfcad-64e0-4831-8ab3-984781203dac", "admin@gmail.com", true, "Admin", false, null, "ADMIN@GMAIL.COM", "Admin", "AQAAAAIAAYagAAAAENTB3cKXNyyQVuVQvy1ZljfdOAsx0u/F7/6pxWu43uAGg4fVPwL0fS9Pj/OEU1qMmw==", null, false, "", "User", false, "Admin" });
 
             migrationBuilder.InsertData(
                 table: "Hotels",
                 columns: new[] { "HotelID", "Address", "Country", "Details", "HotelName", "MainImageURL", "ManagerID", "Rating", "Town", "Verified" },
                 values: new object[,]
                 {
-                    { 1, "ул. Юндола 20", "България", "Хотелът е с чудесен изглед към гората. Има неограничен безплатен Wi-Fi и удобен паркинг. Хотелът разполага с три вътрешни басейна и един външен.", "Arte Spa Hotel", "Arte.jpg", null, 9.6999999999999993, "Велинград", true },
-                    { 2, "ул. Ропотамо 12", "България", "Апартаменти Роуз Гардънс се намират на 50 метра от плажа. Включват сезонен външен басейн и сезонен ресторант, безплатен Wi-Fi и сезонен спа център.", "Rose Garden", "RoseGarden.jpg", null, 8.5, "Поморие", true },
-                    { 3, "ул. Горна Баня", "България", "Хотелът предлага безплатен високоскоростен WI-FI. Има спа център и 3 вътрешни басейна, както и 2 външни - един за деца, един за възрастни.", "Therme", "Therme.jpg", null, 9.0999999999999996, "Баня", true },
-                    { 4, "Flower str.", "Франция", "Прекрасна гледка към Айфеловата кула. Храната е високо качество, а стаите са прекрасни.", "La Fleur", "LaFleur.jpg", null, 9.5, "Paris", true },
-                    { 5, "Monte Carlo str.", "САЩ", "Хотел Las Vegas Royal предлага всякакви по вид занимания - от масажи до турнири по тенис и футбол. All-Inclisuve с включена храна и напитки", "Las Vegas Royal", "RoyalLasVegas.jpg", null, 7.9000000000000004, "Las Vegas", true }
+                    { 1, "ул. Юндола 20", "България", "Хотелът е с чудесен изглед към гората. Има неограничен безплатен Wi-Fi и удобен паркинг. Хотелът разполага с три вътрешни басейна и един външен.", "Arte Spa Hotel", "Arte.jpg", null, 9.6999999999999993, "Велинград", false },
+                    { 2, "ул. Ропотамо 12", "България", "Апартаменти Роуз Гардънс се намират на 50 метра от плажа. Включват сезонен външен басейн и сезонен ресторант, безплатен Wi-Fi и сезонен спа център.", "Rose Garden", "RoseGarden.jpg", null, 8.5, "Поморие", false },
+                    { 3, "ул. Горна Баня", "България", "Хотелът предлага безплатен високоскоростен WI-FI. Има спа център и 3 вътрешни басейна, както и 2 външни - един за деца, един за възрастни.", "Therme", "Therme.jpg", null, 9.0999999999999996, "Баня", false },
+                    { 4, "Flower str.", "Франция", "Прекрасна гледка към Айфеловата кула. Храната е високо качество, а стаите са прекрасни.", "La Fleur", "LaFleur.jpg", null, 9.5, "Paris", false },
+                    { 5, "Monte Carlo str.", "САЩ", "Хотел Las Vegas Royal предлага всякакви по вид занимания - от масажи до турнири по тенис и футбол. All-Inclisuve с включена храна и напитки", "Las Vegas Royal", "RoyalLasVegas.jpg", null, 7.9000000000000004, "Las Vegas", false }
                 });
 
             migrationBuilder.InsertData(
@@ -428,14 +443,14 @@ namespace YourPlace.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Reservations",
-                columns: new[] { "ReservationID", "ArrivalDate", "FirstName", "HotelID", "LeavingDate", "PeopleCount", "Price", "Surname" },
+                columns: new[] { "ReservationID", "ArrivalDate", "Email", "FirstName", "HotelID", "LeavingDate", "PeopleCount", "PhoneNumber", "Price", "Surname", "Verified" },
                 values: new object[,]
                 {
-                    { 1, new DateOnly(2024, 3, 20), "Иван", 1, new DateOnly(2024, 3, 25), 2, 500.00m, "Петров" },
-                    { 2, new DateOnly(2024, 4, 10), "Мария", 2, new DateOnly(2024, 4, 15), 1, 300.00m, "Иванова" },
-                    { 3, new DateOnly(2024, 5, 10), "Петър", 1, new DateOnly(2024, 5, 15), 3, 750.00m, "Иванов" },
-                    { 4, new DateOnly(2024, 6, 20), "Гергана", 2, new DateOnly(2024, 6, 25), 2, 600.00m, "Петрова" },
-                    { 5, new DateOnly(2024, 7, 1), "Стефан", 3, new DateOnly(2024, 7, 5), 1, 200.00m, "Георгиев" }
+                    { 1, new DateOnly(2024, 3, 20), "ipetrov@gmail.com", "Иван", 1, new DateOnly(2024, 3, 25), 2, "0876155488", 500.00m, "Петров", true },
+                    { 2, new DateOnly(2024, 4, 10), "mariaivanova@gmail.com", "Мария", 2, new DateOnly(2024, 4, 15), 1, "0876155489", 300.00m, "Иванова", true },
+                    { 3, new DateOnly(2024, 5, 10), "peturivanov@gmail.com", "Петър", 1, new DateOnly(2024, 5, 15), 3, "0876155648", 750.00m, "Иванов", true },
+                    { 4, new DateOnly(2024, 6, 20), "gerip@gmail.com", "Гергана", 2, new DateOnly(2024, 6, 25), 2, "0876155428", 600.00m, "Петрова", true },
+                    { 5, new DateOnly(2024, 7, 1), "stefangeorgiev@gmail.com", "Стефан", 3, new DateOnly(2024, 7, 5), 1, "0876156489", 200.00m, "Георгиев", true }
                 });
 
             migrationBuilder.InsertData(
@@ -485,11 +500,6 @@ namespace YourPlace.Infrastructure.Migrations
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_HotelID",
-                table: "AspNetUsers",
-                column: "HotelID");
-
-            migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
@@ -504,6 +514,11 @@ namespace YourPlace.Infrastructure.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Images_HotelID",
                 table: "Images",
+                column: "HotelID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Receptionist_HotelID",
+                table: "Receptionist",
                 column: "HotelID");
 
             migrationBuilder.CreateIndex(
@@ -553,6 +568,9 @@ namespace YourPlace.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Preferences");
+
+            migrationBuilder.DropTable(
+                name: "Receptionist");
 
             migrationBuilder.DropTable(
                 name: "ReservedRooms");
