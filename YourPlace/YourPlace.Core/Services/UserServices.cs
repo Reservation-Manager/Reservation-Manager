@@ -37,9 +37,13 @@ namespace YourPlace.Core.Services
                 {
                     await _userManager.AddToRoleAsync(user, Roles.Manager.ToString());
                 }
-                else
+                if(role == Roles.Traveller)
                 {
                     await _userManager.AddToRoleAsync(user, Roles.Traveller.ToString());
+                }
+                if(role == Roles.Receptionist)
+                {
+                    await _userManager.AddToRoleAsync(user, Roles.Receptionist.ToString());
                 }
                 return new Tuple<IdentityResult, User>(result, user);
             }
@@ -188,6 +192,28 @@ namespace YourPlace.Core.Services
             //userToBeEdited.Password = editedUser.Password;
             //userToBeEdited.Role = editedUser.Role;
             
+        }
+        public async Task UpdateReceptionistAccountAsync(string username, int hotelID)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(username))
+                {
+                    User user = await _userManager.FindByNameAsync(username);
+                    Receptionist receptionist = new Receptionist(user.UserName, user.Email, user.FirstName, user.Surname, 0);
+                    receptionist.HotelID = hotelID;
+                    _dbContext.Receptionist.Add(receptionist);
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            //userToBeEdited.Password = editedUser.Password;
+            //userToBeEdited.Role = editedUser.Role;
+
         }
         //public async Task ResetPasswordAsync(string id, string newPassword)
         //{

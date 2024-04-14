@@ -72,15 +72,15 @@ public class Program
             options.Password.RequiredLength = 5;
         });
 
-        builder.Services.ConfigureApplicationCookie(options =>
-        {
-            options.Cookie.HttpOnly = true;
-            options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+        //builder.Services.ConfigureApplicationCookie(options =>
+        //{
+        //    options.Cookie.HttpOnly = true;
+        //    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
 
-            options.LoginPath = "/Identity/Account/Login";
-            options.AccessDeniedPath = "/Idenity/Account/AccessDenied";
-            options.SlidingExpiration = true;
-        });
+        //    options.LoginPath = "/Identity/Account/Login";
+        //    options.AccessDeniedPath = "/Idenity/Account/AccessDenied";
+        //    options.SlidingExpiration = true;
+        //});
 
         
         var app = builder.Build();

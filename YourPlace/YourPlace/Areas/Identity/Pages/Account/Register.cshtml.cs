@@ -5,11 +5,13 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using Elfie.Serialization;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -114,27 +116,66 @@ namespace YourPlace.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
 
             public Roles Role { get; set; }
+
+            [AllowNull]
+            public int HotelId { get; set; }
         }
 
-        public async Task OnGetAsync(string returnUrl = null)
+        public async Task OnGetAsync(string returnUrl = null, string source = null, int hotelID = 0)
         {
             ReturnUrl = returnUrl;
+            ViewData["Source"] = source;
+
+            //if (source == "receptionist")
+            //{
+            //    if (!string.IsNullOrEmpty(Request.Query["hotelID"]))
+            //    {
+            //        if (int.TryParse(Request.Query["hotelID"], out int parsedHotelId))
+            //        {
+            //            hotelID = parsedHotelId;
+            //        }
+            //    }
+            //}
+
+            //Input = new InputModel
+            //{
+            //    HotelId = hotelID
+            //};
+
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
+
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            var source = Request.Form["source"];
+
+
+            ViewData["Source"] = source;
+            Console.WriteLine(source);
             if (ModelState.IsValid)
             {
-                //var user = CreateUser();
-
-                //await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
-                //await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
-                bool emailExistence = await _userServices.CheckIfEmailExists(Input.Email);
+                int hotelID = Input.HotelId; // Accessing hotelID from InputModel
+                if (hotelID != 0)
+                {
+                    Console.WriteLine("HOTEL ID" + hotelID);
+                }
+                else
+                {
+                    Console.WriteLine("NULL");
+                }
                 
-                Tuple<IdentityResult, User> result = await _userServices.CreateAccountAsync(Input.FirstName, Input.Surname, Input.Username, Input.Email, Input.Password, Input.Role);
+                Tuple<IdentityResult, User> result;
+                if (source == "receptionist")
+                {
+                    result = await _userServices.CreateAccountAsync(Input.FirstName, Input.Surname, Input.Username, Input.Email, Input.Password, Roles.Receptionist);
+                }
+                else
+                {
+                    result = await _userServices.CreateAccountAsync(Input.FirstName, Input.Surname, Input.Username, Input.Email, Input.Password, Input.Role);
+                }
 
                 if (result.Item1.Succeeded)
                 {
@@ -169,10 +210,14 @@ namespace YourPlace.Areas.Identity.Pages.Account
                         {
                             return RedirectToAction("Index", "ManagerMenu", new { firstName = user.FirstName, lastName = user.Surname, managerID = user.Id });
                         }
-                        else
                         if (roles.Contains(Roles.Traveller.ToString()))
                         {
                             return RedirectToAction("ToMainBg", "Home");
+                        }
+                        else
+                        if (roles.Contains(Roles.Receptionist.ToString()))
+                        {
+                            return RedirectToAction("SetHotelID", "ManagerMenu", new {username = user.UserName, receptionistID = user.Id});
                         }
                         else if (_userManager.Options.SignIn.RequireConfirmedAccount)
                         {

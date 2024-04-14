@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using YourPlace.Infrastructure.Data.Enums;
+using YourPlace.Areas.Identity.Pages.Account;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 namespace YourPlace.Controllers
 {
     public class ManagerMenuController : Controller
@@ -15,21 +18,47 @@ namespace YourPlace.Controllers
         private readonly HotelsServices _hotelsServices;
         private readonly RoomServices _roomServices;
         private readonly HotelCategoriesServices _hotelCategoriesServices;
-        public ManagerMenuController(IWebHostEnvironment webHost, HotelsServices hotelsServices, RoomServices roomServices, HotelCategoriesServices hotelCategoriesServices)
+        private readonly UserServices _userServices;
+        private readonly SignInManager<User> _signInManager;
+        private readonly UserManager<User> _userManager;
+        private readonly IUserStore<User> _userStore;
+        private readonly IEmailSender _emailSender;
+        private readonly ILogger<RegisterModel> _logger;
+
+        public ManagerMenuController(
+            IWebHostEnvironment webHost,
+            HotelsServices hotelsServices,
+            RoomServices roomServices,
+            HotelCategoriesServices hotelCategoriesServices,
+            UserServices userServices,
+            SignInManager<User> signInManager,
+            UserManager<User> userManager,
+            IUserStore<User> userStore,
+            IEmailSender emailSender,
+            ILogger<RegisterModel> logger)
         {
             _webHost = webHost;
             _hotelsServices = hotelsServices;
             _roomServices = roomServices;
             _hotelCategoriesServices = hotelCategoriesServices;
+            _userServices = userServices;
+            _signInManager = signInManager;
+            _userManager = userManager;
+            _userStore = userStore;
+            _emailSender = emailSender;
+            _logger = logger;
         }
+
 
         private const string toManagerStartPage = "~/Views/Bulgarian/ManagerViews/StartPage.cshtml";
         private const string toAddHotelPage = "~/Views/Bulgarian/ManagerViews/AddHotel.cshtml";
         private const string toManagerHotels = "~/Views/Bulgarian/ManagerViews/ManagerHotels.cshtml";
         private const string toUploadImage = "~/Views/Bulgarian/ManagerViews/UploadImage.cshtml";
+        private const string toReceptionists = "~/Views/Bulgarian/ManagerViews/ReceptionistsManagement.cshtml";
 
-        public IActionResult Index(string managerID, string firstName, string lastName)
+        public IActionResult Index([Bind("ManagerID", "FirstName", "LastName")]string managerID, string firstName, string lastName)
         {
+            Console.WriteLine(managerID);
             return View(toManagerStartPage, new HotelCreateModel { ManagerID = managerID, FirstName = firstName, LastName = lastName});
         }
         public IActionResult ReturnToStart([Bind("ManagerID, FirstName, LastName")] string managerID, string firstName, string lastName)
@@ -44,7 +73,7 @@ namespace YourPlace.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateHotel([Bind("ManagerID, HotelName, Address, Town, Country, Rating, Details, RoomsInHotel, Location, Tourism, Atmosphere, Company, Pricing")] string managerID, string hotelName, string address, string town, string country, double rating, string details, List<Room> roomsInHotel, IFormFile imgfile, Location location, Tourism tourism, Atmosphere atmosphere, Company company, Pricing pricing)
+        public async Task<IActionResult> CreateHotel([Bind("ManagerID, FirstName, LastName, HotelName, Address, Town, Country, Rating, Details, RoomsInHotel, Location, Tourism, Atmosphere, Company, Pricing")] string managerID, string hotelName, string address, string town, string country, double rating, string details, List<Room> roomsInHotel, IFormFile imgfile, Location location, Tourism tourism, Atmosphere atmosphere, Company company, Pricing pricing, string firstName, string lastName)
         {
             
             var saveimg = Path.Combine(_webHost.WebRootPath, "Images/MainImages", imgfile.FileName);
@@ -82,7 +111,7 @@ namespace YourPlace.Controllers
             Categories categories = new Categories(location, tourism, atmosphere, company, pricing, hotel.HotelID);
             await _hotelCategoriesServices.CreateAsync(categories);
        
-            return View(toManagerHotels, new HotelCreateModel { ManagerHotels = hotels, ManagerID = managerID });
+            return View(toManagerHotels, new HotelCreateModel { ManagerHotels = hotels, ManagerID = managerID, FirstName = firstName, LastName = lastName });
         }
         [HttpPost]
         public async Task<IActionResult> UploadImage(IFormFile imgfile)
@@ -108,18 +137,49 @@ namespace YourPlace.Controllers
             }
            
         }
-        public async Task<IActionResult> ViewManagerHotels([Bind("ManagerID")]string managerID)
+        public async Task<IActionResult> ViewManagerHotels([Bind("ManagerID", "FirstName", "LastName")]string managerID, string firstName, string lastName)
         {
+            if(managerID == null)
+            {
+                Console.WriteLine("MANAGER ID IS NULL.");
+            }
             Console.WriteLine(managerID);
             List<Hotel> hotels = await _hotelsServices.AdminReadAllAsync();
             hotels = hotels.Where(x=>x.ManagerID == managerID).ToList();
-            return View(toManagerHotels, new HotelCreateModel { ManagerHotels = hotels, ManagerID = managerID });
+            Console.WriteLine(managerID);
+            return View(toManagerHotels, new HotelCreateModel { ManagerHotels = hotels, ManagerID = managerID, FirstName = firstName, LastName = lastName });
         }
-        public async Task<IActionResult> ShowNotVerifiedHotels([Bind("ManagerID")]string managerID)
+        public async Task<IActionResult> ShowNotVerifiedHotels([Bind("ManagerID", "FirstName", "LastName")] string managerID, string firstName, string lastName)
         {
             List<Hotel> hotels = await _hotelsServices.AdminReadAllAsync();
             hotels = hotels.Where(x=>x.ManagerID==managerID).Where(x=>x.Verified == false).ToList();
-            return View(toManagerHotels, new HotelCreateModel { ManagerHotels = hotels, ManagerID = managerID });
+            return View(toManagerHotels, new HotelCreateModel { ManagerHotels = hotels, ManagerID = managerID, FirstName = firstName, LastName = lastName });
+        }
+        public async Task<IActionResult> ViewAllReceptionists([Bind("ManagerID", "FirstName", "LastName")]string managerID, string firstName, string lastName)
+        {
+            List<Hotel> hotels = await _hotelsServices.AdminReadAllAsync();
+            hotels = hotels.Where(x => x.ManagerID == managerID).Where(x => x.Verified == true).ToList();
+            return View(toReceptionists, new HotelCreateModel { ManagerHotels = hotels, ManagerID = managerID, FirstName = firstName, LastName = lastName });
+        }
+        public async Task<IActionResult> SetHotelID([Bind("HotelID")]int hotelID)
+        {
+            //await _userServices.UpdateReceptionistAccountAsync(username, hotelID);
+            var registerModel = new RegisterModel(
+               _userManager,
+               _userStore,
+               _signInManager,
+               _logger,
+               _emailSender,
+               _userServices)
+            {
+                Input = new RegisterModel.InputModel
+                {
+                    HotelId = hotelID
+                }
+            };
+
+            return View("~/Areas/Identity/Pages/Account/Register.cshtml", registerModel);
+
         }
     }
 }

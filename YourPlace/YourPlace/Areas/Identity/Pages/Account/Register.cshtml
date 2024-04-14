@@ -4,6 +4,8 @@
 
 @{
     ViewData["Title"] = "Регистрация";
+    var source = ViewData["Source"] as string;
+
 }
 <head>
    @*  <meta name="google-signin-client_id" content="657954048976-psj504rnils7e6isbss9jr6up525ssdl.apps.googleusercontent.com">
@@ -52,15 +54,25 @@
             </div>
 
             <div class="form-floating mb-3">
-                <select asp-for="Input.Role" class="form-control" autocomplete="role" aria-required="true">
-                    <option value="" hidden>Изберете роля</option>
-                    <option value="Traveller">Пътешественик</option>
-                    <option value="Manager">Хотелиер</option>
-                </select>
-                <label asp-for="Input.Role">Роля</label>
-                <span asp-validation-for="Input.Role" class="text-danger"></span>
+                @if (ViewData["Source"] as string == "receptionist")
+                {
+                    <select asp-for="Input.Role" class="form-control" autocomplete="role" aria-required="true">
+                        <option value="Receptionist">Рецепционист</option>
+                    </select>
+                    <label asp-for="Input.Role">Роля</label>
+                    <span asp-validation-for="Input.Role" class="text-danger"></span>
+                }
+                else
+                {
+                    <select asp-for="Input.Role" class="form-control" autocomplete="role" aria-required="true">
+                        <option value="" hidden>Изберете роля</option>
+                        <option value="Traveller">Пътешественик</option>
+                        <option value="Manager">Хотелиер</option>
+                    </select>
+                    <label asp-for="Input.Role">Роля</label>
+                    <span asp-validation-for="Input.Role" class="text-danger"></span>
+                }
             </div>
-
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Регистрация</button>
         </form>
     </div>

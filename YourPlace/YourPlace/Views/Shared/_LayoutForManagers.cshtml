@@ -1,5 +1,6 @@
 ﻿@using YourPlace.Models.ManagerModels;
 @model HotelCreateModel;
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,41 +45,55 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Поверителност</a>
                         </li>
                         <li class="nav-item">
-                            <form>
-                                <input type="hidden" name="FirstName" value="@Model.FirstName" asp-for="FirstName"/>
+                            <form id="startForm" asp-area=" " asp-controller="ManagerMenu" asp-action="ReturnToStart" method="post">
+                                <input type="hidden" name="FirstName" value="@Model.FirstName" asp-for="FirstName" />
                                 <input type="hidden" name="LastName" value="@Model.LastName" asp-for="LastName" />
-                                <a class="nav-link text-dark" asp-area="" asp-controller="ManagerMenu" asp-action="ReturnToStart" method="post">Начало </a>
+                                <input type="hidden" name="ManagerID" value="@Model.ManagerID" asp-for="ManagerID" />
+                                <a class="nav-link text-dark" href="#" onclick="document.getElementById('startForm').submit();">Начало </a>
                             </form>
                         </li>
-                       
+
                     </ul>
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <form id="addHotelForm" asp-area="" asp-controller="ManagerMenu" asp-action="AddHotel" method="post">
                                 <input type="hidden" name="FirstName" value="@Model.FirstName" asp-for="FirstName" />
-                                <input type="hidden" name="LastName" value="@Model.LastName" asp-for="LastName"/>
+                                <input type="hidden" name="LastName" value="@Model.LastName" asp-for="LastName" />
                                 <input type="hidden" name="ManagerID" value="@Model.ManagerID" asp-for="ManagerID" />
                                 <a class="nav-link text-dark" href="#" onclick="document.getElementById('addHotelForm').submit();">Добави хотел</a>
                             </form>
                         </li>
                         <li class="nav-item">
                             <form id="viewHotels" asp-area="" asp-controller="ManagerMenu" asp-action="ViewManagerHotels" method="post">
-                                <input type="hidden" name="FirstName" value="@Model.FirstName" asp-for="FirstName"/>
-                                <input type="hidden" name="LastName" value="@Model.LastName" asp-for="LastName"/>
-                                <input type="hidden" name="ManagerID" value="@Model.ManagerID" asp-for="ManagerID"/>
+                                <input type="hidden" name="FirstName" value="@Model.FirstName" asp-for="FirstName" />
+                                <input type="hidden" name="LastName" value="@Model.LastName" asp-for="LastName" />
+                                <input type="hidden" name="ManagerID" value="@Model.ManagerID" asp-for="ManagerID" />
                                 <a class="nav-link text-dark" href="#" onclick="document.getElementById('viewHotels').submit();">Виж своите хотели</a>
                             </form>
                         </li>
                         <li class="nav-item">
                             <form id="notVerified" asp-area="" asp-controller="ManagerMenu" asp-action="ShowNotVerifiedHotels" method="post">
                                 <input type="hidden" name="FirstName" value="@Model.FirstName" asp-for="FirstName" />
-                                <input type="hidden" name="LastName" value="@Model.LastName" asp-for="LastName"/>
+                                <input type="hidden" name="LastName" value="@Model.LastName" asp-for="LastName" />
                                 <input type="hidden" name="ManagerID" value="@Model.ManagerID" asp-for="ManagerID" />
                                 <a class="nav-link text-dark" href="#" onclick="document.getElementById('notVerified').submit();">Неверифицирани хотели</a>
                             </form>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ManagerMenu" asp-action="">Рецепционисти</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="receptionistDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Рецепционисти
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="receptionistDropdown">
+                                <a class="dropdown-item" href="/Identity/Account/Register?source=receptionist">Добави рецепционист</a>
+                                <form id="viewReceptionists" asp-area="" asp-controller="ManagerMenu" asp-action="ViewAllReceptionists" method="post">
+                                    <input type="hidden" name="FirstName" value="@Model.FirstName" asp-for="FirstName" />
+                                    <input type="hidden" name="LastName" value="@Model.LastName" asp-for="LastName" />
+                                    <input type="hidden" name="ManagerID" value="@Model.ManagerID" asp-for="ManagerID" />
+                                    <a class="dropdown-item" href="#" onclick="document.getElementById('viewReceptionists').submit();">Виж всички рецепционисти</a>
+                                </form>
+                            </div>
+
+
                         </li>
                     </ul>
 
@@ -100,6 +115,23 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Enable Bootstrap dropdown functionality
+            $('.dropdown-toggle').click(function (e) {
+                e.preventDefault();
+                var $dropdownMenu = $(this).next('.dropdown-menu');
+                $('.dropdown-menu').not($dropdownMenu).removeClass('show');
+                $dropdownMenu.toggleClass('show');
+            });
+
+            $(document).on('click', function (e) {
+                if (!$(e.target).closest('.dropdown-toggle').length) {
+                    $('.dropdown-menu').removeClass('show');
+                }
+            });
+        });
+    </script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
